@@ -1,0 +1,27 @@
+{
+  "name": "fwe-hausaufgabe",
+  "version": "1.0.0",
+  "description": "FWE Hausaufgaben",
+  "main": "server.js",
+  "scripts": {
+    "start": "./node_modules/.bin/ts-node server.js"
+  },
+  "dependencies": {
+    "@types/node": "^20.12.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "fn": "^0.2.0",
+    "http": "^0.0.1-security",
+    "mongodb": "^6.5.0",
+    "mongoose": "^8.3.2",
+    "path": "^0.12.7",
+    "pug": "^3.0.2",
+    "ts-node": "^10.9.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "nodemon": "^3.1.0",
+    "typescript": "^5.4.5"
+  }
+}

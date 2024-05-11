@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+    backend:
+        container_name: backend  
+        build:
+            context: ./FWE_Tour_Website_Backend  # Path to the directory containing the backend Dockerfile
+            dockerfile: Dockerfile  
+        ports:
+        - "3000:3000"       # Port mapping for the backend service
+        depends_on:
+          - mongodb
+        env_file:
+          - ./FWE_Tour_Website_Backend/config.env
+
+    frontend:
+        container_name: frontend
+        build:
+            context: ./FWE_Tour_Website_Frontend/tour-web-frontend
+            dockerfile: Dockerfile  
+        ports:
+        - "8000:8000"          # Port mapping for the frontend service
+        depends_on:
+          - backend
+
+    mongodb:
+        container_name: mongodb
+        image: mongo:latest   # Use the latest MongoDB image from Docker Hub
+        ports:
+          - "27017:27017"     # Port mapping for MongoDB

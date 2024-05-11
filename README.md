@@ -1,6 +1,7 @@
 # This Project is still in progress, this file does not contain enough information, will be updated
 # A Tour Website Fullstack Project
 ## More Details about this project can be found in each Frontend and Backend folder
+## What is still in proagress? post, patch and delete request to create a new tour, destination or edit information and delete an existed one
 ## Frontend
 ### To Access: in this directory run docker, then open the terminal then "cd Tour-Website-Fullstack" and "docker-compose up --build" after that access ![127.0.0.1:8000](127.0.0.1:8000) in your browser for the homepage
 ### All the tours 

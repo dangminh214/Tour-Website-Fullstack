@@ -40,13 +40,18 @@ const TourDetail = () => {
         <div>
           <h1 className='tourNameDetail'>{tour.name}</h1>
           <p className='tourDescriptionDetail'>{tour.description}</p>
-          {tour.imageCover.map((imageUrl, index) => (
-            <img className='tourImagesDetail'
-              key={index} 
-              src={imageUrl} 
-              alt={tour.name} 
-            />
-          ))}
+          {tour.imageCover && tour.imageCover.length > 0 ? (
+            tour.imageCover.map((imageUrl, index) => (
+              <img className='tourImagesDetail'
+                key={index} 
+                src={imageUrl} 
+                alt={tour.name} 
+              />
+            ))
+          ) : (
+            <p>No images yet</p>
+          )}
+          
           <h3>Destinations</h3>
           {tour.destinations && tour.destinations.length > 0 ? (
               <ul>

@@ -43,10 +43,14 @@ const DestinationDetail = () => {
             <h1 className='destinationNameDetail'>{destination.name}</h1>
             <p className="destiantiobnDescriptionDetail">{destination.description}</p>
             {destination.imageCover && destination.imageCover.length > 0 ? (
-              <img
-                src={destination.imageCover[0]} // Assuming the imageCover is an array with at least one image URL
-                alt={destination.name}
+              destination.imageCover.map((imageUrl, index) => (
+                <img
+                  className='destinationImagesDetail'
+                  key={index}
+                  src={imageUrl}
+                  alt={destination.name}
               />
+              ))
             ) : (
               <p>No images yet</p>
             )}

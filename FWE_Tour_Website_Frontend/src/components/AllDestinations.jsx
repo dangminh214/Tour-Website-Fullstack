@@ -38,7 +38,6 @@ const DestinationList = () => {
             <li key={destination._id}>
               <h2>{destination.name}</h2>
               <p className = "destinationDescription">{destination.description}</p>
-              
               <img 
                 className="destinationImage" 
                 src={destination.imageCover[0]}

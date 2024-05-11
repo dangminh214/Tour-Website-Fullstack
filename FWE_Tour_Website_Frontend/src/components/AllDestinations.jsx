@@ -41,7 +41,7 @@ const DestinationList = () => {
               
               <img 
                 className="destinationImage" 
-                src={destination.imageCover}
+                src={destination.imageCover[0]}
                 alt={destination.imageCover} 
               />
             </li>

@@ -35,14 +35,13 @@ const DestinationDetail = () => {
   return (
     <div>
       <Header/>
-      <h1>Destination Detail</h1>
       {loading ? (
         <p>Loading...</p>
       ) : (
         destination ? (
           <div>
-            <h2>{destination.name}</h2>
-            <p>{destination.description}</p>
+            <h1 className='destinationNameDetail'>{destination.name}</h1>
+            <p className="destiantiobnDescriptionDetail">{destination.description}</p>
             {destination.imageCover && destination.imageCover.length > 0 ? (
               <img
                 src={destination.imageCover[0]} // Assuming the imageCover is an array with at least one image URL
@@ -51,19 +50,19 @@ const DestinationDetail = () => {
             ) : (
               <p>No images yet</p>
             )}
-            <h3>Tours with this destination:</h3>
+            <h3>Reise mit diesem Reiseziel:</h3>
             {destination.tours && destination.tours.length > 0 ? (
               <ul>
                 {destination.tours.map((tour) => (
-                  <li key={tour._id}><a key={tour._id} href={`http://localhost:8000/tours/${tour.name}`}>{tour.name}</a></li>
+                  <li key={tour._id}><a className="linkTour" key={tour._id} href={`http://localhost:8000/tours/${tour.name}`}>{tour.name}</a></li>
                 ))}
               </ul>
             ) : (
-              <p>No tours found with this destination</p>
+              <p>Keine Reise mit diesem Reiseziel</p>
             )}
           </div>
         ) : (
-          <p>Destination not found</p>
+          <p>Reiseziel nicht gefunden</p>
         )
       )}
     </div>

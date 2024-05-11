@@ -50,20 +50,22 @@ const ToursList = () => {
           {tours.map(tour => (
             <li key={tour._id}>
               <h2>{tour.name}</h2>
+              <a href={`http://localhost:8000/tours/${tour.name}`}>Mehrere Details</a>
               <p className = "tourDescription">{tour.description}</p>
+              <img
+                className="tourImage"
+                src={tour.imageCover[0]}
+                alt={tour.name}
+              />
               <h4>Reisenziele</h4>
               <ul>
                 {tour.destinations.map(destination => (
                   <li key={destination._id}>
                     <a href={`http://localhost:8000/destination/${destination.name}`}>{destination.name}</a>
-                  </li>
+                  </li> 
                 ))}
               </ul>
-              <img
-                className="tourImage"
-                src={tour.imageCover}
-                alt={tour.name}
-              />
+              
             </li>
           ))}
         </ul>

@@ -2,7 +2,7 @@
 # A Tour Website Fullstack Project
 ## More Details about this project can be found in each Frontend and Backend folder
 ## Frontend
-### To Access: in this directory run docker, then open the terminal and "cd Tour-Website-Fullstack" and "docker-compose up --build" then access ![127.0.0.1:8000](127.0.0.1:8000) for the homepage
+### To Access: in this directory run docker, then open the terminal then "cd Tour-Website-Fullstack" and "docker-compose up --build" after that access ![127.0.0.1:8000](127.0.0.1:8000) in your browser for the homepage
 ### All the tours 
 ![image](https://github.com/dangminh214/Tour-Website-Fullstack/assets/51837721/f3784014-7926-476a-a584-45aad543d673)
 #### Path: ![127.0.0.1:8000/tours](127.0.0.1:8000/tours)

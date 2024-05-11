@@ -14,11 +14,11 @@ The data of all tours will be sent from Backend to Frontend, ReactJS will render
 As the same as tours, the list of all destinations will be shown
 
 ### Tour Detail
-### Path: (Example: http://localhost:8000/tours/tour3)  http://localhost:8000/tours/{the name of a tour}
+### Path: (Example: ![127.0.0.1:8000/tours](127.0.0.1:8000/tours))  127.0.0.1:8000/tours/{the name of a tour}
 ![image](https://github.com/dangminh214/Tour-Website-Fullstack/assets/51837721/ec59eb62-4bcf-488e-bae6-aded9e9fcc5f)
 
 ### Destination Detail
-### Path: (Example: http://localhost:8000/destination/Darmstadt)  http://localhost:8000destinationtours/{the name of a destination}
+### Path: (Example: ![http://localhost:8000/destination/Darmstadt](http://localhost:8000/destination/Darmstadt))  http://localhost:8000/destinationtours/{the name of a destination}
 ![image](https://github.com/dangminh214/Tour-Website-Fullstack/assets/51837721/bffd3c26-1e82-4892-ac5d-a477a2cbd0ed)
 
 

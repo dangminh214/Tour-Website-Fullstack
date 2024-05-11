@@ -1,2 +1,16 @@
+# This Project is still in progress, this file does not contain enough information, will be updated
 # A Tour Website Fullstack Project
 ## More Details about this project can be found in each Frontend and Backend folder
+## Frontend
+### To Access: in this directory run docker, then open the terminal and "docker-compose up --build" then access 127.0.0.1:8000 for the homepage
+### All the tours
+![image](https://github.com/dangminh214/Tour-Website-Fullstack/assets/51837721/f3784014-7926-476a-a584-45aad543d673)
+The data of all tours will be sent from Backend to Frontend, ReactJS will rendered all the tour and display all the destination of a tour
+
+### All the destinations
+![image](https://github.com/dangminh214/Tour-Website-Fullstack/assets/51837721/61413964-5dc3-4de0-8700-defe764b1b6d)
+As the same as tours, the list of all destinations will be shown
+
+### Tour Detail
+### Example: http://localhost:8000/tours/tour3  http://localhost:8000/tours/{the name of a tour}
+![image](https://github.com/dangminh214/Tour-Website-Fullstack/assets/51837721/ec59eb62-4bcf-488e-bae6-aded9e9fcc5f)

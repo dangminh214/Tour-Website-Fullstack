@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import Header from './Header/Header';
 const DestinationList = () => {
   const [destinations, setDestinations] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -28,6 +28,7 @@ const DestinationList = () => {
 
   return (
     <div>
+      <Header/>
       <h1>Reisenziele Liste</h1>
       {loading ? (
         <p>Loading...</p>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Header from "./Header/Header.jsx"
 
 const ToursList = () => {
   const [tours, setTours] = useState([]);
@@ -39,24 +40,12 @@ const ToursList = () => {
 
   return (
     <>
+      <Header/>
       <h1>Reisen Liste</h1>
       {loading ? (
         <p>Loading...</p>
       ) : (
       <div>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor="name">Name: </label>
-            <input
-              type="text"
-              id="name"
-              value={searchQuery}
-              onChange={(event) => setSearchQuery(event.target.value)}
-              required
-            />
-          </div>  
-          <button type="submit">Submit</button>
-        </form>
         <ul>
           {tours.map(tour => (
             <li key={tour._id}>
@@ -67,12 +56,6 @@ const ToursList = () => {
                 {tour.destinations.map(destination => (
                   <li key={destination._id}>
                     <a href={`http://localhost:8000/destination/${destination.name}`}>{destination.name}</a>
-                    {/* <p className="destinationDescription">{destination.description}</p>
-                    <img
-                      className="destinationImage"
-                      src={destination.imageCover[0]} // Assuming the imageCover is an array with one image URL
-                      alt={destination.name}
-                    /> */}
                   </li>
                 ))}
               </ul>

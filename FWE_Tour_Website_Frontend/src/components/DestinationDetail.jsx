@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Header from './Header/Header';
 
 const DestinationDetail = () => {
   const [destination, setDestination] = useState({});
@@ -33,6 +34,7 @@ const DestinationDetail = () => {
 
   return (
     <div>
+      <Header/>
       <h1>Destination Detail</h1>
       {loading ? (
         <p>Loading...</p>

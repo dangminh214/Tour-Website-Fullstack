@@ -1,13 +1,31 @@
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif
-}
-
 #allToursTitle {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+/* #root {
+  display: flex;
+} */
+
+#root {
+  justify-content: center;
+  line-height: 1.6;
+  font-weight: 300;
+  font-family: 'Lato', sans-serif;
+  padding: 3rem;
+  min-height: 100vh;
+
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: contain;
+  line-height: 1.6;
+  font-weight: 300;
+  color: #000000;
+  min-height: 100vh;
+  padding: 0;
 }
 
 code {
@@ -15,10 +33,54 @@ code {
     monospace;
 }
 
-.header {
+.headerComponent {
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  justify-content: center;
+  align-items: space-between;
+  justify-content: center; 
+  background-color: #4D869C;
+  background-size: cover; /* Scale the background image to cover the entire container */
+  background-repeat: no-repeat; /* Prevent the background image from repeating */
+  background-position: center; /* Center the background image */
+  padding: 0;
+  margin: 0;
+  width: 100%; 
+}
+
+.headerTitle {
+  color: #CDE8E5;  
+}
+.headerLink {
+  color: #CDE8E5;
+}
+.headerSeachTour {
+  margin: 100px;
+}
+
+.headerSearchDestination {
+  margin: 100px;
+}
+
+#tourList {
+  text-align: center;
+}
+
+.tourContainer {
+  display: block;
+  flex-wrap: wrap;
+  gap: 20px;
+  height: 1000p;
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+
+.tourInfo {
+  text-align: center;
+  max-width: calc(120% - 20px); 
+  padding: 10px;
+  border: 1px solid #000000;
+  margin-bottom: 20px;
+  justify-content: center;
 }
 
 .tourImagesDetail {
@@ -48,5 +110,6 @@ code {
   object-fit: cover;
   padding: 10px;
 }
+
 
 

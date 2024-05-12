@@ -3,9 +3,8 @@ import DestinationHeader from "./DestinationHeader.jsx"
 
 export default function Header () {
   return (
-    <div className="header">
+    <div className="headerComponent">
       <ReiseHeader/>
-      <div className="spacer" style={{ width: '20px' }}></div>
       <DestinationHeader/>
     </div>
   )

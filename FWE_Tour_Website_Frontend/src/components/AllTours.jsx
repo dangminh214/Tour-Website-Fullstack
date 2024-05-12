@@ -4,7 +4,6 @@ import Header from "./Header/Header.jsx"
 const ToursList = () => {
   const [tours, setTours] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     const fetchTours = async () => {
@@ -28,28 +27,18 @@ const ToursList = () => {
     fetchTours();
   }, []);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    // Here you can do something with the form data, like sending it to an API
-    console.log('Form submitted:', { searchQuery });
-
-    // Reset form fields after submission
-    setSearchQuery('');
-  };
-
   return (
     <>
       <Header/>
-      <h1>Reisen Liste</h1>
+      <h1 id='tourList'>Reisen Liste</h1>
       {loading ? (
         <p>Loading...</p>
       ) : (
-      <div>
-        <ul>
+      <div className="tourContainer">
+
           {tours.map(tour => (
-            <li key={tour._id}>
-              <h2>{tour.name}</h2>
+            <div key={tour._id} class="tourInfo">
+              <h4>{tour.name}</h4>
               <a href={`http://localhost:8000/tours/${tour.name}`}>Mehrere Details</a>
               <p className = "tourDescription">{tour.description}</p>
               <img
@@ -58,19 +47,13 @@ const ToursList = () => {
                 alt={tour.name}
               />
               <h4>Reisenziele</h4>
-              <ul>
-                {tour.destinations.map(destination => (
-                  <li key={destination._id}>
-                    <a href={`http://localhost:8000/destination/${destination.name}`}>{destination.name}</a>
-                  </li> 
-                ))}
-              </ul>
               
-            </li>
+                {tour.destinations.map(destination => (
+                    <a key={destination._id} href={`http://localhost:8000/destination/${destination.name}`}>{destination.name}</a>
+                ))}
+            </div>
           ))}
-        </ul>
       </div>
-        
       )}
     </>
   );

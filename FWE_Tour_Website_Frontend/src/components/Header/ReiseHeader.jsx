@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 // Header component
 export default function Header ({ handleSearch }) {
@@ -10,7 +10,7 @@ export default function Header ({ handleSearch }) {
 
   return (
     <div className="headerSeachTour">
-      <h5>Eine Reise Suchen</h5>
+      <h5 className='headerTitle'>Eine Reise Suchen</h5>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -22,7 +22,7 @@ export default function Header ({ handleSearch }) {
         <button type="submit">Suchen</button>
         <br/>
       </form>
-      <a href={`http://localhost:8000/tours/newTour}`}>Eine neue Reise</a>
+      <a className="headerLink" href={`http://localhost:8000/tours/newTour}`}>Eine neue Reise</a>
     </div>
   );
 };

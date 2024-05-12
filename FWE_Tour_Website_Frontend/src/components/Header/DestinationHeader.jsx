@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 export default function Header ({ handleSearch }) {
   const [searchQuery, setSearchQuery] = useState('');
@@ -9,7 +9,7 @@ export default function Header ({ handleSearch }) {
 
   return (
     <div className="headerSearchDestination">
-      <h5>Ein Reiseziel Suchen</h5>
+      <h5 className='headerTitle'>Ein Reiseziel Suchen</h5>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -20,7 +20,7 @@ export default function Header ({ handleSearch }) {
         />
         <button type="submit">Suchen</button>
         <br/>
-        <a href={`http://localhost:8000/destination/`}>Ein neues Reiseziel</a>
+        <a className="headerLink" href={`http://localhost:8000/destination/`}>Ein neues Reiseziel</a>
       </form>
     </div>
   );

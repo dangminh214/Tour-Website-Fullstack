@@ -16,9 +16,9 @@ COPY . .
 # Build the React app
 # RUN npm run build
 
-ENV PORT=8000
+ENV PORT=3000
 # Expose port 8000
-EXPOSE 8000
+EXPOSE 3000
 
 # Start nginx
 CMD ["npm", "start"]

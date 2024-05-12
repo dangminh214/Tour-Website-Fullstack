@@ -7,7 +7,7 @@ services:
       context: ./FWE_Tour_Website_Backend # Path to the directory containing the backend Dockerfile
       dockerfile: Dockerfile
     ports:
-      - "8000:8000" # Port mapping for the backend service
+      - "3000:3000" # Port mapping for the backend service
     depends_on:
       - mongodb
     env_file:
@@ -19,7 +19,7 @@ services:
       context: ./FWE_Tour_Website_Frontend
       dockerfile: Dockerfile
     ports:
-      - "3000:3000" # Port mapping for the frontend service
+      - "8000:8000" # Port mapping for the frontend service
     depends_on:
       - backend
 

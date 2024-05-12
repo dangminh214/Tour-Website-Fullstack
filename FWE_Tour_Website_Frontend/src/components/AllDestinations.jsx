@@ -29,23 +29,30 @@ const DestinationList = () => {
   return (
     <div>
       <Header/>
-      <h1>Reisenziele Liste</h1>
+      <h1 id="destinationList">Reisenziele Liste</h1>
       {loading ? (
         <p>Loading...</p>
       ) : (
-        <ul>
+        <div className='destinationContainer'>
           {destinations.map(destination => (
-            <li key={destination._id}>
-              <h2>{destination.name}</h2>
+            <div key={destination._id} className='destinationInfo'>
+              <h2 className='destinationTitle'>{destination.name}</h2>
+              <a href={`http://localhost:3000/destination/${destination.name}`}>Mehrere Details</a>
               <p className = "destinationDescription">{destination.description}</p>
               <img 
                 className="destinationImage" 
                 src={destination.imageCover[0]}
                 alt={destination.imageCover} 
               />
-            </li>
-          ))}
-        </ul>
+              <h4>Reisenziele</h4>
+                {destination.tours.map(tour => (
+                  <p>
+                    <a key={tour._id} href={`http://localhost:3000/tours/${tour.name}`}>{tour.name}</a>
+                  </p>  
+                ))}
+            </div> 
+            ))}
+        </div>  
       )}
     </div>
   );

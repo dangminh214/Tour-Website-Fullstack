@@ -35,10 +35,9 @@ const ToursList = () => {
         <p>Loading...</p>
       ) : (
       <div className="tourContainer">
-
           {tours.map(tour => (
             <div key={tour._id} class="tourInfo">
-              <h4>{tour.name}</h4>
+              <h2 className='tourTitle'>{tour.name}</h2>
               <a href={`http://localhost:3000/tours/${tour.name}`}>Mehrere Details</a>
               <p className = "tourDescription">{tour.description}</p>
               <img
@@ -47,7 +46,6 @@ const ToursList = () => {
                 alt={tour.name}
               />
               <h4>Reisenziele</h4>
-
                 {tour.destinations.map(destination => (
                   <p>
                     <a key={destination._id} href={`http://localhost:3000/destination/${destination.name}`}>{destination.name}</a>

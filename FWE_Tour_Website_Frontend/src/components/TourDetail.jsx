@@ -37,7 +37,7 @@ const TourDetail = () => {
       {loading ? (
         <p>Loading...</p>
       ) : (
-        <div>
+        <div className='tourDetailContainer'>
           <h1 className='tourNameDetail'>{tour.name}</h1>
           <p className='tourDescriptionDetail'>{tour.description}</p>
           {tour.imageCover && tour.imageCover.length > 0 ? (
@@ -54,11 +54,11 @@ const TourDetail = () => {
           
           <h3>Destinations</h3>
           {tour.destinations && tour.destinations.length > 0 ? (
-              <ul>
+              <p>
                 {tour.destinations.map((destination) => (
                   <li key={destination._id}><a key={destination._id} href={`http://localhost:3000/destination/${destination.name}`}>{destination.name}</a></li>
                 ))}
-              </ul>
+              </p>
             ) : (
               <p>Diese Reise hat keinem Reiseziel ERROR</p>
             )}

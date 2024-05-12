@@ -5,8 +5,6 @@ const DestinationDetail = () => {
   const [destination, setDestination] = useState({});
   const [loading, setLoading] = useState(true);
 
-  
-
   useEffect(() => {
     const url = window.location.pathname; // Get the path portion of the URL
     const parts = url.split("/").filter(Boolean); // Split the path by "/", filter out empty strings
@@ -39,7 +37,7 @@ const DestinationDetail = () => {
         <p>Loading...</p>
       ) : (
         destination ? (
-          <div>
+          <div className='destiantionDetailContainer'>
             <h1 className='destinationNameDetail'>{destination.name}</h1>
             <p className="destiantiobnDescriptionDetail">{destination.description}</p>
             {destination.imageCover && destination.imageCover.length > 0 ? (
@@ -56,11 +54,11 @@ const DestinationDetail = () => {
             )}
             <h3>Reise mit diesem Reiseziel:</h3>
             {destination.tours && destination.tours.length > 0 ? (
-              <ul>
+              <p className='tourThroughDestination'>
                 {destination.tours.map((tour) => (
                   <li key={tour._id}><a className="linkTour" key={tour._id} href={`http://localhost:3000/tours/${tour.name}`}>{tour.name}</a></li>
                 ))}
-              </ul>
+              </p>
             ) : (
               <p>Keine Reise mit diesem Reiseziel</p>
             )}

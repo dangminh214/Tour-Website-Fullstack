@@ -9,19 +9,20 @@ export default function Header ({ handleSearch }) {
 
   return (
     <div className="headerSearchDestination">
-      <h5 className='headerTitle'>Ein Reiseziel Suchen</h5>
-      <form onSubmit={handleSubmit}>
+      <h3 className='headerTitle'>Ein Reiseziel Suchen</h3>
+      <form className="formHeader" onSubmit={handleSubmit}>
         <input
           type="text"
           placeholder="Suchen nach Name"
           value={searchQuery}
           onChange={(event) => setSearchQuery(event.target.value)}
           required
+          className='searchHeader'
         />
-        <button type="submit">Suchen</button>
+        <button type="submit" className='searchHeader'>Suchen</button>
         <br/>
-        <a className="headerLink" href={`http://localhost:8000/destination/`}>Ein neues Reiseziel</a>
       </form>
+      <a className="headerLink" href={`http://localhost:8000/destination/`}>Ein neues Reiseziel</a>
     </div>
   );
 };

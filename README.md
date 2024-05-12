@@ -5,21 +5,25 @@
 ## Frontend
 ### To Access: in this directory run docker, then open the terminal then "cd Tour-Website-Fullstack" and "docker-compose up --build" after that access ![127.0.0.1:8000](127.0.0.1:8000) in your browser for the homepage
 ### All the tours 
-![image](https://github.com/dangminh214/Tour-Website-Fullstack/assets/51837721/f3784014-7926-476a-a584-45aad543d673)
+![image](https://github.com/dangminh214/Tour-Website-Fullstack/assets/51837721/e766a32d-f77c-4340-9db5-f186de5ff0bd)
+
 #### Path: ![127.0.0.1:8000/tours](127.0.0.1:8000/tours)
 The data of all tours will be sent from Backend to Frontend, ReactJS will rendered all the tour and display all the destination of a tour
 
 ### All the destinations
-![image](https://github.com/dangminh214/Tour-Website-Fullstack/assets/51837721/61413964-5dc3-4de0-8700-defe764b1b6d)
+![image](https://github.com/dangminh214/Tour-Website-Fullstack/assets/51837721/d95fa46d-4842-46b0-8628-3e073af1acf7)
+
 #### Path: ![127.0.0.1:8000/destination](127.0.0.1:8000/destination)
 As the same as tours, the list of all destinations will be shown
 
 ### Tour Detail
 ### Path: (Example: ![127.0.0.1:8000/tours/tour3](127.0.0.1:8000/tours/tour3))  127.0.0.1:8000/tours/{the name of a tour}
-![image](https://github.com/dangminh214/Tour-Website-Fullstack/assets/51837721/ec59eb62-4bcf-488e-bae6-aded9e9fcc5f)
+![image](https://github.com/dangminh214/Tour-Website-Fullstack/assets/51837721/246cf365-58a6-4971-b5e2-cb6ffae4f34a)
+
 
 ### Destination Detail
 ### Path: (Example: ![http://localhost:8000/destination/Darmstadt](http://localhost:8000/destination/Darmstadt))  http://localhost:8000/destinationtours/{the name of a destination}
-![image](https://github.com/dangminh214/Tour-Website-Fullstack/assets/51837721/bffd3c26-1e82-4892-ac5d-a477a2cbd0ed)
+![image](https://github.com/dangminh214/Tour-Website-Fullstack/assets/51837721/fc834cf2-d479-46d2-88a7-3b6e3ce356b6)
+
 
 

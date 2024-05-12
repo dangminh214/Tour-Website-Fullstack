@@ -4,7 +4,7 @@
   "description": "FWE Hausaufgaben",
   "main": "server.js",
   "scripts": {
-    "start": "./node_modules/.bin/ts-node server.js"
+    "start": "ts-node server.js"
   },
   "dependencies": {
     "@types/node": "^20.12.7",

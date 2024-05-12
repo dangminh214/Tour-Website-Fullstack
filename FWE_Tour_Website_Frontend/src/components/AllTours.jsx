@@ -8,7 +8,7 @@ const ToursList = () => {
   useEffect(() => {
     const fetchTours = async () => {
       try {
-        const response = await fetch('http://localhost:3000/tours'); 
+        const response = await fetch('http://localhost:8000/tours'); 
         console.log('Response from server:', response);
         const data = await response.json();
         console.log('Response from server:', data);
@@ -39,7 +39,7 @@ const ToursList = () => {
           {tours.map(tour => (
             <div key={tour._id} class="tourInfo">
               <h4>{tour.name}</h4>
-              <a href={`http://localhost:8000/tours/${tour.name}`}>Mehrere Details</a>
+              <a href={`http://localhost:3000/tours/${tour.name}`}>Mehrere Details</a>
               <p className = "tourDescription">{tour.description}</p>
               <img
                 className="tourImage"
@@ -47,9 +47,11 @@ const ToursList = () => {
                 alt={tour.name}
               />
               <h4>Reisenziele</h4>
-              
+
                 {tour.destinations.map(destination => (
-                    <a key={destination._id} href={`http://localhost:8000/destination/${destination.name}`}>{destination.name}</a>
+                  <p>
+                    <a key={destination._id} href={`http://localhost:3000/destination/${destination.name}`}>{destination.name}</a>
+                  </p>  
                 ))}
             </div>
           ))}

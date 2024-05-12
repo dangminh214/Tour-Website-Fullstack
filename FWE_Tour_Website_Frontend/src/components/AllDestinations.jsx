@@ -7,7 +7,7 @@ const DestinationList = () => {
   useEffect(() => {
     const fetchDestinations = async () => {
       try {
-        const response = await fetch('http://localhost:3000/destination'); 
+        const response = await fetch('http://localhost:8000/destination'); 
         console.log('Response from server:', response);
         const data = await response.json();
         console.log('Response from server:', data);

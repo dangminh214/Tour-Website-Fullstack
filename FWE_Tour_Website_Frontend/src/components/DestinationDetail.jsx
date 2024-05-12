@@ -13,7 +13,7 @@ const DestinationDetail = () => {
     const lastParam = parts[parts.length - 1]; // Get the last element from the array
     const fetchDestinationDetail = async (destinationName) => {
       try {
-        const response = await fetch(`http://localhost:3000/destination/${destinationName}`);
+        const response = await fetch(`http://localhost:8000/destination/${destinationName}`);
         console.log('Response from server:', response);
         const responseData = await response.json();
         console.log('Response from server:', responseData);
@@ -58,7 +58,7 @@ const DestinationDetail = () => {
             {destination.tours && destination.tours.length > 0 ? (
               <ul>
                 {destination.tours.map((tour) => (
-                  <li key={tour._id}><a className="linkTour" key={tour._id} href={`http://localhost:8000/tours/${tour.name}`}>{tour.name}</a></li>
+                  <li key={tour._id}><a className="linkTour" key={tour._id} href={`http://localhost:3000/tours/${tour.name}`}>{tour.name}</a></li>
                 ))}
               </ul>
             ) : (

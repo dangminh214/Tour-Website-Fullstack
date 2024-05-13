@@ -38,4 +38,8 @@ router
   .route('/:tourName/removeDestination/:destinationName')
   .patch(tourController.removeDestinationFromTour)
 
+router
+  .route('/tourError') 
+  .get(tourController.errorNoTour)
+
 module.exports = router;

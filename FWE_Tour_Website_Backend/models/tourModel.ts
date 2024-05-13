@@ -6,7 +6,13 @@ const tourSchema = new mongoose.Schema({
   name: {
     type: String, 
     required: [true, 'A tour must have a name'],
-    unique: true
+    unique: true,
+    validate: {
+      validator: function(value: any) {
+        return value !== 'destinationError';
+      },
+      message: 'Tour name cannot be "tourError"'
+    }
   },
 
   destinations: [{

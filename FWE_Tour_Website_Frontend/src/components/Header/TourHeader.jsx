@@ -3,9 +3,20 @@ import React, { useState } from 'react';
 export default function Header ({ handleSearch }) {
   const [searchQuery, setSearchQuery] = useState('');
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(searchQuery)
+    const findTour = await fetch(`http://localhost:8000/tours/${searchQuery}`)
+    if (findTour.status === 404) {
+      window.location.href = 'http://localhost:3000/tours/tourError'
+      return null
+    }
+    else{
+      const foundTour = await findTour.json()
+      const tourName = foundTour.data.tour.name;
+      if (foundTour) {
+        window.location.href = `http://localhost:3000/tours/${tourName}`
+      }
+    }
   };
 
   return (

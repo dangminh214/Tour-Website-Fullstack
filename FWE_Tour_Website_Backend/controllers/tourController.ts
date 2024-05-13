@@ -222,3 +222,11 @@ export const removeDestinationFromTour = catchAsync(async (req: Request, res: Re
   }
 });
 
+export const errorNoTour = catchAsync(async (req: Request, res: Response) => {
+  try {
+    res.status(404).json({ message: 'Keine Reise gefunden'});
+  } 
+  catch (error) {
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});

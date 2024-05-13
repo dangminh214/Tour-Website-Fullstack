@@ -14,4 +14,8 @@ router
   .route('/:name')
   .get(destinationController.getDestinationUsingName);
 
+router
+  .route('/destinationError') 
+  .get(destinationController.errorNoDestination)
+
 module.exports = router;

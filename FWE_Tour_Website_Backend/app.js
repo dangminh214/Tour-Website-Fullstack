@@ -26,6 +26,7 @@ app.use('/', viewRouter);
 app.use('/destination', destinationRouter)
 app.use('/tours', tourRouter);
 
+
 app.all('*', (req, res, next) => {
   next(`Can't find ${req.originalUrl} on this server!`, 404);
 });

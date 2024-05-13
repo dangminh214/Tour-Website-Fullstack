@@ -2,7 +2,8 @@
 # A Tour Website Fullstack Project
 ## More Details about this project can be found in each Frontend and Backend folder
 ## What is still in proagress? post, patch and delete request to create a new tour, destination or edit information and delete an existed one
-## Frontend
+## Backend: Port 8000
+## Frontend: Port 3000
 ### To Access: in this directory run docker, then open the terminal then "cd Tour-Website-Fullstack" and "docker-compose up --build" after that access ![127.0.0.1:3000](127.0.0.1:3000) in your browser for the homepage
 ### All the tours 
 ![image](https://github.com/dangminh214/Tour-Website-Fullstack/assets/51837721/e766a32d-f77c-4340-9db5-f186de5ff0bd)

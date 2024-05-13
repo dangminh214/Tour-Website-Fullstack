@@ -8,7 +8,6 @@ const DestinationList = () => {
     const fetchDestinations = async () => {
       try {
         const response = await fetch('http://localhost:8000/destination'); 
-        console.log('Response from server:', response);
         const data = await response.json();
         console.log('Response from server:', data);
         if (data.status === 'success') {

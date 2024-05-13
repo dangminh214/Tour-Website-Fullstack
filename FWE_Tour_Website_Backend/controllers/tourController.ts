@@ -139,7 +139,6 @@ exports.updateTourByName = catchAsync(async (req: Request, res: Response, next: 
 });
 
 exports.deleteTour = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
-  console.log(req.params.id)
   const tour = await tourModel.findByIdAndDelete(req.params.id);
 
   if (!tour) {

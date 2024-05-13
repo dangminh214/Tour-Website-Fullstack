@@ -12,7 +12,6 @@ const DestinationDetail = () => {
     const fetchDestinationDetail = async (destinationName) => {
       try {
         const response = await fetch(`http://localhost:8000/destination/${destinationName}`);
-        console.log('Response from server:', response);
         const responseData = await response.json();
         console.log('Response from server:', responseData);
         if (responseData.status === 'success') {

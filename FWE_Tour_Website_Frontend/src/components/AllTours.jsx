@@ -9,7 +9,6 @@ const ToursList = () => {
     const fetchTours = async () => {
       try {
         const response = await fetch('http://localhost:8000/tours'); 
-        console.log('Response from server:', response);
         const data = await response.json();
         console.log('Response from server:', data);
         if (data.status === 'success') {

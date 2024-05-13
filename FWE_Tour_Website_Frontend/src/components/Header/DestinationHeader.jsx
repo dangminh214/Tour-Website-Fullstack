@@ -5,6 +5,7 @@ export default function Header ({ handleSearch }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    console.log(searchQuery)
   };
 
   return (

@@ -6,6 +6,7 @@ const destinationSchema = new mongoose.Schema({
     required: [true, 'A destination must have a name'],
     unique: true
   },
+  
 
   tours: [{
     type: mongoose.Schema.ObjectId,
@@ -17,10 +18,10 @@ const destinationSchema = new mongoose.Schema({
     trim: true
   }, 
 
-  imageCover: {
-    type: [String], 
+  imageCover: [{
+    type: String, 
     //required: [true, 'A destination must have a cover image']
-  }
+  }]
 });
 
 const destinationModel = mongoose.model('destination', destinationSchema);

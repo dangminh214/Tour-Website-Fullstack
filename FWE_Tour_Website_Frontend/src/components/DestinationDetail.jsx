@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import Header from './Header/Header';
 
 const DestinationDetail = () => {
   const [destination, setDestination] = useState({});
   const [loading, setLoading] = useState(true);
+  const [message, setMessage] = useState('');
 
   useEffect(() => {
     const url = window.location.pathname; // Get the path portion of the URL
@@ -29,6 +29,25 @@ const DestinationDetail = () => {
     fetchDestinationDetail(lastParam);
   }, []);
 
+  const deleteDestination = async () => {
+    if (window.confirm('Sind Sie sicher, dieses Reiseziel zu löschen')) {
+      try {
+        const deleteResponse = await fetch(`http://localhost:8000/destination/deleteADestination/${destination._id}`, {
+          method: 'DELETE',
+        });
+  
+        if (deleteResponse.ok) {
+          setMessage('Das Reiseziel wurde erfolgreich gelöscht');
+        } else {
+          alert('Failed to delete destination');
+        }
+      } catch (error) {
+        console.error('Error deleting destination:', error);
+        alert('Failed to delete destination');
+      }
+    }
+  };
+
   return (
     <div>
       {loading ? (
@@ -48,7 +67,7 @@ const DestinationDetail = () => {
               />
               ))
             ) : (
-              <p>No images yet</p>
+              <p>Keine Fotos</p>
             )}
             <h3>Reise mit diesem Reiseziel:</h3>
             {destination.tours && destination.tours.length > 0 ? (
@@ -60,11 +79,13 @@ const DestinationDetail = () => {
             ) : (
               <p>Keine Reise mit diesem Reiseziel</p>
             )}
+            <button onClick={deleteDestination}>Löschen</button>
           </div>
         ) : (
           <p>Reiseziel nicht gefunden</p>
         )
       )}
+      {message && <p className="deleteMessage">{message}</p>}
     </div>
   );
 };

@@ -65,3 +65,21 @@ export const errorNoDestination = catchAsync(async (req: Request, res: Response)
     res.status(500).json({ message: 'Internal server error' });
   }
 });
+
+exports.deleteDestination = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
+  const destination = await destinationModel.findByIdAndDelete(req.params.id);
+
+  if (!destination) {
+    return res.status(404).json({
+      status: 'fail',
+      message: 'No destination found with that ID'
+    });
+  }
+
+  res.status(204).json({
+    status: 'success',
+    data: "delete successful"
+  });
+
+  console.log("Delete a destination using mongodbID successful")
+})

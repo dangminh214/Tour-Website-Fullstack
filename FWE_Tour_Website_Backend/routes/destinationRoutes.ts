@@ -18,4 +18,8 @@ router
   .route('/destinationError') 
   .get(destinationController.errorNoDestination)
 
+router
+  .route('/deleteADestination/:id')
+  .delete(destinationController.deleteDestination)
+
 module.exports = router;

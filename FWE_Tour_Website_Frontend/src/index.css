@@ -183,6 +183,21 @@ code {
   width: 100px;
   height: 100px;
 }
- .error {
+.error {
   text-align: center;
- }
+}
+
+.createNewForm {
+  text-align: center;
+  background-color: #FDE49E;
+}
+
+.newFormTitel {
+  text-align: center;
+  background-color:#6DC5D1 ;
+}
+
+.warning-popup {
+  text-align: center;
+  background-color: #6DC5D1;
+}

@@ -8,6 +8,7 @@ import TourDetail from './components/TourDetail';
 import NoTourError from './components/NoTourError';
 import NoDestinationError from './components/NoDestinationError';
 import Header from './components/Header/Header';
+import CreateNewTour from './components/CreateNewTour';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -23,8 +24,8 @@ if (currentPath === '/tours' || currentPath === '/') {
 } else if (currentPath.endsWith('/destinationError')) { 
   componentToRender = <NoDestinationError />;
 }  
-else if (currentPath.endsWith('/destinationError')) { 
-  componentToRender = <NoTourError />;
+else if (currentPath.endsWith('/newTour')) { 
+  componentToRender = <CreateNewTour />;
 } 
 else if (currentPath === '/destination') {
   componentToRender = <AllDestinations />;

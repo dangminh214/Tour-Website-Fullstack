@@ -230,3 +230,23 @@ export const errorNoTour = catchAsync(async (req: Request, res: Response) => {
     res.status(500).json({ message: 'Internal server error' });
   }
 });
+
+export const deleteATourByName = catchAsync(async (req: Request, res: Response) => {
+  console.log(req.params);
+  const { tourName } = req.params;
+  console.log(tourName)
+
+  try {
+      const deleteTour = await tourModel.deleteOne({ name: tourName });
+
+      res.status(204).json({
+        status: 'success',
+        data: "delete successful"
+      });
+
+      console.log("Delete a tour using name successful")
+  } catch (error) {
+    console.error('Error removing this tour:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});

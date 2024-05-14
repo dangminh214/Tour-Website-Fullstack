@@ -7,6 +7,7 @@ import DestinationDetail from './components/DestinationDetail';
 import TourDetail from './components/TourDetail';
 import NoTourError from './components/NoTourError';
 import NoDestinationError from './components/NoDestinationError';
+import Header from './components/Header/Header';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -34,7 +35,11 @@ else if (currentPath === '/destination') {
 } 
 else {
   // Default component if URL path doesn't match any known routes
-  componentToRender = <div>Page not found</div>;
+  componentToRender = 
+  <>
+    <Header/>
+    <h1 className='error'>Page not found</h1>;
+  </>
 }
 
 // Render the selected component

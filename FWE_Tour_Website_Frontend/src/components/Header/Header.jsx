@@ -14,6 +14,12 @@ export default function Header () {
       </a>
       <ReiseHeader/>
       <DestinationHeader/>
+      <div className='createNewLink'>
+        <a className="createNewLink" href='http://localhost:3000/tours/newTour'>Neue Reise</a>
+        <p></p>
+        <a className="createNewLink" href='http://localhost:3000/destination/newDestination'>Neue Reiseziel</a>
+      </div>
+      
     </div>
   )
 }

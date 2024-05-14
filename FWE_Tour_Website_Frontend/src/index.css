@@ -31,7 +31,7 @@ code {
 
 .headerComponent {
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: auto auto auto auto;
   column-gap: 100px;
   justify-content: center; 
   align-items: center;
@@ -178,7 +178,11 @@ code {
   text-align: center;
   background-color: #6DC5D1;
 }
+
 .logoHeader {
   width: 100px;
   height: 100px;
 }
+ .error {
+  text-align: center;
+ }

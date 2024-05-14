@@ -27,7 +27,6 @@ const DestinationList = () => {
 
   return (
     <div>
-      <Header/>
       <h1 id="destinationList">Reisenziele Liste</h1>
       {loading ? (
         <p>Loading...</p>

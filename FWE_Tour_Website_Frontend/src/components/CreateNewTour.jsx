@@ -124,7 +124,7 @@ const CreateNewTour = () => {
                   value={selectedDestination}
                   onChange={(e) => setSelectedDestination(e.target.value)}
                 >
-                  <option value="">Select a destination...</option>
+                  <option value="">Wählen ein Reisezeil</option>
                   {allDestinations.map(destination => (
                     !destinations.includes(destination._id) && (
                       <option key={destination.name} value={destination._id}>
@@ -134,12 +134,12 @@ const CreateNewTour = () => {
                   ))}
                 </select>
                 <button type="button" onClick={handleAddDestination}>Reiseziel hinzufügen</button>
-                <ul>
+                <ul className="destinationList">
                 {destinations.map((destinationId, index) => {
                   const destination = allDestinations.find(dest => dest._id === destinationId);
                   return (
                     <div key={index}>
-                      <p>{destination ? destination.name : 'Destination not found'}</p>
+                      <p className="displayedDestination">{destination ? destination.name : 'Destination not found'}</p>
                     </div>
                   );
                 })}
@@ -161,11 +161,11 @@ const CreateNewTour = () => {
                   </div>
                 ))}
                 <button type="button" onClick={handleAddImageUrl}>
-                  Add Image URL
+                  Reise Fotos URL
                 </button>
               </div>
               {showWarning && <WarningPopup message="Eine Reise muss mindesten ein Ziel haben" onClose={closeWarning} />}
-              <button type="submit">Create Tour</button>
+              <button type="submit">Neue Reise erstellen</button>
             </form>
           </>
         )}

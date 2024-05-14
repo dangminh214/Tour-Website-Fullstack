@@ -31,7 +31,6 @@ const DestinationDetail = () => {
 
   return (
     <div>
-      <Header/>
       {loading ? (
         <p>Loading...</p>
       ) : (

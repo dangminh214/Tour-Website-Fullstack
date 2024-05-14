@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Header from './Header/Header';
 
 const TourDetail = () => {
   const [tour, setTour] = useState({});
@@ -32,7 +31,6 @@ const TourDetail = () => {
 
   return (
     <div>
-      <Header/>
       {loading ? (
         <p>Loading...</p>
       ) : (
@@ -48,10 +46,10 @@ const TourDetail = () => {
               />
             ))
           ) : (
-            <p>No images yet</p>
+            <p>Keine Fotos</p>
           )}
           
-          <h3>Destinations</h3>
+          <h3>Reiseziele</h3>
           {tour.destinations && tour.destinations.length > 0 ? (
               <p>
                 {tour.destinations.map((destination) => (

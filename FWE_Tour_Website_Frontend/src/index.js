@@ -9,6 +9,7 @@ import NoTourError from './components/NoTourError';
 import NoDestinationError from './components/NoDestinationError';
 import Header from './components/Header/Header';
 import CreateNewTour from './components/CreateNewTour';
+import CreateNewDestination from './components/CreateNewDestination';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -26,6 +27,8 @@ if (currentPath === '/tours' || currentPath === '/') {
 }  
 else if (currentPath.endsWith('/newTour')) { 
   componentToRender = <CreateNewTour />;
+} else if (currentPath.endsWith('/newDestination')) { 
+  componentToRender = <CreateNewDestination />;
 } 
 else if (currentPath === '/destination') {
   componentToRender = <AllDestinations />;
@@ -36,16 +39,13 @@ else if (currentPath === '/destination') {
 } 
 else {
   // Default component if URL path doesn't match any known routes
-  componentToRender = 
-  <>
-    <Header/>
-    <h1 className='error'>Page not found</h1>;
-  </>
+  componentToRender = <h1 className='error'>Page not found</h1>;
 }
 
 // Render the selected component
 root.render(
   <React.StrictMode>
+    <Header/>
     {componentToRender}
   </React.StrictMode>
 );

@@ -28,7 +28,6 @@ const ToursList = () => {
 
   return (
     <>
-      <Header/>
       <h1 id='tourList'>Reisen Liste</h1>
       {loading ? (
         <p>Loading...</p>

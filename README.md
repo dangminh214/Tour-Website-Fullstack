@@ -26,10 +26,26 @@ As the same as tours, the list of all destinations will be shown
 ### Path: (Example: ![http://localhost:3000/destination/Darmstadt](http://localhost:3000/destination/Darmstadt))  http://localhost:3000/destination/{the name of a destination}
 ![image](https://github.com/dangminh214/Tour-Website-Fullstack/assets/51837721/fc834cf2-d479-46d2-88a7-3b6e3ce356b6)
 
+### Fucntion: Add a destination to a tour 
+![image](https://github.com/dangminh214/Tour-Website-Fullstack/assets/51837721/2304a237-d45b-4d95-a00f-6561300fd374)
+
+### Fucntion: Remove a destination to a tour 
+
+
 ### Update: 
 #### Adding Logo of page in Header, click it to see all tours 
 ![image](https://github.com/dangminh214/Tour-Website-Fullstack/assets/51837721/fa64be23-7f6b-44c8-a1f1-d6e2585f6dde)
 
 #### Add seach functionality to search tour and destination in Header
+
+#### Add functionality to create new destination and new tour in the Header
+![image](https://github.com/dangminh214/Tour-Website-Fullstack/assets/51837721/a2689bf5-71a8-48f2-bb61-8a1b0b930117)
+![image](https://github.com/dangminh214/Tour-Website-Fullstack/assets/51837721/37b78bee-3172-427c-8df8-d49b45e23944)
+![image](https://github.com/dangminh214/Tour-Website-Fullstack/assets/51837721/0eaef729-5ef9-4295-9497-3931edf70a3b)
+
+
+
+
+
 
 

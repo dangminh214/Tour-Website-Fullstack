@@ -18,10 +18,6 @@ router
   .route('/findTourByID/:id')
   .get(tourController.getTour)
 
-/* router
-  .route('/delete/:tourName')
-  .delete(tourController.deleteATourByName) */
-
 router
   .route('/updateTourByName/:tourName')
   .patch(tourController.updateTourByName)

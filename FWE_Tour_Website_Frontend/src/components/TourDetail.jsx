@@ -85,13 +85,15 @@ const TourDetail = () => {
       }
     };
 
-    const handleDestinationChange = (event) => {
-      setSelectedDestination(event.target.value);
-    };
-
     const addDestination = async () => {
       if (!selectedDestination) {
         console.error('No destination selected');
+        return;
+      }
+      console.log(tour.destinations)
+      console.log(selectedDestination._id)
+      if (tour.destinations.includes(selectedDestination._id)) {
+        console.error('Destination already exists in the tour');
         return;
       }
       try {
@@ -105,7 +107,9 @@ const TourDetail = () => {
         if (!response.ok) {
           throw new Error('Das Reiseziel kann nicht hinzugefügt werden');
         }
+
         setDestinationMessage('Das Reiseziel wurde erfolgreich addiert');
+        
         window.location.reload()
       } catch (error) {
         console.error('Error adding destination to the tour:', error);
@@ -178,16 +182,7 @@ const TourDetail = () => {
                   ))}
                 </select>
                 <button onClick={addDestination}>Reisezeil hinzufügen</button>
-                <div>
-                  <select value={selectedDestination} onChange={handleDestinationChange}>
-                    {tour.destinations.map((destination) => (
-                      <option key={destination._id} value={destination._id}>
-                        {destination.name}
-                      </option>
-                    ))}
-                  </select>
-                  <button onClick={() => addDestination(selectedDestination)}>Reiseziel addieren</button>
-                </div>
+                
                 <div>
                   {tour.destinations.map((destination) => (
                     <div key={destination._id}>

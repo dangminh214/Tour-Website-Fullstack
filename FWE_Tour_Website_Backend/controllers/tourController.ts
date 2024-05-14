@@ -176,16 +176,22 @@ export const addDestinationToTour = catchAsync(async (req: Request, res: Respons
   const { destinations } = req.body;
 
   try {
-    const tourData = await tourModel.findOne({ name: tourName}); 
-    const tourId = tourData?._id.toString();
-    const tour = await tourModel.findByIdAndUpdate(
-      tourId,
-      { $addToSet: { destinations: { $each: destinations } } },
-      { new: true }
-    );
-
+    const tour = await tourModel.findOne({ name: tourName }); 
     if (!tour) {
       return res.status(404).json({ message: 'Tour not found' });
+    }
+    // Filter out destinations that already exist in the tour
+    const newDestinations = destinations.filter((destinationId: string) => !tour.destinations.includes(destinationId));
+    // Add the destinations to the tour
+    tour.destinations.push(...newDestinations);
+    await tour.save();
+    // Update the destinations with the tour
+    for (const destinationId of destinations) {
+      const destination = await destinationModel.findById(destinationId);
+      if (destination) {
+        destination.tours.push(tour._id);
+        await destination.save();
+      }
     }
 
     res.status(200).json({ message: 'Destinations added successfully', tour });
@@ -194,7 +200,6 @@ export const addDestinationToTour = catchAsync(async (req: Request, res: Respons
     res.status(500).json({ message: 'Internal server error' });
   }
 });
-
 
 export const removeDestinationFromTour = catchAsync(async (req: Request, res: Response) => {
   const { tourName, destinationName } = req.params;
@@ -215,6 +220,14 @@ export const removeDestinationFromTour = catchAsync(async (req: Request, res: Re
       return res.status(404).json({ message: 'Tour not found' });
     }
 
+    if (destinationData) {
+      await destinationModel.findByIdAndUpdate(
+        destinationId,
+        { $pull: { tours: tourId } },
+        { new: true }
+      );
+    }
+
     res.status(200).json({ message: 'Destination removed successfully', tour });
   } catch (error) {
     console.error('Error removing destination from tour:', error);
@@ -227,26 +240,6 @@ export const errorNoTour = catchAsync(async (req: Request, res: Response) => {
     res.status(404).json({ message: 'Keine Reise gefunden'});
   } 
   catch (error) {
-    res.status(500).json({ message: 'Internal server error' });
-  }
-});
-
-export const deleteATourByName = catchAsync(async (req: Request, res: Response) => {
-  console.log(req.params);
-  const { tourName } = req.params;
-  console.log(tourName)
-
-  try {
-      const deleteTour = await tourModel.deleteOne({ name: tourName });
-
-      res.status(204).json({
-        status: 'success',
-        data: "delete successful"
-      });
-
-      console.log("Delete a tour using name successful")
-  } catch (error) {
-    console.error('Error removing this tour:', error);
     res.status(500).json({ message: 'Internal server error' });
   }
 });

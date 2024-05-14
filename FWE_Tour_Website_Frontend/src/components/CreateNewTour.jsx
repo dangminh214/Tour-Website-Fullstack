@@ -9,6 +9,7 @@ const CreateNewTour = () => {
   const [selectedDestination, setSelectedDestination] = useState('');
   const [imageCover, setImageCover] = useState([]);
   const [successMessage, setSuccessMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const [allDestinations, setAllDestinations] = useState([]);
   const [showWarning, setShowWarning] = useState(false);
@@ -55,12 +56,7 @@ const CreateNewTour = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const existingTour = await axios.get(`http://localhost:8000/tours/${name}`);
-      if (existingTour.data) {
-        // If a tour with the same name already exists, set the warning message and return
-        setWarningMessage('Dieser Name ist schon existiert, bitte anderen Name benutzen');
-        return;
-      }
+    
       const newTour = { name, description, destinations, imageCover };
       if (destinations.length === 0) {
         setShowWarning(true);
@@ -76,6 +72,7 @@ const CreateNewTour = () => {
       setImageCover([]);
     } catch (error) {
       console.error('Error creating new tour:', error);
+      setErrorMessage('Die Reise kann nicht erstellt werden. Bitte Versuchen Sie nochmal');
     }
   };
 
@@ -166,6 +163,7 @@ const CreateNewTour = () => {
               </div>
               {showWarning && <WarningPopup message="Eine Reise muss mindesten ein Ziel haben" onClose={closeWarning} />}
               <button type="submit">Neue Reise erstellen</button>
+              {errorMessage && <p className='warning-popup'>{errorMessage}</p>}
             </form>
           </>
         )}

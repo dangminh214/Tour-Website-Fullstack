@@ -15,7 +15,7 @@ exports.getAllDestination = catchAsync(async (req: Request, res: Response) => {
 
   res.status(200).json({
       status: 'success',
-      title: 'Alle Reiseziele',    
+      title: 'Alle Reiseziele', 
       destinations
     }
   );

@@ -275,7 +275,7 @@ code {
 
 .warning-popup {
   text-align: center;
-  background-color: #6DC5D1;
+  background-color: #f44336;
 }
 
 .createDestinationForm {
@@ -347,5 +347,17 @@ code {
   margin-top: 20px;
   padding: 10px;
   border: 1px solid red;
+  border-radius: 5px;
+}
+
+.addDestinationMessage {
+  color: black;
+  background-color: #5cb1b8;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #5cb1b8;
   border-radius: 5px;
 }

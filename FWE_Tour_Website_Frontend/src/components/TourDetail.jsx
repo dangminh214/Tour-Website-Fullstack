@@ -85,6 +85,10 @@ const TourDetail = () => {
       }
     };
 
+    const handleDestinationChange = (event) => {
+      setSelectedDestination(event.target.value);
+    };
+
     const addDestination = async () => {
       if (!selectedDestination) {
         console.error('No destination selected');
@@ -101,11 +105,35 @@ const TourDetail = () => {
         if (!response.ok) {
           throw new Error('Das Reiseziel kann nicht hinzugefügt werden');
         }
-    
         setDestinationMessage('Das Reiseziel wurde erfolgreich addiert');
-        // Rest of the code...
+        window.location.reload()
       } catch (error) {
         console.error('Error adding destination to the tour:', error);
+      }
+    };
+
+    const removeDestination = async (destinationName) => {
+      try {
+        const response = await fetch(`http://localhost:8000/tours/${tour.name}/removeDestination/${destinationName}`, {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+    
+        if (!response.ok) {
+          throw new Error('Error, kann nicht erfernen');
+        }
+        // Update the tour in the state to reflect the change
+        setTour((prevTour) => ({
+          ...prevTour,
+          destinations: prevTour.destinations.filter((destination) => destination.name !== destinationName),
+        }));
+    
+        setDestinationMessage('Das Reiseziel wurde erfolgreich entfernt');
+      } catch (error) {
+        console.error('Error removing destination from the tour:', error);
+        setDestinationMessage('Failed to remove destination');
       }
     };
 
@@ -130,16 +158,19 @@ const TourDetail = () => {
             )}
             <h3>Reiseziele</h3>
             {tour.destinations && tour.destinations.length > 0 ? (
-                <p>
+                <>
                   {tour.destinations.map((destination) => (
-                    <li key={destination._id}><a key={destination._id} href={`http://localhost:3000/destination/${destination.name}`}>{destination.name}</a></li>
+                    <p key={destination._id}>
+                      <a key={destination._id} href={`http://localhost:3000/destination/${destination.name}`}>{destination.name}</a>
+                    </p>
                   ))}
-                </p>
+                </>
               ) : (
                 <p>Diese Reise hat keinem Reiseziel ERROR</p>
               )}
                <div>
                 <select value={selectedDestination} onChange={handleSelectChange}>
+                <option value="">Wählen Sie ein Reiseziel zu addieren</option>
                   {destinations.map((destination) => (
                     <option key={destination._id} value={destination._id}>
                       {destination.name}
@@ -147,7 +178,24 @@ const TourDetail = () => {
                   ))}
                 </select>
                 <button onClick={addDestination}>Reisezeil hinzufügen</button>
-                {/* Rest of your component */}
+                <div>
+                  <select value={selectedDestination} onChange={handleDestinationChange}>
+                    {tour.destinations.map((destination) => (
+                      <option key={destination._id} value={destination._id}>
+                        {destination.name}
+                      </option>
+                    ))}
+                  </select>
+                  <button onClick={() => addDestination(selectedDestination)}>Reiseziel addieren</button>
+                </div>
+                <div>
+                  {tour.destinations.map((destination) => (
+                    <div key={destination._id}>
+                      {destination.name}
+                      <button onClick={() => removeDestination(destination.name)}>Reiseziel entfernen</button>
+                    </div>
+                  ))}
+                </div>
               </div>
               <button className="deleteTourButton" onClick={deleteTour}>Diese Reise Löschen</button>
               {message && <p className='deleteMessage'>{message}</p>}

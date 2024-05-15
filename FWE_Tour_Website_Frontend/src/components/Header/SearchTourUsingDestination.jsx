@@ -1,25 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 export default function SearchTourUsingDestination ({ handleSearch }) {
   const [searchQuery, setSearchQuery] = useState('');
 
+  useEffect(() => {
+    const fetchTitle = async () => {
+      const response = await fetch(`http://localhost:8000/tours/findTourByDestination/${searchQuery}`);
+      const data = await response.json();
+      document.title = data.title;
+    };
+    if (searchQuery) {
+      fetchTitle();
+    };
+  }, [searchQuery]);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const findTours = await fetch(`http://localhost:8000/findTourByDestination/${searchQuery}`)
+    const findTours = await fetch(`http://localhost:8000/tours/findTourByDestination/${searchQuery}`)
+    console.log("findTours", findTours)
     if (findTours.status === 404) {
       window.location.href = 'http://localhost:3000/tours/tourError '
       return null
     }
     else{
-      const foundedTour = await findTours.json()
-      const tourName = foundedTour.data.tour.name;
-      if (foundedTour) {
-        window.location.href = `http://localhost:3000/tours/${tourName}`     //need to change this and create a page that have tours of this destination
+      const foundData = await findTours.json()  
+      console.log("foundData", foundData)
+      const foundTours = foundData.data.tours;
+      if (foundTours.length > 0) {
+        window.location.href = `http://localhost:3000/tours/toursWithInputDestination`     //need to change this and create a page that have tours of this destination
       }
     }
   };
 
-  return (
+  return ( 
     <div className="headerSearchDestination">
       <h3 className='headerTitle'>Reise suchen mit Reisenziel</h3>
       <form className="formHeader" onSubmit={handleSubmit}>

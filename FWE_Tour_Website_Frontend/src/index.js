@@ -7,9 +7,10 @@ import DestinationDetail from './components/DestinationDetail';
 import TourDetail from './components/TourDetail';
 import NoTourError from './components/NoTourError';
 import NoDestinationError from './components/NoDestinationError';
-import Header from './components/Header/Header';
+
 import CreateNewTour from './components/CreateNewTour';
-import CreateNewDestination from './components/CreateNewDestination';
+import CreateNewDestination from './components/CreateNewDestination'
+import TourWithInputDestination from './components/TourWithInputDestination';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -25,16 +26,22 @@ if (currentPath === '/tours' || currentPath === '/') {
 } else if (currentPath.endsWith('/destinationError')) { 
   componentToRender = <NoDestinationError />;
 }  
+else if (currentPath.endsWith('/toursWithInputDestination')) { 
+  componentToRender = <TourWithInputDestination />;
+}  
 else if (currentPath.endsWith('/newTour')) { 
   componentToRender = <CreateNewTour />;
-} else if (currentPath.endsWith('/newDestination')) { 
+} 
+else if (currentPath.endsWith('/newDestination')) { 
   componentToRender = <CreateNewDestination />;
 } 
 else if (currentPath === '/destination') {
   componentToRender = <AllDestinations />;
-} else if (currentPath.startsWith('/destination/')) { 
+} 
+else if (currentPath.startsWith('/destination/')) { 
   componentToRender = <DestinationDetail />;
-} else if (currentPath.startsWith('/tours/')) { 
+} 
+else if (currentPath.startsWith('/tours/')) { 
   componentToRender = <TourDetail />;
 } 
 else {
@@ -45,7 +52,6 @@ else {
 // Render the selected component
 root.render(
   <React.StrictMode>
-    <Header/>
     {componentToRender}
   </React.StrictMode>
 );

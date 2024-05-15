@@ -1,19 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import Header from "./Header";
 
 const CreateNewTour = () => {
   // State variables to store form data
-  const [name, setName] = useState('');
-  const [description, setDescription] = useState('');
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
   const [destinations, setDestinations] = useState([]);
-  const [selectedDestination, setSelectedDestination] = useState('');
+  const [selectedDestination, setSelectedDestination] = useState("");
   const [imageCover, setImageCover] = useState([]);
-  const [successMessage, setSuccessMessage] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const [allDestinations, setAllDestinations] = useState([]);
   const [showWarning, setShowWarning] = useState(false);
   const [isTourCreated, setIsTourCreated] = useState(false);
-  const [warningMessage, setWarningMessage] = useState('');
+  const [warningMessage, setWarningMessage] = useState("");
 
   const selectedArray = [];
 
@@ -33,23 +34,23 @@ const CreateNewTour = () => {
     newImageCover[index] = event.target.value;
     setImageCover(newImageCover);
   };
-  
+
   // Handler for adding a new image URL input field
   const handleAddImageUrl = () => {
-    setImageCover([...imageCover, '']);
+    setImageCover([...imageCover, ""]);
   };
-  
+
   // Handler for removing an image URL input field
   const handleRemoveImageUrl = (index) => {
     setImageCover(imageCover.filter((_, i) => i !== index));
   };
 
-    // Function to handle adding a destination to the tour
+  // Function to handle adding a destination to the tour
   const handleAddDestination = () => {
     if (selectedDestination && !destinations.includes(selectedDestination)) {
       setDestinations([...destinations, selectedDestination]);
-      selectedArray.push(selectedDestination)
-      setSelectedDestination('');
+      selectedArray.push(selectedDestination);
+      setSelectedDestination("");
     }
   };
 
@@ -61,19 +62,24 @@ const CreateNewTour = () => {
         setShowWarning(true);
         return;
       }
-      const response = await axios.post('http://localhost:8000/tours/newTour', newTour);
-      console.log('New tour created:', response.data);
+      const response = await axios.post(
+        "http://localhost:8000/tours/newTour",
+        newTour
+      );
+      console.log("New tour created:", response.data);
       if (response.data) {
-        setSuccessMessage('Die Reise wurde erfolgreich erstellt');
+        setSuccessMessage("Die Reise wurde erfolgreich erstellt");
         setIsTourCreated(true);
-      }      
-      setName('');
-      setDescription('');
+      }
+      setName("");
+      setDescription("");
       setDestinations([]);
       setImageCover([]);
     } catch (error) {
-      console.error('Error creating new tour:', error);
-      setErrorMessage('Die Reise kann nicht erstellt werden. Bitte Versuchen Sie nochmal');
+      console.error("Error creating new tour:", error);
+      setErrorMessage(
+        "Die Reise kann nicht erstellt werden. Bitte Versuchen Sie nochmal"
+      );
     }
   };
 
@@ -81,10 +87,10 @@ const CreateNewTour = () => {
   useEffect(() => {
     const fetchDestinations = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/destination');
+        const response = await axios.get("http://localhost:8000/destination");
         setAllDestinations(response.data.destinations);
       } catch (error) {
-        console.error('Error fetching destinations:', error);
+        console.error("Error fetching destinations:", error);
       }
     };
 
@@ -92,8 +98,12 @@ const CreateNewTour = () => {
   }, []);
 
   return (
-    <div className="createNewForm">
-      {isTourCreated ? <p>{successMessage}</p> : (
+    <>
+      <Header />
+      <div className="createNewForm">
+        {isTourCreated ? (
+          <p>{successMessage}</p>
+        ) : (
           <>
             <h2 className="newFormTitel">Neue Reise</h2>
             <form onSubmit={handleSubmit}>
@@ -123,24 +133,33 @@ const CreateNewTour = () => {
                   onChange={(e) => setSelectedDestination(e.target.value)}
                 >
                   <option value="">Wählen ein Reiseziel</option>
-                  {allDestinations.map(destination => (
-                    !destinations.includes(destination._id) && (
-                      <option key={destination.name} value={destination._id}>
-                        {destination.name}
-                      </option>
-                    )
-                  ))}
+                  {allDestinations.map(
+                    (destination) =>
+                      !destinations.includes(destination._id) && (
+                        <option key={destination.name} value={destination._id}>
+                          {destination.name}
+                        </option>
+                      )
+                  )}
                 </select>
-                <button type="button" onClick={handleAddDestination}>Reiseziel hinzufügen</button>
+                <button type="button" onClick={handleAddDestination}>
+                  Reiseziel hinzufügen
+                </button>
                 <ul className="destinationList">
-                {destinations.map((destinationId, index) => {
-                  const destination = allDestinations.find(dest => dest._id === destinationId);
-                  return (
-                    <div key={index}>
-                      <p className="displayedDestination">{destination ? destination.name : 'Destination not found'}</p>
-                    </div>
-                  );
-                })}
+                  {destinations.map((destinationId, index) => {
+                    const destination = allDestinations.find(
+                      (dest) => dest._id === destinationId
+                    );
+                    return (
+                      <div key={index}>
+                        <p className="displayedDestination">
+                          {destination
+                            ? destination.name
+                            : "Destination not found"}
+                        </p>
+                      </div>
+                    );
+                  })}
                 </ul>
               </div>
 
@@ -153,7 +172,10 @@ const CreateNewTour = () => {
                       value={url}
                       onChange={(event) => handleImageUrlChange(index, event)}
                     />
-                    <button type="button" onClick={() => handleRemoveImageUrl(index)}>
+                    <button
+                      type="button"
+                      onClick={() => handleRemoveImageUrl(index)}
+                    >
                       Entfernen
                     </button>
                   </div>
@@ -162,15 +184,25 @@ const CreateNewTour = () => {
                   Reise Fotos URL addieren
                 </button>
               </div>
-              {showWarning && <WarningPopup message="Eine Reise muss mindesten ein Ziel haben" onClose={closeWarning} />}
+              {showWarning && (
+                <WarningPopup
+                  message="Eine Reise muss mindesten ein Ziel haben"
+                  onClose={closeWarning}
+                />
+              )}
               <button type="submit">Neue Reise erstellen</button>
-              {successMessage && <p className='successMsg'>{successMessage}</p>}
-              {errorMessage && <p className='warning-popup'>{errorMessage}</p>}
+              {successMessage && <p className="successMsg">{successMessage}</p>}
+              {errorMessage && <p className="warning-popup">{errorMessage}</p>}
             </form>
           </>
         )}
-      {warningMessage && <div className="warning-popup"><h3>{warningMessage}</h3></div>}
-    </div>
+        {warningMessage && (
+          <div className="warning-popup">
+            <h3>{warningMessage}</h3>
+          </div>
+        )}
+      </div>
+    </>
   );
 };
 

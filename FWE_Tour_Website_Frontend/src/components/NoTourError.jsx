@@ -1,10 +1,11 @@
-import Header from "./Header/Header"
+import Header from "./Header";
 
-const NoTourError = ()  => {
+const NoTourError = () => {
   return (
     <>
-      <h1 className="headerError">Keine Reise gefunden</h1>    
+      <Header />
+      <h1 className="headerError">Keine Reise gefunden</h1>
     </>
-  )
-}
+  );
+};
 export default NoTourError;

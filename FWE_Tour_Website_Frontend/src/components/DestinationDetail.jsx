@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import Header from './Header/TourHeader';
 const DestinationDetail = () => {
   const [destination, setDestination] = useState({});
   const [loading, setLoading] = useState(true);
@@ -50,6 +50,7 @@ const DestinationDetail = () => {
 
   return (
     <div>
+      <Header />
       {loading ? (
         <p>Loading...</p>
       ) : (

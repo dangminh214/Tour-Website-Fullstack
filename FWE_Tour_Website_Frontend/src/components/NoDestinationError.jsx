@@ -1,10 +1,11 @@
-import Header from "./Header/Header"
+import Header from "./Header";
 
-const NoDestinationError = ()  => {
+const NoDestinationError = () => {
   return (
     <>
-      <h1 className="headerError">Keine Reiseziel gefunden</h1>    
+      <Header />
+      <h1 className="headerError">Keine Reiseziel gefunden</h1>
     </>
-  )
-}
+  );
+};
 export default NoDestinationError;

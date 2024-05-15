@@ -13,7 +13,7 @@
 The data of all tours will be sent from Backend to Frontend, ReactJS will rendered all the tour and display all the destination of a tour
 
 ### All the destinations
-![image](https://github.com/dangminh214/Tour-Website-Fullstack/assets/51837721/66caa519-72f9-478b-ab23-cb2c24123af1)
+![image](https://github.com/dangminh214/Tour-Website-Fullstack/assets/51837721/3455d4d0-a41d-4ef5-bde3-fa49bf9c1088)
 
 #### Path: ![127.0.0.1:3000/destination](127.0.0.1:3000/destination)
 As the same as tours, the list of all destinations will be shown

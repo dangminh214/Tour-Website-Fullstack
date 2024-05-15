@@ -6,8 +6,7 @@
 ## Frontend: Port 3000
 ### To Access: in this directory run docker, then open the terminal then "cd Tour-Website-Fullstack" and "docker-compose up --build" after that access ![127.0.0.1:3000](127.0.0.1:3000) in your browser for the homepage
 ### All the tours 
-![image](https://github.com/dangminh214/Tour-Website-Fullstack/assets/51837721/032e4a04-2df9-4c0d-bdf5-b1a01db12851)
-
+![image](https://github.com/dangminh214/Tour-Website-Fullstack/assets/51837721/689b00f0-9b5a-4ba3-a255-f1d4a58b1750)
 
 #### Path: ![127.0.0.1:3000/tours](127.0.0.1:3000/tours)
 The data of all tours will be sent from Backend to Frontend, ReactJS will rendered all the tour and display all the destination of a tour

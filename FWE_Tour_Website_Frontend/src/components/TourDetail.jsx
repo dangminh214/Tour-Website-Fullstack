@@ -181,7 +181,7 @@ const TourDetail = () => {
                     </option>
                   ))}
                 </select>
-                <button onClick={addDestination}>Reisezeil hinzufügen</button>
+                <button onClick={addDestination}>Reiseziel hinzufügen</button>
                 
                 <div>
                   {tour.destinations.map((destination) => (

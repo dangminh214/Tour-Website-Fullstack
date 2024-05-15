@@ -24,6 +24,13 @@
   background-color: #FEB941;
 }
 
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -52,27 +59,72 @@ code {
   margin: 100px;
 }
 
+@keyframes colorChange {
+  0% { background-color: #f9f9f9; }
+  50% { background-color: #DD761C; }
+  100% { background-color: #007bff; }
+}
+
 #tourList {
   text-align: center;
+  color: #333;
+  margin-top: 50px;
+  background-color: #f9f9f9; 
+  padding: 20px; 
+  border-radius: 10px; 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+  font-size: 2em; 
+  font-weight: bold; 
+  animation: colorChange 3s infinite;
 }
 
 .tourContainer {
+  overflow: hidden;
+  display: flex;
   flex-wrap: wrap;
-  gap: 20px;
-  height: 1000p;
-  display: grid;
-  grid-template-columns: auto auto auto;
-  
+  justify-content: center;
+  margin: 20px;
+  font-size: 1.2em; 
+  font-weight: bold; 
 }
 
 .tourInfo {
-  text-align: center;
-  max-width: calc(120% - 20px); 
-  padding: 10px;
-  border: 1px solid #000000;
-  margin-bottom: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+  padding: 20px;
+  width: 300px;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  background-color: #FDE49E;
+  align-items: center;
+}
+
+.tourTitle {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.tourInfo:hover {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  transform: scale(1.02);
+}
+
+.tourImage {
+  display: block;
+  width: 70%; /* Reduce the width */
+  height: 150px;
+  object-fit: contain;
+  border-radius: 5px;
+  margin: 20px; /* Increase the margin */
+}
+
+.tourDescription {
+  color: #666;
+  margin: 10px 0;
 }
 
 .tourImagesDetail {
@@ -80,6 +132,15 @@ code {
   height: 350px;
   object-fit: cover;
   padding: 10px;
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #0056b3;
 }
 
 #destinationList {
@@ -92,16 +153,28 @@ code {
   height: 1000p;
   display: grid;
   grid-template-columns: auto auto auto;
+  text-align: center;
+  justify-content: center;
 }
 
 .destinationInfo {
   text-align: center;
-  max-width: calc(120% - 20px); 
-  padding: 10px;
+  max-width: calc(100% - 20px); 
+  padding: 20px;
   border: 1px solid #000000;
   margin-bottom: 20px;
   justify-content: center;
   background-color: #FDE49E;
+  border-radius: 10px; 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+  font-size: 1.2em; 
+  font-weight: bold; 
+  transition: all 0.3s ease;
+}
+
+.destinationInfo:hover {
+  background-color: #FDEBCE; /* Add this line */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Add this line */
 }
 
 .destinationImagesDetail {
@@ -168,6 +241,10 @@ code {
   margin-bottom: 20px;
   justify-content: center;
   background-color: #FDE49E;
+  border-radius: 10px; /* Add this line */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add this line */
+  font-size: 1.2em; /* Add this line */
+  font-weight: bold; /* Add this line */
 }
 
 .deleteTourButton {
@@ -264,13 +341,7 @@ code {
 }
 
 .newFormTitel {
-  text-align: center;
-  background-color:#6DC5D1 ;
-}
-
-.newFormTitel {
-  text-align: center;
-  background-color:#6DC5D1 ;
+  text-align: center; ;
 }
 
 .warning-popup {

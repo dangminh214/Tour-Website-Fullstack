@@ -31,6 +31,15 @@ exports.createTour = catchAsync(async (req: Request, res: Response) => {
       message: 'Fail to create a new tour'
     });
   }
+  // Update the destination
+  if (newTour.destinations && Array.isArray(newTour.destinations)) {
+    for (const destinationId of newTour.destinations) {
+      await destinationModel.updateOne(
+        { _id: destinationId },
+        { $push: { tours: newTour._id } }
+      );
+    }
+  }
   res.status(201).json({
     status: 'success',
     tour: newTour

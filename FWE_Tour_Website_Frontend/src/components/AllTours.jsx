@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Header from "./Header/Header.jsx"
 
 const ToursList = () => {
   const [tours, setTours] = useState([]);

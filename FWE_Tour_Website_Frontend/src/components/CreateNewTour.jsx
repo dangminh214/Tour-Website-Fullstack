@@ -121,7 +121,7 @@ const CreateNewTour = () => {
                   value={selectedDestination}
                   onChange={(e) => setSelectedDestination(e.target.value)}
                 >
-                  <option value="">Wählen ein Reisezeil</option>
+                  <option value="">Wählen ein Reiseziel</option>
                   {allDestinations.map(destination => (
                     !destinations.includes(destination._id) && (
                       <option key={destination.name} value={destination._id}>
@@ -153,12 +153,12 @@ const CreateNewTour = () => {
                       onChange={(event) => handleImageUrlChange(index, event)}
                     />
                     <button type="button" onClick={() => handleRemoveImageUrl(index)}>
-                      Remove
+                      Entfernen
                     </button>
                   </div>
                 ))}
                 <button type="button" onClick={handleAddImageUrl}>
-                  Reise Fotos URL
+                  Reise Fotos URL addieren
                 </button>
               </div>
               {showWarning && <WarningPopup message="Eine Reise muss mindesten ein Ziel haben" onClose={closeWarning} />}

@@ -20,12 +20,11 @@ As the same as tours, the list of all destinations will be shown
 
 ### Tour Detail
 ### Path: (Example: ![127.0.0.1:3000/tours/tour3](127.0.0.1:3000/tours/tour3))  127.0.0.1:3000/tours/{the name of a tour}
-![image](https://github.com/dangminh214/Tour-Website-Fullstack/assets/51837721/246cf365-58a6-4971-b5e2-cb6ffae4f34a)
-
+![image](https://github.com/dangminh214/Tour-Website-Fullstack/assets/51837721/d9923353-2d11-4ae0-b9d6-70b774cea841)
 
 ### Destination Detail
 ### Path: (Example: ![http://localhost:3000/destination/Darmstadt](http://localhost:3000/destination/Darmstadt))  http://localhost:3000/destination/{the name of a destination}
-![image](https://github.com/dangminh214/Tour-Website-Fullstack/assets/51837721/fc834cf2-d479-46d2-88a7-3b6e3ce356b6)
+![image](https://github.com/dangminh214/Tour-Website-Fullstack/assets/51837721/713ac495-de4f-4d45-838e-99bdd88223b2)
 
 ### Fucntion: Add a destination to a tour 
 ![image](https://github.com/dangminh214/Tour-Website-Fullstack/assets/51837721/2304a237-d45b-4d95-a00f-6561300fd374)

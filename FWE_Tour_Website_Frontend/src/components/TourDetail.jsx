@@ -90,9 +90,9 @@ const TourDetail = () => {
         console.error('No destination selected');
         return;
       }
-      console.log(tour.destinations)
-      console.log(selectedDestination._id)
-      if (tour.destinations.includes(selectedDestination._id)) {
+      console.log('tour.destination', tour.destinations)
+      console.log('selectedDestination', selectedDestination)
+      if (tour.destinations.includes(selectedDestination)) {
         console.error('Destination already exists in the tour');
         return;
       }
@@ -107,13 +107,15 @@ const TourDetail = () => {
         if (!response.ok) {
           throw new Error('Das Reiseziel kann nicht hinzugefügt werden');
         }
-
+        setTour(prevTour => ({
+          ...prevTour,
+          destinations: [...prevTour.destinations, selectedDestination],
+        }));
         setDestinationMessage('Das Reiseziel wurde erfolgreich addiert');
-        
-        window.location.reload()
       } catch (error) {
         console.error('Error adding destination to the tour:', error);
       }
+      window.location.reload()
     };
 
     const removeDestination = async (destinationName) => {
@@ -170,7 +172,7 @@ const TourDetail = () => {
                   ))}
                 </>
               ) : (
-                <p>Diese Reise hat keinem Reiseziel ERROR</p>
+                <p>Diese Reise hat kein Reiseziel ERROR</p>
               )}
                <div>
                 <select value={selectedDestination} onChange={handleSelectChange}>

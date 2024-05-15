@@ -1,27 +1,27 @@
 import React, { useState } from 'react';
 
-export default function Header ({ handleSearch }) {
+export default function SearchTourUsingDestination ({ handleSearch }) {
   const [searchQuery, setSearchQuery] = useState('');
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const findDestination = await fetch(`http://localhost:8000/destination/${searchQuery}`)
-    if (findDestination.status === 404) {
-      window.location.href = 'http://localhost:3000/destination/destinationError'
+    const findTours = await fetch(`http://localhost:8000/findTourByDestination/${searchQuery}`)
+    if (findTours.status === 404) {
+      window.location.href = 'http://localhost:3000/tours/tourError '
       return null
     }
     else{
-      const foundDestination = await findDestination.json()
-      const destinationName = foundDestination.data.destination.name;
-      if (foundDestination) {
-        window.location.href = `http://localhost:3000/destination/${destinationName}`
+      const foundedTour = await findTours.json()
+      const tourName = foundedTour.data.tour.name;
+      if (foundedTour) {
+        window.location.href = `http://localhost:3000/tours/${tourName}`     //need to change this and create a page that have tours of this destination
       }
     }
   };
 
   return (
     <div className="headerSearchDestination">
-      <h3 className='headerTitle'>Ein Reiseziel Suchen</h3>
+      <h3 className='headerTitle'>Reise suchen mit Reisenziel</h3>
       <form className="formHeader" onSubmit={handleSubmit}>
         <input
           type="text"

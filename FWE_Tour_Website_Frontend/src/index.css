@@ -59,23 +59,18 @@ code {
   margin: 100px;
 }
 
-@keyframes colorChange {
-  0% { background-color: #f9f9f9; }
-  50% { background-color: #DD761C; }
-  100% { background-color: #007bff; }
-}
-
 #tourList {
   text-align: center;
   color: #333;
   margin-top: 50px;
-  background-color: #f9f9f9; 
+  background-color: #6DC5D1;
   padding: 20px; 
   border-radius: 10px; 
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
   font-size: 2em; 
   font-weight: bold; 
-  animation: colorChange 3s infinite;
+  object-fit: contain ;
+  overflow: hidden
 }
 
 .tourContainer {
@@ -200,9 +195,12 @@ a:hover {
 }
 
 .searchHeader {
-  height: 30px;
+  /* height: 30px;
+  margin: 10px; */
+  justify-content: center;
   margin: 10px;
-}
+  padding: 10px;
+} 
 
 .headerSearchDestination {
   align-items: center;
@@ -390,26 +388,28 @@ a:hover {
   background-color: #5cb1b8;
 }
 
-.createNewLink button {
+button {
   background-color: #4CAF50;
   border: none;
   color: white;
-  padding: 15px 32px;
+  padding: 20px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  margin: 4px 2px;
+  margin: 10px;
   cursor: pointer;
   border-radius: 4px;
   transition-duration: 0.4s;
+  justify-content: center;
+  align-items: center
 }
 
-.createNewLink button:hover {
+button:hover {
   background-color: white; 
   color: black; 
-  border: 2px solid #4CAF50;
 }
+
 
 .deleteMessage {
   color: red;

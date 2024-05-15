@@ -33,8 +33,7 @@ export default function Header ({ handleSearch }) {
         />
         <button type="submit" className='searchHeader'>Suchen</button>
         <br/>
-      </form>
-      <a className="headerLink" href={`http://localhost:8000/tours/newTour}`}>Eine neue Reise</a>
+      </form> 
     </div>
   );
 };

@@ -46,7 +46,7 @@ User can remove an existed destination from a tour
 
 #### Add functionality to create new destination and new tour in the Header
 ![image](https://github.com/dangminh214/Tour-Website-Fullstack/assets/51837721/a2689bf5-71a8-48f2-bb61-8a1b0b930117)
-![image](https://github.com/dangminh214/Tour-Website-Fullstack/assets/51837721/37b78bee-3172-427c-8df8-d49b45e23944)
+![image](https://github.com/dangminh214/Tour-Website-Fullstack/assets/51837721/4da4cb82-3d2b-44cc-96ef-86b48100746d)
 ![image](https://github.com/dangminh214/Tour-Website-Fullstack/assets/51837721/0eaef729-5ef9-4295-9497-3931edf70a3b)
 
 

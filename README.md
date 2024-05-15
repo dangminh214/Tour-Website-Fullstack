@@ -41,7 +41,8 @@ User can remove an existed destination from a tour
 #### Adding Logo of page in Header, click it to see all tours 
 ![image](https://github.com/dangminh214/Tour-Website-Fullstack/assets/51837721/fa64be23-7f6b-44c8-a1f1-d6e2585f6dde)
 
-#### Add seach functionality to search tour and destination in Header
+#### Add seach functionality to search tour and destination in Header, otherwise user can search tours using destination
+![image](https://github.com/dangminh214/Tour-Website-Fullstack/assets/51837721/b6e58c90-f8b1-431b-a7df-11d5121f4fbe)
 
 #### Add functionality to create new destination and new tour in the Header
 ![image](https://github.com/dangminh214/Tour-Website-Fullstack/assets/51837721/a2689bf5-71a8-48f2-bb61-8a1b0b930117)

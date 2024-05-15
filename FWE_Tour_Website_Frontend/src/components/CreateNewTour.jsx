@@ -10,9 +10,9 @@ const CreateNewTour = () => {
   const [imageCover, setImageCover] = useState([]);
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-
   const [allDestinations, setAllDestinations] = useState([]);
   const [showWarning, setShowWarning] = useState(false);
+  const [isTourCreated, setIsTourCreated] = useState(false);
   const [warningMessage, setWarningMessage] = useState('');
 
   const selectedArray = [];
@@ -56,7 +56,6 @@ const CreateNewTour = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-    
       const newTour = { name, description, destinations, imageCover };
       if (destinations.length === 0) {
         setShowWarning(true);
@@ -64,8 +63,10 @@ const CreateNewTour = () => {
       }
       const response = await axios.post('http://localhost:8000/tours/newTour', newTour);
       console.log('New tour created:', response.data);
-      // Set the success message
-      setSuccessMessage('Die Reise wurde erfolgreich erstellt');
+      if (response.data) {
+        setSuccessMessage('Die Reise wurde erfolgreich erstellt');
+        setIsTourCreated(true);
+      }      
       setName('');
       setDescription('');
       setDestinations([]);
@@ -92,7 +93,7 @@ const CreateNewTour = () => {
 
   return (
     <div className="createNewForm">
-        {!successMessage && (
+      {isTourCreated ? <p>{successMessage}</p> : (
           <>
             <h2 className="newFormTitel">Neue Reise</h2>
             <form onSubmit={handleSubmit}>
@@ -163,6 +164,7 @@ const CreateNewTour = () => {
               </div>
               {showWarning && <WarningPopup message="Eine Reise muss mindesten ein Ziel haben" onClose={closeWarning} />}
               <button type="submit">Neue Reise erstellen</button>
+              {successMessage && <p className='successMsg'>{successMessage}</p>}
               {errorMessage && <p className='warning-popup'>{errorMessage}</p>}
             </form>
           </>

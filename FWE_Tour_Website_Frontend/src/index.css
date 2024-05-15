@@ -115,11 +115,12 @@ code {
 
 .tourImage {
   display: block;
-  width: 70%; /* Reduce the width */
+  width: 70%; 
   height: 150px;
   object-fit: contain;
   border-radius: 5px;
-  margin: 20px; /* Increase the margin */
+  margin: 20px; 
+  text-align: center;
 }
 
 .tourDescription {
@@ -390,7 +391,7 @@ a:hover {
 }
 
 .createNewLink button {
-  background-color: #4CAF50; /* Green */
+  background-color: #4CAF50;
   border: none;
   color: white;
   padding: 15px 32px;

@@ -39,10 +39,10 @@ const ToursList = () => {
               <p className = "tourDescription">{tour.description}</p>
               <img
                 className="tourImage"
-                src={tour.imageCover[0]}
-                alt={tour.name}
+                src={tour.imageCover && tour.imageCover.length > 0 ? tour.imageCover[0] : `No image available for ${tour.name}`}
+                alt={`Fotos von ${tour.name}`}
               />
-              <h4>Reisenziele</h4>
+              <h4>Reisenziele: </h4>
                 {tour.destinations.map(destination => (
                   <p key={destination._id}>
                     <a href={`http://localhost:3000/destination/${destination.name}`}>{destination.name}</a>

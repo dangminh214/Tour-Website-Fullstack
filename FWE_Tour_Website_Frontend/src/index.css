@@ -269,6 +269,7 @@ a:hover {
 .logoHeader {
   width: 100px;
   height: 100px;
+  margin: 10px;
 }
 .error {
   text-align: center;

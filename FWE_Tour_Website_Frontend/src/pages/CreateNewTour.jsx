@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Header from "./Header";
+import Header from "../components/Header";
 
 const CreateNewTour = () => {
   // State variables to store form data

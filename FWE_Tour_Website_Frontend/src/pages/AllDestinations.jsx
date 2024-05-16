@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Header from "./Header";
+import Header from "../components/Header";
 const DestinationList = () => {
   const [destinations, setDestinations] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -49,11 +49,8 @@ const DestinationList = () => {
               />
               <h4>Reisenziele</h4>
               {destination.tours.map((tour) => (
-                <p>
-                  <a
-                    key={tour._id}
-                    href={`http://localhost:3000/tours/${tour.name}`}
-                  >
+                <p key={tour._id}>
+                  <a href={`http://localhost:3000/tours/${tour.name}`}>
                     {tour.name}
                   </a>
                 </p>

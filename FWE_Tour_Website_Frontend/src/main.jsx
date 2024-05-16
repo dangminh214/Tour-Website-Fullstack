@@ -1,8 +1,9 @@
 import React from "react";
+import ReactDOM from "react-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
 import App from "./App";
 import axios from "axios";
-import { createRoot } from "react-dom/client";
 
 const defaultQueryFn = async ({ queryKey }) => {
   const { data } = await axios.get(queryKey[0], { params: queryKey[1] });
@@ -17,12 +18,16 @@ const queryClient = new QueryClient({
     },
   },
 });
-const root = createRoot(document.getElementById("root"));
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
 root.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <App />
+      <ReactQueryDevtools initialIsOpen={false} containerElement="div" />
     </QueryClientProvider>
   </React.StrictMode>
 );
-//change name from main.jsx
+
+/* export default Main; */

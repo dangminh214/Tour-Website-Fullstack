@@ -1,4 +1,4 @@
-import Header from "./Header";
+import Header from "../components/Header";
 
 const NoDestinationError = () => {
   return (

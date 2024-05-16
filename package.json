@@ -2,5 +2,8 @@
   "devDependencies": {
     "@types/mongoose": "^5.11.97",
     "@types/node": "^20.12.11"
+  },
+  "dependencies": {
+    "prettier": "^3.2.5"
   }
 }

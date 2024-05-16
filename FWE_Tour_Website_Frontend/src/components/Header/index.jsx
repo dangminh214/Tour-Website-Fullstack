@@ -14,45 +14,40 @@ export default function Header() {
       <TourHeader />
       <DestinationHeader />
       <SearchTourUsingDestination />
-      <div className="createNewLink">
-        <>
-          <button
-            className="createNewLink"
-            onClick={() =>
-              (window.location.href = "http://localhost:3000/tours")
-            }
-          >
-            Alle Reise
-          </button>
-          <button
-            className="createNewLink"
-            onClick={() =>
-              (window.location.href = "http://localhost:3000/destination")
-            }
-          >
-            Alle Reiseziele
-          </button>
-        </>
-        <p></p>
-        <>
-          <button
-            className="createNewLink"
-            onClick={() =>
-              (window.location.href = "http://localhost:3000/tours/newTour")
-            }
-          >
-            Neue Reise
-          </button>
-          <button
-            className="createNewLink"
-            onClick={() =>
-              (window.location.href =
-                "http://localhost:3000/destination/newDestination")
-            }
-          >
-            Neues Reiseziel
-          </button>
-        </>
+      <div className="createNewLinkTour">
+        <button
+          className="createNewLink"
+          onClick={() => (window.location.href = "http://localhost:3000/tours")}
+        >
+          Alle Reise
+        </button>
+        <button
+          className="createNewLink"
+          onClick={() =>
+            (window.location.href = "http://localhost:3000/destination")
+          }
+        >
+          Alle Reiseziele
+        </button>
+      </div>
+      <div className="createNewLinkDestination">
+        <button
+          className="createNewLink"
+          onClick={() =>
+            (window.location.href = "http://localhost:3000/tours/newTour")
+          }
+        >
+          Neue Reise
+        </button>
+        <button
+          className="createNewLink"
+          onClick={() =>
+            (window.location.href =
+              "http://localhost:3000/destination/newDestination")
+          }
+        >
+          Neues Reiseziel
+        </button>
       </div>
     </div>
   );

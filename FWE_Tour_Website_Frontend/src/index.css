@@ -38,7 +38,7 @@ code {
 
 .headerComponent {
   display: grid;
-  grid-template-columns: auto auto auto auto auto;
+  grid-template-columns: auto auto auto auto auto auto;
   column-gap: 100px;
   justify-content: center; 
   align-items: center;

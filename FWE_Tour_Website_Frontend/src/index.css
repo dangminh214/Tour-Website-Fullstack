@@ -110,9 +110,9 @@ code {
 
 .tourImage {
   display: block;
-  width: 70%; 
-  height: 150px;
-  object-fit: contain;
+  width: 250px; 
+  height: 200px;
+  object-fit: cover;
   border-radius: 5px;
   margin: 20px; 
   text-align: center;
@@ -123,7 +123,7 @@ code {
   margin: 10px 0;
 }
 
-.tourImagesDetail {
+.imagesDetail {
   width: 400; 
   height: 350px;
   object-fit: cover;
@@ -169,34 +169,19 @@ a:hover {
 }
 
 .destinationInfo:hover {
-  background-color: #FDEBCE; /* Add this line */
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Add this line */
-}
-
-.destinationImagesDetail {
-  width: 400px; 
-  height: 350px;
-  object-fit: cover;
-  padding: 10px;
-}        
-
-.tourImage {
-  width: 350px; 
-  height: 300px;
-  object-fit: cover;
-  padding: 10px;
-} 
+  background-color: #FDEBCE; 
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); 
+}    
 
 .destinationImage {
   width: 350px; 
   height: 300px;
   object-fit: cover;
   padding: 10px;
+  margin-left: 0;
 }
 
 .searchHeader {
-  /* height: 30px;
-  margin: 10px; */
   justify-content: center;
   margin: 10px;
   padding: 10px;
@@ -214,10 +199,6 @@ a:hover {
   padding: 20px;
 }
 
-.searchHeader {
-  margin-left: 0;
-}
-
 .destinationNameDetail {
   background-color: #6DC5D1;
 }
@@ -230,10 +211,10 @@ a:hover {
   margin-bottom: 20px;
   justify-content: center;
   background-color: #FDE49E;
-  border-radius: 10px; /* Add this line */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add this line */
-  font-size: 1.2em; /* Add this line */
-  font-weight: bold; /* Add this line */
+  border-radius: 10px; 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+  font-size: 1.2em; 
+  font-weight: bold; 
   margin: 20px;
 }
 
@@ -246,7 +227,7 @@ a:hover {
   font-size: 16px;
   color: #333;
   background-color: #f8f8f8;
-  appearance: none; /* This is to remove the default browser styling */
+  appearance: none;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.15);
 }
 
@@ -256,7 +237,7 @@ a:hover {
 }
 
 .deleteTourButton {
-  background-color: #f44336; /* Red */
+  background-color: #f44336; 
   color: white;
   padding: 10px 24px;
   text-align: center;
@@ -419,7 +400,6 @@ button:hover {
   color: black; 
 }
 
-
 .deleteMessage {
   color: red;
   font-size: 20px;
@@ -487,7 +467,6 @@ button:hover {
 }
 
 .deleteButton {
-  display: block;
   width: 100px;
   height: 60px;
   margin: 0;
@@ -498,10 +477,6 @@ button:hover {
   cursor: pointer;
   text-align: center;
   margin: 20px
-}
-
-button:hover {
-  background-color: #0056b3;
 }
 
 .tourDestinations {
@@ -520,4 +495,6 @@ button:hover {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  text-align: center;
 }

@@ -159,74 +159,76 @@ const TourDetail = () => {
   };
 
   return (
-    <div className="detailPage">
+    <>
       <Header />
-      {loading ? (
-        <p>Loading...</p>
-      ) : (
-        <div className="detailContainer">
-          <h1 className="tourNameDetail">{tour.name}</h1>
-          <p className="tourDescriptionDetail">{tour.description}</p>
-          {tour.imageCover && tour.imageCover.length > 0 ? (
-            tour.imageCover.map((imageUrl, index) => (
-              <img
-                className="tourImagesDetail"
-                key={index}
-                src={imageUrl}
-                alt={tour.name}
-              />
-            ))
-          ) : (
-            <p>Keine Fotos</p>
-          )}
-          <h3>Reiseziele</h3>
-          {tour.destinations && tour.destinations.length > 0 ? (
+      <div className="detailPage">
+        {loading ? (
+          <p>Loading...</p>
+        ) : (
+          <div className="detailContainer">
+            <h1 className="tourNameDetail">{tour.name}</h1>
+            {tour.imageCover && tour.imageCover.length > 0 ? (
+              tour.imageCover.map((imageUrl, index) => (
+                <img
+                  className="imagesDetail"
+                  key={index}
+                  src={imageUrl}
+                  alt={tour.name}
+                />
+              ))
+            ) : (
+              <p>Keine Fotos</p>
+            )}
+            <p className="descriptionDetail">{tour.description}</p>
+            <h3>Reiseziele</h3>
+            {tour.destinations && tour.destinations.length > 0 ? (
+              <div>
+                {tour.destinations.map((destination) => (
+                  <div key={destination._id} className="tourDestinations">
+                    <a
+                      key={destination._id}
+                      href={`http://localhost:3000/destination/${destination.name}`}
+                    >
+                      {destination.name}
+                    </a>
+                    <button
+                      className="deleteButton"
+                      onClick={() => removeDestination(destination.name)}
+                    >
+                      Löschen
+                    </button>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p>Diese Reise hat kein Reiseziel ERROR</p>
+            )}
             <div>
-              {tour.destinations.map((destination) => (
-                <div key={destination._id} className="tourDestinations">
-                  <a
-                    key={destination._id}
-                    href={`http://localhost:3000/destination/${destination.name}`}
-                  >
+              <select
+                value={selectedDestination}
+                className="select-dropdown"
+                onChange={handleSelectChange}
+              >
+                <option value="">Wählen Sie ein Reiseziel zu addieren</option>
+                {destinations.map((destination) => (
+                  <option key={destination._id} value={destination._id}>
                     {destination.name}
-                  </a>
-                  <button
-                    className="deleteButton"
-                    onClick={() => removeDestination(destination.name)}
-                  >
-                    Löschen
-                  </button>
-                </div>
-              ))}
+                  </option>
+                ))}
+              </select>
+              <button onClick={addDestination}>Reiseziel hinzufügen</button>
             </div>
-          ) : (
-            <p>Diese Reise hat kein Reiseziel ERROR</p>
-          )}
-          <div>
-            <select
-              value={selectedDestination}
-              className="select-dropdown"
-              onChange={handleSelectChange}
-            >
-              <option value="">Wählen Sie ein Reiseziel zu addieren</option>
-              {destinations.map((destination) => (
-                <option key={destination._id} value={destination._id}>
-                  {destination.name}
-                </option>
-              ))}
-            </select>
-            <button onClick={addDestination}>Reiseziel hinzufügen</button>
+            <button className="deleteTourButton" onClick={deleteTour}>
+              Diese Reise Löschen
+            </button>
+            {message && <p className="deleteMessage">{message}</p>}
+            {destinationMessage && (
+              <p className="addDestinationMessage">{destinationMessage}</p>
+            )}
           </div>
-          <button className="deleteTourButton" onClick={deleteTour}>
-            Diese Reise Löschen
-          </button>
-          {message && <p className="deleteMessage">{message}</p>}
-          {destinationMessage && (
-            <p className="addDestinationMessage">{destinationMessage}</p>
-          )}
-        </div>
-      )}
-    </div>
+        )}
+      </div>
+    </>
   );
 };
 

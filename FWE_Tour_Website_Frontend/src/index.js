@@ -25,4 +25,3 @@ root.render(
     </QueryClientProvider>
   </React.StrictMode>
 );
-//change name from main.jsx

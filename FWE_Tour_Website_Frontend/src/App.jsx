@@ -36,7 +36,6 @@ function App() {
           />
           <Route path="/tours/:slug" element={<TourDetail />} />
           <Route path="/destination/:slug" element={<DestinationDetail />} />
-          {/* <Route path="/profile/:username" element={<Profile />} /> */}
         </Routes>
       </main>
       <footer></footer>

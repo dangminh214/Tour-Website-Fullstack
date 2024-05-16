@@ -218,23 +218,13 @@ a:hover {
   margin-left: 0;
 }
 
-.destiantionDetailContainer {
-  text-align: center;
-  max-width: calc(120% - 20px); 
-  padding: 10px;
-  border: 1px solid #000000;
-  margin-bottom: 20px;
-  justify-content: center;
-  background-color: #FDE49E;
-}
-
 .destinationNameDetail {
   background-color: #6DC5D1;
 }
 
-.tourDetailContainer {
+.detailContainer {
   text-align: center;
-  max-width: calc(120% - 20px); 
+  max-width: calc(80% - 20px); 
   padding: 10px;
   border: 1px solid #000000;
   margin-bottom: 20px;
@@ -244,6 +234,25 @@ a:hover {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add this line */
   font-size: 1.2em; /* Add this line */
   font-weight: bold; /* Add this line */
+  margin: 20px;
+}
+
+.select-dropdown {
+  width: 250px;
+  height: 35px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding: 5px;
+  font-size: 16px;
+  color: #333;
+  background-color: #f8f8f8;
+  appearance: none; /* This is to remove the default browser styling */
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.15);
+}
+
+.select-dropdown:focus {
+  outline: none;
+  border-color: #007BFF;
 }
 
 .deleteTourButton {
@@ -388,7 +397,7 @@ a:hover {
   background-color: #5cb1b8;
 }
 
-button {
+button  {
   background-color: #4CAF50;
   border: none;
   color: white;
@@ -432,4 +441,83 @@ button:hover {
   padding: 10px;
   border: 1px solid #5cb1b8;
   border-radius: 5px;
+}
+
+.destiantionDetailContainer {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f8f8f8;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.destinationNameDetail {
+  font-size: 2em;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.destiantiobnDescriptionDetail {
+  font-size: 1.2em;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.destinationImagesDetail {
+  width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.tourThroughDestination {
+  font-size: 1.2em;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.linkTour {
+  color: #007BFF;
+  text-decoration: none;
+}
+
+.linkTour:hover {
+  text-decoration: underline;
+}
+
+.deleteButton {
+  display: block;
+  width: 100px;
+  height: 60px;
+  margin: 0;
+  background-color: red;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  margin: 20px
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.tourDestinations {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.deleteMessage {
+  color: red;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.detailPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }

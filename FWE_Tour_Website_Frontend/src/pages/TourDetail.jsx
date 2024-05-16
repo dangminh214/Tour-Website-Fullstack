@@ -159,12 +159,12 @@ const TourDetail = () => {
   };
 
   return (
-    <div>
+    <div className="detailPage">
       <Header />
       {loading ? (
         <p>Loading...</p>
       ) : (
-        <div className="tourDetailContainer">
+        <div className="detailContainer">
           <h1 className="tourNameDetail">{tour.name}</h1>
           <p className="tourDescriptionDetail">{tour.description}</p>
           {tour.imageCover && tour.imageCover.length > 0 ? (
@@ -181,23 +181,33 @@ const TourDetail = () => {
           )}
           <h3>Reiseziele</h3>
           {tour.destinations && tour.destinations.length > 0 ? (
-            <>
+            <div>
               {tour.destinations.map((destination) => (
-                <p key={destination._id}>
+                <div key={destination._id} className="tourDestinations">
                   <a
                     key={destination._id}
                     href={`http://localhost:3000/destination/${destination.name}`}
                   >
                     {destination.name}
                   </a>
-                </p>
+                  <button
+                    className="deleteButton"
+                    onClick={() => removeDestination(destination.name)}
+                  >
+                    Löschen
+                  </button>
+                </div>
               ))}
-            </>
+            </div>
           ) : (
             <p>Diese Reise hat kein Reiseziel ERROR</p>
           )}
           <div>
-            <select value={selectedDestination} onChange={handleSelectChange}>
+            <select
+              value={selectedDestination}
+              className="select-dropdown"
+              onChange={handleSelectChange}
+            >
               <option value="">Wählen Sie ein Reiseziel zu addieren</option>
               {destinations.map((destination) => (
                 <option key={destination._id} value={destination._id}>
@@ -206,17 +216,6 @@ const TourDetail = () => {
               ))}
             </select>
             <button onClick={addDestination}>Reiseziel hinzufügen</button>
-
-            <div>
-              {tour.destinations.map((destination) => (
-                <div key={destination._id}>
-                  {destination.name}
-                  <button onClick={() => removeDestination(destination.name)}>
-                    Reiseziel entfernen
-                  </button>
-                </div>
-              ))}
-            </div>
           </div>
           <button className="deleteTourButton" onClick={deleteTour}>
             Diese Reise Löschen

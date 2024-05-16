@@ -54,12 +54,12 @@ const DestinationDetail = () => {
   };
 
   return (
-    <div>
+    <div className="detailPage">
       <Header />
       {loading ? (
         <p>Loading...</p>
       ) : destination ? (
-        <div className="destiantionDetailContainer">
+        <div className="detailContainer">
           <h1 className="destinationNameDetail">{destination.name}</h1>
           <p className="destiantiobnDescriptionDetail">
             {destination.description}
@@ -80,7 +80,7 @@ const DestinationDetail = () => {
           {destination.tours && destination.tours.length > 0 ? (
             <p className="tourThroughDestination">
               {destination.tours.map((tour) => (
-                <li key={tour._id}>
+                <p key={tour._id}>
                   <a
                     className="linkTour"
                     key={tour._id}
@@ -88,13 +88,15 @@ const DestinationDetail = () => {
                   >
                     {tour.name}
                   </a>
-                </li>
+                </p>
               ))}
             </p>
           ) : (
             <p>Keine Reise mit diesem Reiseziel</p>
           )}
-          <button onClick={deleteDestination}>Löschen</button>
+          <button className="deleteButton" onClick={deleteDestination}>
+            Löschen
+          </button>
         </div>
       ) : (
         <p>Reiseziel nicht gefunden</p>

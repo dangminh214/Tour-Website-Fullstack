@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
+import SingleDestination from "../components/SingleDestination";
 const DestinationList = () => {
   const [destinations, setDestinations] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -26,7 +27,7 @@ const DestinationList = () => {
   }, []);
 
   return (
-    <div>
+    <>
       <Header />
       <h1 id="destinationList">Reisenziele Liste</h1>
       {loading ? (
@@ -34,32 +35,13 @@ const DestinationList = () => {
       ) : (
         <div className="destinationContainer">
           {destinations.map((destination) => (
-            <div key={destination._id} className="destinationInfo">
-              <h2 className="destinationTitle">{destination.name}</h2>
-              <a href={`http://localhost:3000/destination/${destination.name}`}>
-                Mehrere Details
-              </a>
-              <p className="destinationDescription">
-                {destination.description}
-              </p>
-              <img
-                className="destinationImage"
-                src={destination.imageCover[0]}
-                alt={destination.imageCover}
-              />
-              <h4>Reisenziele</h4>
-              {destination.tours.map((tour) => (
-                <p key={tour._id}>
-                  <a href={`http://localhost:3000/tours/${tour.name}`}>
-                    {tour.name}
-                  </a>
-                </p>
-              ))}
-            </div>
+            <>
+              <SingleDestination destination={destination} />
+            </>
           ))}
         </div>
       )}
-    </div>
+    </>
   );
 };
 

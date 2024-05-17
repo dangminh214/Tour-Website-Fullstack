@@ -36,6 +36,7 @@ function App() {
           />
           <Route path="/tours/:slug" element={<TourDetail />} />
           <Route path="/destination/:slug" element={<DestinationDetail />} />
+          <Route path="*" element={<NoTourError />} />
         </Routes>
       </main>
       <footer></footer>

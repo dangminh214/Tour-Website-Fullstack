@@ -36,9 +36,7 @@ const ToursList = () => {
       ) : (
         <div className="tourContainer">
           {tours.map((tour) => (
-            <>
-              <SingleTour key={tour._id} tour={tour} />
-            </>
+            <SingleTour key={tour._id} tour={tour} />
           ))}
         </div>
       )}

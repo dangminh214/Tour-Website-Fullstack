@@ -35,9 +35,10 @@ const DestinationList = () => {
       ) : (
         <div className="destinationContainer">
           {destinations.map((destination) => (
-            <>
-              <SingleDestination destination={destination} />
-            </>
+            <SingleDestination
+              key={destination._id}
+              destination={destination}
+            />
           ))}
         </div>
       )}

@@ -199,10 +199,6 @@ a:hover {
   padding: 20px;
 }
 
-.destinationNameDetail {
-  background-color: #6DC5D1;
-}
-
 .detailContainer {
   text-align: center;
   max-width: calc(80% - 20px); 
@@ -257,8 +253,12 @@ a:hover {
   border: 2px solid #f44336;
 }
 
-.tourNameDetail {
+.nameDetail {
   background-color: #6DC5D1;
+  font-size: 2em;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .headerError {
@@ -269,7 +269,6 @@ a:hover {
 .logoHeader {
   width: 100px;
   height: 100px;
-  margin: 10px;
 }
 .error {
   text-align: center;
@@ -314,6 +313,10 @@ a:hover {
 
 .createNewForm button:hover {
   background-color: #5cb1b8;
+}
+
+.createNewLinkDestination {
+  margin-right: 60px;
 }
 
 .displayedDestination {
@@ -433,12 +436,6 @@ button:hover {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.destinationNameDetail {
-  font-size: 2em;
-  color: #333;
-  text-align: center;
-  margin-bottom: 20px;
-}
 
 .destiantiobnDescriptionDetail {
   font-size: 1.2em;

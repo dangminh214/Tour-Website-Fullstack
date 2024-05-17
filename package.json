@@ -1,9 +1,14 @@
 {
   "devDependencies": {
     "@types/mongoose": "^5.11.97",
-    "@types/node": "^20.12.11"
+    "@types/node": "^20.12.11",
+    "eslint-plugin-react-hooks": "^4.6.2"
   },
   "dependencies": {
-    "prettier": "^3.2.5"
+    "mui": "^0.0.1",
+    "prettier": "^3.2.5",
+    "react-slick": "^0.30.2",
+    "react-slideshow-image": "^4.3.1",
+    "slick-carousel": "^1.8.1"
   }
 }

@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
+import "react-slideshow-image/dist/styles.css";
 import Header from "../components/Header";
+import SlideImage from "../components/DetailContent/SlideImage";
 
 const TourDetail = () => {
   const [tour, setTour] = useState({});
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState("");
   const [destinationMessage, setDestinationMessage] = useState("");
-
   const [destinations, setDestinations] = useState([]);
   const [selectedDestination, setSelectedDestination] = useState("");
 
@@ -38,7 +39,7 @@ const TourDetail = () => {
       try {
         const response = await fetch("http://localhost:8000/destination");
         const data = await response.json();
-        console.log(data);
+        console.log("fetch destination", data);
         if (data.status === "success") {
           setDestinations(data.destinations);
         } else {
@@ -64,7 +65,6 @@ const TourDetail = () => {
           `http://localhost:8000/tours/${tour.name}`
         );
         const data = await response.json();
-        console.log(data);
         if (data.status === "success") {
           const tourId = data.data.tour._id;
 
@@ -97,8 +97,6 @@ const TourDetail = () => {
       console.error("No destination selected");
       return;
     }
-    console.log("tour.destination", tour.destinations);
-    console.log("selectedDestination", selectedDestination);
     if (tour.destinations.includes(selectedDestination)) {
       console.error("Destination already exists in the tour");
       return;
@@ -162,20 +160,15 @@ const TourDetail = () => {
     <>
       <Header />
       <div className="detailPage">
+        {console.log("tour", tour)}
+
         {loading ? (
           <p>Loading...</p>
         ) : (
           <div className="detailContainer">
-            <h1 className="tourNameDetail">{tour.name}</h1>
+            <h1 className="nameDetail">{tour.name}</h1>
             {tour.imageCover && tour.imageCover.length > 0 ? (
-              tour.imageCover.map((imageUrl, index) => (
-                <img
-                  className="imagesDetail"
-                  key={index}
-                  src={imageUrl}
-                  alt={tour.name}
-                />
-              ))
+              <SlideImage imagesURLs={tour.imageCover} />
             ) : (
               <p>Keine Fotos</p>
             )}

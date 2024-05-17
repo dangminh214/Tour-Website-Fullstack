@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
+import SlideImage from "../components/DetailContent/SlideImage";
+
 const DestinationDetail = () => {
   const [destination, setDestination] = useState({});
   const [loading, setLoading] = useState(true);
@@ -61,17 +63,10 @@ const DestinationDetail = () => {
           <p>Loading...</p>
         ) : destination ? (
           <div className="detailContainer">
-            <h1 className="destinationNameDetail">{destination.name}</h1>
+            <h1 className="nameDetail">{destination.name}</h1>
 
             {destination.imageCover && destination.imageCover.length > 0 ? (
-              destination.imageCover.map((imageUrl, index) => (
-                <img
-                  className="imagesDetail"
-                  key={index}
-                  src={imageUrl}
-                  alt={destination.name}
-                />
-              ))
+              <SlideImage imagesURLs={destination.imageCover} />
             ) : (
               <p>Keine Fotos</p>
             )}

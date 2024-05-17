@@ -7,6 +7,15 @@ const ToursList = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    const fetchTitle = async () => {
+      const response = await fetch(`http://localhost:8000/tours`);
+      const data = await response.json();
+      document.title = data.title;
+    };
+    fetchTitle();
+  }, []);
+
+  useEffect(() => {
     const fetchTours = async () => {
       try {
         const response = await fetch("http://localhost:8000/tours");

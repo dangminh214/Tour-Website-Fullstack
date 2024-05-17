@@ -117,7 +117,7 @@ exports.getTourUsingName = catchAsync(async (req: Request, res: Response, next: 
   }
   res.status(200).json({
     status: 'success',
-    title: `${name}`,
+    title: `${tour.name}`,
     data: {
         tour
       },

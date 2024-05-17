@@ -11,10 +11,20 @@ const TourDetail = () => {
   const [destinations, setDestinations] = useState([]);
   const [selectedDestination, setSelectedDestination] = useState("");
 
+  const url = window.location.pathname;
+  const parts = url.split("/").filter(Boolean);
+  const lastParam = parts[parts.length - 1];
+
   useEffect(() => {
-    const url = window.location.pathname;
-    const parts = url.split("/").filter(Boolean);
-    const lastParam = parts[parts.length - 1];
+    const fetchTitle = async () => {
+      const response = await fetch(`http://localhost:8000/tours/${lastParam}`);
+      const data = await response.json();
+      document.title = `FWE | ${data.title}`;
+    };
+    fetchTitle();
+  }, [lastParam]);
+
+  useEffect(() => {
     const fetchTourDetail = async (tourName) => {
       try {
         const response = await fetch(`http://localhost:8000/tours/${tourName}`);
@@ -32,14 +42,13 @@ const TourDetail = () => {
       }
     };
     fetchTourDetail(lastParam);
-  }, []);
+  }, [lastParam]);
 
   useEffect(() => {
     const fetchDestinations = async () => {
       try {
         const response = await fetch("http://localhost:8000/destination");
         const data = await response.json();
-        console.log("fetch destination", data);
         if (data.status === "success") {
           setDestinations(data.destinations);
         } else {
@@ -160,8 +169,6 @@ const TourDetail = () => {
     <>
       <Header />
       <div className="detailPage">
-        {console.log("tour", tour)}
-
         {loading ? (
           <p>Loading...</p>
         ) : (

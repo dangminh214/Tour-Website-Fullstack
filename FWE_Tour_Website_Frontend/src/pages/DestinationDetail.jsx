@@ -7,10 +7,22 @@ const DestinationDetail = () => {
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState("");
 
+  const url = window.location.pathname;
+  const parts = url.split("/").filter(Boolean);
+  const lastParam = parts[parts.length - 1];
+
   useEffect(() => {
-    const url = window.location.pathname; // Get the path portion of the URL
-    const parts = url.split("/").filter(Boolean); // Split the path by "/", filter out empty strings
-    const lastParam = parts[parts.length - 1]; // Get the last element from the array
+    const fetchTitle = async () => {
+      const response = await fetch(
+        `http://localhost:8000/destination/${lastParam}`
+      );
+      const data = await response.json();
+      document.title = `FWE | ${data.title}`;
+    };
+    fetchTitle();
+  }, [lastParam]);
+
+  useEffect(() => {
     const fetchDestinationDetail = async (destinationName) => {
       try {
         const response = await fetch(
@@ -31,7 +43,7 @@ const DestinationDetail = () => {
     };
 
     fetchDestinationDetail(lastParam);
-  }, []);
+  }, [lastParam]);
 
   const deleteDestination = async () => {
     if (window.confirm("Sind Sie sicher, dieses Reiseziel zu löschen")) {

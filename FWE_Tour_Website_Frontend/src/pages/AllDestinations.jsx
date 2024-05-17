@@ -4,6 +4,14 @@ import SingleDestination from "../components/SingleDestination";
 const DestinationList = () => {
   const [destinations, setDestinations] = useState([]);
   const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    const fetchTitle = async () => {
+      const response = await fetch(`http://localhost:8000/destination`);
+      const data = await response.json();
+      document.title = data.title;
+    };
+    fetchTitle();
+  }, []);
 
   useEffect(() => {
     const fetchDestinations = async () => {

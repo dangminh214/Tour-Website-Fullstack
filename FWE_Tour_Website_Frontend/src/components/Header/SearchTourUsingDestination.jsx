@@ -21,14 +21,13 @@ export default function SearchTourUsingDestination({ handleSearch }) {
     const findTours = await fetch(
       `http://localhost:8000/tours/findTourByDestination/${searchQuery}`
     );
-    console.log("findTours", findTours);
     if (findTours.status === 404) {
       window.location.href = "http://localhost:3000/tours/tourError ";
       return null;
     } else {
       const foundData = await findTours.json();
-      console.log("foundData", foundData);
       const foundTours = foundData.data.tours;
+      console.log("foundTours", foundTours);
       if (foundTours.length > 0) {
         //window.location.href = `http://localhost:3000/tours/toursWithInputDestination`     //need to change this and create a page that have tours of this destination
       }

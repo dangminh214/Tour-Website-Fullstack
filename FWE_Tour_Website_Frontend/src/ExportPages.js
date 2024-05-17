@@ -8,5 +8,3 @@ export {default as NoTourError} from "./pages/NoTourError";
 export {default as TourWithInputDestination} from "./pages/TourWithInputDestination";
 export {default as CreateNewDestination} from "./pages/CreateNewDestination";
 export {default as CreateNewTour} from "./pages/CreateNewTour";
-
-//export {default as test} from "./pages/test";

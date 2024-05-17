@@ -6,6 +6,7 @@ const divStyle = {
   alignItems: "center",
   justifyContent: "center",
   backgroundSize: "cover",
+  backgroundPosition: "center",
   height: "400px",
 };
 
@@ -16,6 +17,7 @@ const SlideImage = ({ imagesURLs }) => {
         {imagesURLs.map((imagesURL, index) => (
           <div key={index}>
             <div
+              className="imagesDetail"
               style={{ ...divStyle, backgroundImage: `url(${imagesURL})` }}
             ></div>
           </div>

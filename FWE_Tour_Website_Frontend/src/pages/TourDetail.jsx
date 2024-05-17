@@ -12,9 +12,9 @@ const TourDetail = () => {
   const [selectedDestination, setSelectedDestination] = useState("");
 
   useEffect(() => {
-    const url = window.location.pathname; // Get the path portion of the URL
-    const parts = url.split("/").filter(Boolean); // Split the path by "/", filter out empty strings
-    const lastParam = parts[parts.length - 1]; // Get the last element from the array
+    const url = window.location.pathname;
+    const parts = url.split("/").filter(Boolean);
+    const lastParam = parts[parts.length - 1];
     const fetchTourDetail = async (tourName) => {
       try {
         const response = await fetch(`http://localhost:8000/tours/${tourName}`);

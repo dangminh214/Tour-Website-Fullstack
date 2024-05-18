@@ -39,7 +39,7 @@ code {
 .headerComponent {
   display: grid;
   grid-template-columns: auto auto auto auto auto auto;
-  column-gap: 10px;
+  column-gap: 30px;
   justify-content: center; 
   align-items: center;
   background-color: #6DC5D1;

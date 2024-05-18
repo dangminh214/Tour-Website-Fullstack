@@ -39,11 +39,10 @@ code {
 .headerComponent {
   display: grid;
   grid-template-columns: auto auto auto auto auto auto;
-  column-gap: 100px;
+  column-gap: 10px;
   justify-content: center; 
   align-items: center;
   background-color: #6DC5D1;
-
   padding: 0;
   margin: 0;
   width: 100%; 
@@ -254,7 +253,7 @@ a:hover {
 .logoHeader {
   width: 100px;
   height: 100px;
-  margin-left: 30px
+  margin-left: 10px;
 }
 .error {
   text-align: center;
@@ -301,9 +300,7 @@ a:hover {
   background-color: #5cb1b8;
 }
 
-.createNewLinkDestination {
-  margin-right: 60px;
-}
+q
 
 .displayedDestination {
   display: flex;

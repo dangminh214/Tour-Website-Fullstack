@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Header from "../components/Header";
+import Header from "../components/Header/Header";
 import SingleDestination from "../components/SingleDestination";
 const DestinationList = () => {
   const [destinations, setDestinations] = useState([]);
@@ -41,7 +41,7 @@ const DestinationList = () => {
       {loading ? (
         <p>Loading...</p>
       ) : (
-        <div className="destinationContainer">
+        <div className="allDetailsContainer">
           {destinations.map((destination) => (
             <SingleDestination
               key={destination._id}

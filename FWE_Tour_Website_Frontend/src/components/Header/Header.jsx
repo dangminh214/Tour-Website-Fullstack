@@ -2,7 +2,7 @@ import TourHeader from "./TourHeader.jsx";
 import DestinationHeader from "./DestinationHeader.jsx";
 import SearchTourUsingDestination from "./SearchTourUsingDestination.jsx";
 
-export default function Header() {
+export default function Header({ setTours }) {
   return (
     <div className="headerComponent">
       <img
@@ -13,13 +13,13 @@ export default function Header() {
       />
       <TourHeader />
       <DestinationHeader />
-      <SearchTourUsingDestination />
+      <SearchTourUsingDestination setTours={setTours} />
       <div className="createNewLinkTour">
         <button
           className="createNewLink"
           onClick={() => (window.location.href = "http://localhost:3000/tours")}
         >
-          Alle Reise
+          Alle Reisen
         </button>
         <button
           className="createNewLink"

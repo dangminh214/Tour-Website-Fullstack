@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
-export default function SearchTourUsingDestination({ handleSearch }) {
+const SearchTourUsingDestination = ({ setTours }) => {
   const [searchQuery, setSearchQuery] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchTitle = async () => {
@@ -9,7 +11,9 @@ export default function SearchTourUsingDestination({ handleSearch }) {
         `http://localhost:8000/tours/findTourByDestination/${searchQuery}`
       );
       const data = await response.json();
-      document.title = data.title;
+      if (data.title) {
+        document.title = data.title;
+      }
     };
     if (searchQuery) {
       fetchTitle();
@@ -27,9 +31,14 @@ export default function SearchTourUsingDestination({ handleSearch }) {
     } else {
       const foundData = await findTours.json();
       const foundTours = foundData.data.tours;
-      console.log("foundTours", foundTours);
+      if (setTours) {
+        setTours(foundTours);
+      }
       if (foundTours.length > 0) {
-        //window.location.href = `http://localhost:3000/tours/toursWithInputDestination`     //need to change this and create a page that have tours of this destination
+        console.log("Search Tours using destination foundTours: ", foundTours);
+        //window.location.href = "http://localhost:3000/tours";
+        navigate("/tours", { state: { foundTours } });
+        setTours(foundTours);
       }
     }
   };
@@ -53,4 +62,6 @@ export default function SearchTourUsingDestination({ handleSearch }) {
       </form>
     </div>
   );
-}
+};
+
+export default SearchTourUsingDestination;

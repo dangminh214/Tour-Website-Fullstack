@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Header from "../components/Header";
+import Header from "../components/Header/Header";
 
 const CreateNewTour = () => {
   // State variables to store form data
@@ -14,7 +14,7 @@ const CreateNewTour = () => {
   const [allDestinations, setAllDestinations] = useState([]);
   const [showWarning, setShowWarning] = useState(false);
   const [isTourCreated, setIsTourCreated] = useState(false);
-  const [warningMessage, setWarningMessage] = useState("");
+  const [warningMessage] = useState("");
 
   const selectedArray = [];
 

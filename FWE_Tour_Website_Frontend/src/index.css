@@ -73,17 +73,7 @@ code {
   overflow: hidden
 }
 
-.tourContainer {
-  overflow: hidden;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin: 20px;
-  font-size: 1.2em; 
-  font-weight: bold; 
-}
-
-.tourInfo {
+.detailDiv {
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -104,7 +94,7 @@ code {
   text-align: center;
 }
 
-.tourInfo:hover {
+.detailDiv:hover {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   transform: scale(1.02);
 }
@@ -123,6 +113,10 @@ code {
   color: #666;
   margin: 10px 0;
   text-align: center;
+}
+
+.goingPlaces {
+  margin: 0;
 }
 
 .imagesDetail {
@@ -144,36 +138,6 @@ a:hover {
 #destinationList {
   text-align: center;
 }
-
-.destinationContainer {
-  flex-wrap: wrap;
-  gap: 20px;
-  height: 1000p;
-  display: grid;
-  grid-template-columns: auto auto auto;
-  text-align: center;
-  justify-content: center;
-}
-
-.destinationInfo {
-  text-align: center;
-  max-width: calc(100% - 20px); 
-  padding: 20px;
-  border: 1px solid #000000;
-  margin-bottom: 20px;
-  justify-content: center;
-  background-color: #FDE49E;
-  border-radius: 10px; 
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
-  font-size: 1.2em; 
-  font-weight: bold; 
-  transition: all 0.3s ease;
-}
-
-.destinationInfo:hover {
-  background-color: #FDEBCE; 
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); 
-}    
 
 .destinationImage {
   width: 350px; 
@@ -214,6 +178,25 @@ a:hover {
   font-size: 1.2em; 
   font-weight: bold; 
   margin: 20px;
+}
+
+.allDetailsContainer {
+  text-align: center;
+  max-width: calc(80% - 20px); 
+  padding: 10px;
+  border: 1px solid #000000;
+  margin-bottom: 20px;
+  justify-content: center;
+  background-color: #FDE49E;
+  border-radius: 10px; 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+  font-size: 1.2em; 
+  font-weight: bold; 
+  margin: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; 
+  margin: 20px auto; 
 }
 
 .select-dropdown {

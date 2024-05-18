@@ -23,7 +23,6 @@ const Home = () => {
       try {
         const responseTour = await fetch("http://localhost:8000/tours");
         const data = await responseTour.json();
-        console.log("Response from server:", data);
         if (data.status === "success") {
           setTours(data.tours);
         } else {
@@ -46,7 +45,6 @@ const Home = () => {
           "http://localhost:8000/destination"
         );
         const data = await responseDestination.json();
-        console.log("Response from server:", data);
         if (data.status === "success") {
           setDestinations(data.destinations);
         } else {
@@ -58,16 +56,16 @@ const Home = () => {
         setLoading(false);
       }
     };
-
     fetchTours();
-  }, []);
+  }, [tours]);
 
-  //const imageURLs = useRef([]);
-  /* const [imageURLs, setImageURLs] = useState([]);
-  setImageURLs(
+  const imagesURLs = useRef([
     "https://cdn.getyourguide.com/img/tour/63fdf1419ef04.jpeg/98.jpg",
-    "https://t3.ftcdn.net/jpg/02/50/23/20/360_F_250232047_z9kCGCC2l3NShBNy1BJ8H3nVe9pWpnff.jpg"
-  ); */
+    "https://t3.ftcdn.net/jpg/02/50/23/20/360_F_250232047_z9kCGCC2l3NShBNy1BJ8H3nVe9pWpnff.jpg",
+    "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/28/d0/77/3b/caption.jpg?w=500&h=400&s=1",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVBjdI0MoMyyjuMuZv0bHL58O5hgcuBm2SC2JQTSyWjA&s",
+    "https://www.munich.travel/var/ger_muc/storage/images/_aliases/teaser_medium/4/4/1/1/2181144-1-ger-DE/marienplatz-D-2687s-v1-foto-redline.jpg",
+  ]);
 
   return (
     <>
@@ -79,7 +77,7 @@ const Home = () => {
         <p className="warning-msg">Loading...</p>
       ) : (
         <>
-          <SlideImage imageURLs={imageURLs} />
+          <SlideImage imagesURLs={imagesURLs.current} />
           <div className="allDetailsContainer">
             <p>In this website, I have {tours.length} Tours</p>
           </div>

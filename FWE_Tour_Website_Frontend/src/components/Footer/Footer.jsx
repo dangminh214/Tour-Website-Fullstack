@@ -4,7 +4,7 @@ const Footer = () => {
       <div className="personalInformation">
         <p className="footerName">Nguyen, Dang Minh</p>
         <p className="studentID">768770</p>
-        <a href="mailto:dang.m.c.nguyen@stud.h-da.de">Mail me 😁</a>
+        <a href="mailto:dang.m.c.nguyen@stud.h-da.de">Click to contact me 😁</a>
       </div>
     </div>
   );

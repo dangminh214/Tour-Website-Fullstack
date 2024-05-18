@@ -21,6 +21,8 @@ const EditDetail = () => {
   const location = useLocation();
   const takenData = location.state?.tour;
 
+  console.log("takenData", takenData);
+
   const WarningPopup = ({ message, onClose }) => (
     <div className="warning-popup">
       <p>{message}</p>
@@ -120,6 +122,7 @@ const EditDetail = () => {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   required
+                  placeholder={takenData.name}
                 />
               </div>
               <div>
@@ -128,6 +131,7 @@ const EditDetail = () => {
                   id="description"
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
+                  placeholder={takenData.description}
                 ></textarea>
               </div>
 

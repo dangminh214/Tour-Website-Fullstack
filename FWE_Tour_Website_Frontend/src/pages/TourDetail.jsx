@@ -146,18 +146,13 @@ const TourDetail = () => {
           },
         }
       );
+      const deleteData = await response.json();
+      console.log("deleteData", deleteData);
 
-      if (!response.ok) {
+      if (!deleteData.stauts === "fail") {
+        setDestinationMessage("Das Reiseziel darf nicht gelöscht werden");
         throw new Error("Error, kann nicht erfernen");
       }
-      // Update the tour in the state to reflect the change
-      setTour((prevTour) => ({
-        ...prevTour,
-        destinations: prevTour.destinations.filter(
-          (destination) => destination.name !== destinationName
-        ),
-      }));
-
       setDestinationMessage("Das Reiseziel wurde erfolgreich entfernt");
     } catch (error) {
       setDestinationMessage("Das Reiseziel darf nicht gelöscht werden");

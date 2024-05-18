@@ -36,7 +36,6 @@ const SearchTourUsingDestination = ({ setTours }) => {
       }
       if (foundTours.length > 0) {
         console.log("Search Tours using destination foundTours: ", foundTours);
-        //window.location.href = "http://localhost:3000/tours";
         navigate("/tours", { state: { foundTours } });
         setTours(foundTours);
       }

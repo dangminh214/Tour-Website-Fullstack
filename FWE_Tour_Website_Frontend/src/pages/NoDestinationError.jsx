@@ -19,7 +19,7 @@ const NoDestinationError = () => {
   return (
     <>
       <Header />
-      <h1 className="headerError">Keine Reiseziel gefunden</h1>
+      <h1 className="headerError">Can not find this Destination</h1>
     </>
   );
 };

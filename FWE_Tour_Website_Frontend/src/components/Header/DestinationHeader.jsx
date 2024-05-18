@@ -23,7 +23,7 @@ export default function Header({ handleSearch }) {
 
   return (
     <div className="headerSearchDestination">
-      <h3 className="headerTitle">Ein Reiseziel Suchen</h3>
+      <h3 className="headerTitle">Looking for a destination ?</h3>
       <form className="formHeader" onSubmit={handleSubmit}>
         <input
           type="text"
@@ -34,7 +34,7 @@ export default function Header({ handleSearch }) {
           className="searchHeader"
         />
         <button type="submit" className="searchHeader">
-          Suchen
+          Search
         </button>
       </form>
     </div>

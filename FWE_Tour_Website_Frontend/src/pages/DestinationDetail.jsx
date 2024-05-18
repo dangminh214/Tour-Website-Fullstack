@@ -83,10 +83,10 @@ const DestinationDetail = () => {
             {destination.imageCover && destination.imageCover.length > 0 ? (
               <SlideImage imagesURLs={destination.imageCover} />
             ) : (
-              <p>Keine Fotos</p>
+              <p>No Images</p>
             )}
             <p className="descriptionDetail">{destination.description}</p>
-            <h3>Reise mit diesem Reiseziel:</h3>
+            <h3>Tours with this destination:</h3>
             {destination.tours && destination.tours.length > 0 ? (
               <div className="tourThroughDestination">
                 {destination.tours.map((tour) => (
@@ -102,14 +102,14 @@ const DestinationDetail = () => {
                 ))}
               </div>
             ) : (
-              <p>Keine Reise mit diesem Reiseziel</p>
+              <p>No suitable tours exist</p>
             )}
             <button className="deleteButton" onClick={deleteDestination}>
-              Löschen
+              Delete
             </button>
           </div>
         ) : (
-          <p>Reiseziel nicht gefunden</p>
+          <p>Can not find this destination</p>
         )}
         {message && <p className="deleteMessage">{message}</p>}
       </div>

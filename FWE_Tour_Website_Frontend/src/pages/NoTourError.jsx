@@ -21,7 +21,7 @@ const NoTourError = () => {
   return (
     <>
       <Header />
-      <h1 className="headerError">Keine Reise gefunden</h1>
+      <h1 className="headerError">Can not find this tour</h1>
     </>
   );
 };

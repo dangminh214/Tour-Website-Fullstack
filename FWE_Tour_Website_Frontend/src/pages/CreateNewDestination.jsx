@@ -60,7 +60,7 @@ const CreateDestinationForm = () => {
     <>
       <Header />
       <form className="createNewForm" onSubmit={handleSubmit}>
-        <h2>Neues Reiseziel</h2>
+        <h2>New Destination</h2>
         <label>
           Name:
           <input
@@ -71,7 +71,7 @@ const CreateDestinationForm = () => {
           />
         </label>
         <label>
-          Beschreibung:
+          Description:
           <textarea
             id="description"
             value={description}
@@ -79,7 +79,7 @@ const CreateDestinationForm = () => {
           ></textarea>
         </label>
         <label>
-          Fotos:
+          Images:
           {imageCover.map((image, index) => (
             <div key={index}>
               <input
@@ -91,15 +91,15 @@ const CreateDestinationForm = () => {
                 type="button"
                 onClick={() => handleRemoveImageCover(index)}
               >
-                Foto URL entfernen
+                Image URL delete
               </button>
             </div>
           ))}
           <button type="button" onClick={handleAddImageCover}>
-            Foto URLS Hinzufügen
+            Image URL
           </button>
         </label>
-        <button type="submit">Neues Reiseziel erstellen</button>
+        <button type="submit">Create New Destination</button>
         {showWarning && (
           <WarningPopup
             message="Eine Reise muss mindesten ein Ziel haben"

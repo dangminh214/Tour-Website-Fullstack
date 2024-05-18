@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "react-slideshow-image/dist/styles.css";
 import Header from "../components/Header/Header";
 import SlideImage from "../components/DetailContent/SlideImage";
+import { useNavigate } from "react-router-dom";
 
 const TourDetail = () => {
   const [tour, setTour] = useState({});
@@ -10,6 +11,14 @@ const TourDetail = () => {
   const [destinationMessage, setDestinationMessage] = useState("");
   const [destinations, setDestinations] = useState([]);
   const [selectedDestination, setSelectedDestination] = useState("");
+
+  const navigate = useNavigate();
+
+  const clickEdit = () => {
+    navigate("/edit", {
+      state: { tour },
+    });
+  };
 
   const url = window.location.pathname;
   const parts = url.split("/").filter(Boolean);
@@ -90,7 +99,7 @@ const TourDetail = () => {
 
           if (deleteResponse.ok) {
             // Check if the status is 200-299
-            setMessage("Diese Reise wurde erfolgreich gelöscht");
+            setMessage("This tour has been successfully deleted");
           } else {
             alert("Failed to delete tour");
           }
@@ -125,13 +134,13 @@ const TourDetail = () => {
         }
       );
       if (!response.ok) {
-        throw new Error("Das Reiseziel kann nicht hinzugefügt werden");
+        throw new Error("This destination can not be added");
       }
       setTour((prevTour) => ({
         ...prevTour,
         destinations: [...prevTour.destinations, selectedDestination],
       }));
-      setDestinationMessage("Das Reiseziel wurde erfolgreich addiert");
+      setDestinationMessage("The destination has been added to this tour");
     } catch (error) {
       console.error("Error adding destination to the tour:", error);
     }
@@ -153,12 +162,14 @@ const TourDetail = () => {
       console.log("deleteData", deleteData);
 
       if (!deleteData.stauts === "fail") {
-        setDestinationMessage("Das Reiseziel darf nicht gelöscht werden");
-        throw new Error("Error, kann nicht erfernen");
+        setDestinationMessage("The Destination can not be deleted");
+        throw new Error("Error, Can not delete");
       }
-      setDestinationMessage("Das Reiseziel wurde erfolgreich entfernt");
+      setDestinationMessage("The destination has been deleted");
     } catch (error) {
-      setDestinationMessage("Das Reiseziel darf nicht gelöscht werden");
+      setDestinationMessage(
+        "You do not have permission to delete this destination"
+      );
     }
   };
 
@@ -174,10 +185,10 @@ const TourDetail = () => {
             {tour.imageCover && tour.imageCover.length > 0 ? (
               <SlideImage imagesURLs={tour.imageCover} />
             ) : (
-              <p>Keine Fotos</p>
+              <p>No images</p>
             )}
             <p className="descriptionDetail">{tour.description}</p>
-            <h3>Reiseziele</h3>
+            <h3>Destination</h3>
             {tour.destinations && tour.destinations.length > 0 ? (
               <div>
                 {tour.destinations.map((destination) => (
@@ -192,13 +203,13 @@ const TourDetail = () => {
                       className="deleteButton"
                       onClick={() => removeDestination(destination.name)}
                     >
-                      Löschen
+                      Delete
                     </button>
                   </div>
                 ))}
               </div>
             ) : (
-              <p>Diese Reise hat kein Reiseziel ERROR</p>
+              <p>This Tour does not have any destinations ERROR</p>
             )}
             <div>
               <select
@@ -206,22 +217,25 @@ const TourDetail = () => {
                 className="select-dropdown"
                 onChange={handleSelectChange}
               >
-                <option value="">Wählen Sie ein Reiseziel zu addieren</option>
+                <option value="">Choose a destination to add</option>
                 {destinations.map((destination) => (
                   <option key={destination._id} value={destination._id}>
                     {destination.name}
                   </option>
                 ))}
               </select>
-              <button onClick={addDestination}>Reiseziel hinzufügen</button>
+              <button onClick={addDestination}>Destination add</button>
             </div>
             <button className="deleteTourButton" onClick={deleteTour}>
-              Diese Reise Löschen
+              Delete this tour
             </button>
             {message && <p className="deleteMessage">{message}</p>}
             {destinationMessage && (
               <p className="addDestinationMessage">{destinationMessage}</p>
             )}
+            <button className="editButton" onClick={clickEdit}>
+              Edit
+            </button>
           </div>
         )}
       </div>

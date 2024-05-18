@@ -7,3 +7,4 @@ export {default as NoDestinationError} from "./pages/NoDestinationError";
 export {default as NoTourError} from "./pages/NoTourError";
 export {default as CreateNewDestination} from "./pages/CreateNewDestination";
 export {default as CreateNewTour} from "./pages/CreateNewTour";
+export {default as EditDetail} from "./pages/EditDetail"

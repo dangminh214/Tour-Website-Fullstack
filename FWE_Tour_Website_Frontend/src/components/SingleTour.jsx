@@ -14,9 +14,9 @@ const SingleTour = ({ tour }) => {
               ? tour.imageCover[0]
               : `No image available for ${tour.name}`
           }
-          alt={`Fotos von ${tour.name}`}
+          alt={`Images ${tour.name}`}
         />
-        <h4 className="goingPlaces">Reisenziele: </h4>
+        <h4 className="goingPlaces">Destinations: </h4>
         {tour.destinations.map((destination) => (
           <a
             key={destination._id}

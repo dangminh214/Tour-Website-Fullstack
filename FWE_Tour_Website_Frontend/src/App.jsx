@@ -10,6 +10,7 @@ import {
   CreateNewDestination,
   NoTourError,
   NoDestinationError,
+  EditDetail,
 } from "./ExportPages";
 
 import "./index.css";
@@ -34,6 +35,7 @@ function App() {
           />
           <Route path="/tours/:slug" element={<TourDetail />} />
           <Route path="/destination/:slug" element={<DestinationDetail />} />
+          <Route path="/edit" element={<EditDetail />} />
           <Route path="*" element={<NoTourError />} />
         </Routes>
       </main>

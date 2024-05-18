@@ -44,7 +44,7 @@ const SearchTourUsingDestination = ({ setTours }) => {
 
   return (
     <div className="headerSearchDestination">
-      <h3 className="headerTitle">Reise suchen mit Reisenziel</h3>
+      <h3 className="headerTitle">Looking for tours have this destination</h3>
       <form className="formHeader" onSubmit={handleSubmit}>
         <input
           type="text"
@@ -55,7 +55,7 @@ const SearchTourUsingDestination = ({ setTours }) => {
           className="searchHeader"
         />
         <button type="submit" className="searchHeader">
-          Suchen
+          Search
         </button>
       </form>
     </div>

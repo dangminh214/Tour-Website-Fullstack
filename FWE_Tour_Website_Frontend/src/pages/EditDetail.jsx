@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Header from "../components/Header/Header";
+import { useLocation } from "react-router-dom";
 
-const CreateNewTour = () => {
+const EditDetail = () => {
   // State variables to store form data
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -17,6 +18,8 @@ const CreateNewTour = () => {
   const [warningMessage] = useState("");
 
   const selectedArray = [];
+  const location = useLocation();
+  const takenData = location.state?.tour;
 
   const WarningPopup = ({ message, onClose }) => (
     <div className="warning-popup">
@@ -57,18 +60,22 @@ const CreateNewTour = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const newTour = { name, description, destinations, imageCover };
+      const updatedTour = { name, description, destinations, imageCover };
       if (destinations.length === 0) {
         setShowWarning(true);
         return;
       }
-      const response = await axios.post(
-        "http://localhost:8000/tours/newTour",
-        newTour
+      console.log("updatedTour before update", updatedTour);
+      console.log(
+        `http://localhost:8000/tours/updateTourByName/${updatedTour.name}`
       );
-      console.log("New tour created:", response.data);
+      const response = await axios.patch(
+        `http://localhost:8000/tours/updateTourByName/${takenData.name}`,
+        updatedTour
+      );
+      console.log("Tour updated:", response.data);
       if (response.data) {
-        setSuccessMessage("Die Reise wurde erfolgreich erstellt");
+        setSuccessMessage("The tour has been updated successfully");
         setIsTourCreated(true);
       }
       setName("");
@@ -77,9 +84,7 @@ const CreateNewTour = () => {
       setImageCover([]);
     } catch (error) {
       console.error("Error creating new tour:", error);
-      setErrorMessage(
-        "Die Reise kann nicht erstellt werden. Bitte Versuchen Sie nochmal"
-      );
+      setErrorMessage("The tour can not be updated, please try again!");
     }
   };
 
@@ -105,11 +110,11 @@ const CreateNewTour = () => {
           <p>{successMessage}</p>
         ) : (
           <>
-            <h2 className="newFormTitel">Neue Reise</h2>
+            <h2 className="newFormTitel">Edit Tour</h2>
             <form onSubmit={handleSubmit}>
-              <div className="nameInput">
+              <div>
                 <label htmlFor="name">Name:</label>
-                <input
+                <textarea
                   type="text"
                   id="name"
                   value={name}
@@ -118,7 +123,7 @@ const CreateNewTour = () => {
                 />
               </div>
               <div>
-                <label htmlFor="description">Description:</label>
+                <label htmlFor="description">Decscription:</label>
                 <textarea
                   id="description"
                   value={description}
@@ -132,7 +137,7 @@ const CreateNewTour = () => {
                 value={selectedDestination}
                 onChange={(e) => setSelectedDestination(e.target.value)}
               >
-                <option value="">Please choose a destination</option>
+                <option value="">Choose at least one destination</option>
                 {allDestinations.map(
                   (destination) =>
                     !destinations.includes(destination._id) && (
@@ -143,7 +148,7 @@ const CreateNewTour = () => {
                 )}
               </select>
               <button type="button" onClick={handleAddDestination}>
-                Add destination
+                Add Destination
               </button>
               <ul className="destinationList">
                 {destinations.map((destinationId, index) => {
@@ -174,12 +179,12 @@ const CreateNewTour = () => {
                     type="button"
                     onClick={() => handleRemoveImageUrl(index)}
                   >
-                    Delete Image URL
+                    Entfernen
                   </button>
                 </div>
               ))}
               <button type="button" onClick={handleAddImageUrl}>
-                Add Image URL
+                Add Foto URL
               </button>
               {showWarning && (
                 <WarningPopup
@@ -187,7 +192,7 @@ const CreateNewTour = () => {
                   onClose={closeWarning}
                 />
               )}
-              <button type="submit">Create new tour</button>
+              <button type="submit">Update</button>
               {successMessage && <p className="successMsg">{successMessage}</p>}
               {errorMessage && <p className="warning-popup">{errorMessage}</p>}
             </form>
@@ -203,4 +208,4 @@ const CreateNewTour = () => {
   );
 };
 
-export default CreateNewTour;
+export default EditDetail;

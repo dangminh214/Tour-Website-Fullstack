@@ -12,7 +12,7 @@ const SingleDestination = ({ destination }) => {
           src={destination.imageCover[0]}
           alt={destination.imageCover}
         />
-        <h4 className="goingPlaces">Reisen:</h4>
+        <h4 className="goingPlaces">Tours:</h4>
         {destination.tours.map((tour) => (
           <a key={tour._id} href={`http://localhost:3000/tours/${tour.name}`}>
             {tour.name}

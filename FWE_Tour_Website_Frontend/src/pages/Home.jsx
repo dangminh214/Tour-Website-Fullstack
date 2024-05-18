@@ -3,7 +3,7 @@ import Header from "../components/Header/Header.jsx";
 import SingleTour from "../components/SingleTour.jsx";
 import { useLocation } from "react-router-dom";
 
-const AllTours = () => {
+const Home = () => {
   const [tours, setTours] = useState([]);
   const [loading, setLoading] = useState(true);
   const location = useLocation();
@@ -45,7 +45,7 @@ const AllTours = () => {
     <>
       <Header setTours={setTours} />
       <h1 id="tourList" className="titleList">
-        Reisen Liste
+        Tours List
       </h1>
       {loading ? (
         <p className="warning-msg">Loading...</p>
@@ -60,4 +60,4 @@ const AllTours = () => {
   );
 };
 
-export default AllTours;
+export default Home;

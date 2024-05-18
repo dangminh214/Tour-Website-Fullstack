@@ -18,7 +18,7 @@ export default function Header({ setTours }) {
           className="createNewLink"
           onClick={() => (window.location.href = "http://localhost:3000/tours")}
         >
-          Alle Reisen
+          All Tours
         </button>
         <button
           className="createNewLink"
@@ -26,7 +26,7 @@ export default function Header({ setTours }) {
             (window.location.href = "http://localhost:3000/destination")
           }
         >
-          Alle Reiseziele
+          All Destinations
         </button>
       </div>
       <div className="createNewLinkDestination">
@@ -36,7 +36,7 @@ export default function Header({ setTours }) {
             (window.location.href = "http://localhost:3000/tours/newTour")
           }
         >
-          Neue Reise
+          New Tour
         </button>
         <button
           className="createNewLink"
@@ -45,7 +45,7 @@ export default function Header({ setTours }) {
               "http://localhost:3000/destination/newDestination")
           }
         >
-          Neues Reiseziel
+          New Destination
         </button>
       </div>
     </div>

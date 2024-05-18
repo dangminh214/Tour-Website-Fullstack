@@ -59,7 +59,10 @@ exports.createDestination = catchAsync(async (req: Request, res: Response) => {
 
 export const errorNoDestination = catchAsync(async (req: Request, res: Response) => {
   try {
-    res.status(404).json({ message: 'Keine Reiseziel gefunden'});
+    res.status(404).json({
+      titel: 'Kein Reiseziel gefunden',
+      message: 'Keine Reiseziel gefunden'
+    });
   } 
   catch (error) {
     res.status(500).json({ message: 'Internal server error' });

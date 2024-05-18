@@ -19,6 +19,9 @@ const TourDetail = () => {
     const fetchTitle = async () => {
       const response = await fetch(`http://localhost:8000/tours/${lastParam}`);
       const data = await response.json();
+      if (!data.title) {
+        data.title = "ERROR";
+      }
       document.title = `FWE | ${data.title}`;
     };
     fetchTitle();

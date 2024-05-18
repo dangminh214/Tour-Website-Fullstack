@@ -220,7 +220,7 @@ export const removeDestinationFromTour = catchAsync(async (req: Request, res: Re
     const tourData = await tourModel.findOne({name: tourName})
     const tourId = tourData?._id.toString();
     const foundTour = await tourModel.findById(tourId)
-    console.log("foundTour.destinations.length", foundTour.destinations.length)
+
     if (foundTour.destinations.length === 1) {
       return res.status(404).json({ 
         status: 'fail',
@@ -254,7 +254,10 @@ export const removeDestinationFromTour = catchAsync(async (req: Request, res: Re
 
 export const errorNoTour = catchAsync(async (req: Request, res: Response) => {
   try {
-    res.status(404).json({ message: 'Keine Reise gefunden'});
+    res.status(404).json({
+      titel: 'Keine Reise gefunden',
+      message: 'Keine Reise gefunden'
+    });
   } 
   catch (error) {
     res.status(500).json({ message: 'Internal server error' });

@@ -17,6 +17,9 @@ const DestinationDetail = () => {
         `http://localhost:8000/destination/${lastParam}`
       );
       const data = await response.json();
+      if (!data.title) {
+        data.title = "ERROR";
+      }
       document.title = `FWE | ${data.title}`;
     };
     fetchTitle();

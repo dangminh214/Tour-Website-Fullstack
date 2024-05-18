@@ -1,6 +1,23 @@
 import Header from "../components/Header/Header";
+import React, { useEffect } from "react";
+
+const url = window.location.pathname;
+const parts = url.split("/").filter(Boolean);
+const lastParam = parts[parts.length - 1];
 
 const NoTourError = () => {
+  useEffect(() => {
+    const fetchTitle = async () => {
+      const response = await fetch(`http://localhost:8000/tours/${lastParam}`);
+      const data = await response.json();
+      if (!data.title) {
+        data.title = "ERROR";
+      }
+      document.title = `FWE | ${data.title}`;
+    };
+    fetchTitle();
+  }, []);
+
   return (
     <>
       <Header />

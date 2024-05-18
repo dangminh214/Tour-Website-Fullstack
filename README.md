@@ -36,7 +36,8 @@ In the destination detail, a image slider will also be used to make experience o
 ![image](https://github.com/dangminh214/Tour-Website-Fullstack/assets/51837721/2304a237-d45b-4d95-a00f-6561300fd374)
 
 ### Fucntion: Remove a destination to a tour 
-![image](https://github.com/dangminh214/Tour-Website-Fullstack/assets/51837721/c6dd5657-a037-4bd0-aa71-a12b04fd759b)
+![image](https://github.com/dangminh214/Tour-Website-Fullstack/assets/51837721/acaa5e18-813c-4990-bb73-9c3e8cdd9f39)
+
 User can remove an existed destination from a tour
 
 ### Create a new Tour

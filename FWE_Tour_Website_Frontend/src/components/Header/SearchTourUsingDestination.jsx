@@ -35,9 +35,9 @@ const SearchTourUsingDestination = ({ setTours }) => {
         setTours(foundTours);
       }
       if (foundTours.length > 0) {
-        console.log("Search Tours using destination foundTours: ", foundTours);
-        navigate("/tours", { state: { foundTours } });
-        setTours(foundTours);
+        navigate(`/tours`, {
+          state: { foundTours },
+        });
       }
     }
   };
@@ -57,7 +57,6 @@ const SearchTourUsingDestination = ({ setTours }) => {
         <button type="submit" className="searchHeader">
           Suchen
         </button>
-        <br />
       </form>
     </div>
   );

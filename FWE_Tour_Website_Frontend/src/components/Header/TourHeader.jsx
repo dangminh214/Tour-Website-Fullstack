@@ -33,7 +33,6 @@ export default function Header({ setTours }) {
         <button type="submit" className="searchHeader">
           Suchen
         </button>
-        <br />
       </form>
     </div>
   );

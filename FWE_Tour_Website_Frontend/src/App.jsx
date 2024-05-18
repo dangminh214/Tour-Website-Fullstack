@@ -11,6 +11,7 @@ import {
   NoTourError,
   NoDestinationError,
   EditDetail,
+  Footer,
 } from "./ExportPages";
 
 import "./index.css";
@@ -39,7 +40,9 @@ function App() {
           <Route path="*" element={<NoTourError />} />
         </Routes>
       </main>
-      <footer></footer>
+      <footer>
+        <Footer />
+      </footer>
     </Router>
   );
 }

@@ -6,7 +6,7 @@ export default function Header({ setTours }) {
   return (
     <div className="headerComponent">
       <a
-        href="http://localhost:3000/tours"
+        href="http://localhost:3000"
         className="logoHeader"
         aria-label="Reisen"
       ></a>

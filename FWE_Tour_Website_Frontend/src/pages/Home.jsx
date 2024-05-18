@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
 import Header from "../components/Header/Header.jsx";
-import SingleTour from "../components/SingleTour.jsx";
-import { useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { SlideImage } from "../components/DetailContent/SlideImage.jsx";
+import { useRef } from "react";
 
 const Home = () => {
   const [tours, setTours] = useState([]);
+  const [destinations, setDestinations] = useState([]);
   const [loading, setLoading] = useState(true);
-  const location = useLocation();
-  const foundTours = location.state?.foundTours;
 
   useEffect(() => {
     const fetchTitle = async () => {
-      const response = await fetch(`http://localhost:8000/tours`);
+      const response = await fetch(`http://localhost:8000/`);
       const data = await response.json();
       document.title = data.title;
     };
@@ -21,8 +21,8 @@ const Home = () => {
   useEffect(() => {
     const fetchTours = async () => {
       try {
-        const response = await fetch("http://localhost:8000/tours");
-        const data = await response.json();
+        const responseTour = await fetch("http://localhost:8000/tours");
+        const data = await responseTour.json();
         console.log("Response from server:", data);
         if (data.status === "success") {
           setTours(data.tours);
@@ -39,22 +39,60 @@ const Home = () => {
     fetchTours();
   }, []);
 
-  const filteredTours = foundTours || tours;
+  useEffect(() => {
+    const fetchTours = async () => {
+      try {
+        const responseDestination = await fetch(
+          "http://localhost:8000/destination"
+        );
+        const data = await responseDestination.json();
+        console.log("Response from server:", data);
+        if (data.status === "success") {
+          setDestinations(data.destinations);
+        } else {
+          console.error("Failed to fetch tours:", data.message);
+        }
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching tours:", error);
+        setLoading(false);
+      }
+    };
+
+    fetchTours();
+  }, []);
+
+  //const imageURLs = useRef([]);
+  /* const [imageURLs, setImageURLs] = useState([]);
+  setImageURLs(
+    "https://cdn.getyourguide.com/img/tour/63fdf1419ef04.jpeg/98.jpg",
+    "https://t3.ftcdn.net/jpg/02/50/23/20/360_F_250232047_z9kCGCC2l3NShBNy1BJ8H3nVe9pWpnff.jpg"
+  ); */
 
   return (
     <>
       <Header setTours={setTours} />
       <h1 id="tourList" className="titleList">
-        Tours List
+        Welcome to my tour website! I hope you like it 😁
       </h1>
       {loading ? (
         <p className="warning-msg">Loading...</p>
       ) : (
-        <div className="allDetailsContainer">
-          {filteredTours.map((tour) => (
-            <SingleTour key={tour._id} tour={tour} />
-          ))}
-        </div>
+        <>
+          <SlideImage imageURLs={imageURLs} />
+          <div className="allDetailsContainer">
+            <p>In this website, I have {tours.length} Tours</p>
+          </div>
+          <div className="allDetailsContainer">
+            <p>In this website, I have {destinations.length} Destinations</p>
+          </div>
+          <div className="allDetailsContainer">
+            <Link to="/tours">Let's see all the tours!</Link>
+          </div>
+          <div className="allDetailsContainer">
+            <Link to="/destination">Let's see all the destinations!</Link>
+          </div>
+        </>
       )}
     </>
   );

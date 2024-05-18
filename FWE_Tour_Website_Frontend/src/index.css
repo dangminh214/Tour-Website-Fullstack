@@ -481,3 +481,24 @@ button:hover {
   text-align: center; 
 }
 
+.footerDiv {
+  background-color: black;
+  color: white;
+  padding: 20px;
+  margin-top: 300px;
+}
+
+.footerDiv .personalInformation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footerDiv .personalInformation a {
+  color: white;
+  text-decoration: none;
+}
+
+.footerDiv .personalInformation a:hover {
+  color: #ddd;
+}

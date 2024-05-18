@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "react-slideshow-image/dist/styles.css";
 import Header from "../components/Header/Header";
 import SlideImage from "../components/DetailContent/SlideImage";
@@ -160,12 +160,16 @@ const TourDetail = () => {
       );
       const deleteData = await response.json();
       console.log("deleteData", deleteData);
+      console.log("deleteData.stauts", deleteData.stauts);
 
-      if (!deleteData.stauts === "fail") {
-        setDestinationMessage("The Destination can not be deleted");
-        throw new Error("Error, Can not delete");
+      if (deleteData.status === "fail") {
+        setDestinationMessage(
+          "The Destination can not be deleted. A tour must have at least one destination"
+        );
+      } else {
+        setDestinationMessage("The destination has been deleted");
+        window.location.reload();
       }
-      setDestinationMessage("The destination has been deleted");
     } catch (error) {
       setDestinationMessage(
         "You do not have permission to delete this destination"

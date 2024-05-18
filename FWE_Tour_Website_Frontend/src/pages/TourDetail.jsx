@@ -160,8 +160,7 @@ const TourDetail = () => {
 
       setDestinationMessage("Das Reiseziel wurde erfolgreich entfernt");
     } catch (error) {
-      console.error("Error removing destination from the tour:", error);
-      setDestinationMessage("Failed to remove destination");
+      setDestinationMessage("Das Reiseziel darf nicht gelöscht werden");
     }
   };
 

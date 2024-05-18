@@ -219,6 +219,11 @@ export const removeDestinationFromTour = catchAsync(async (req: Request, res: Re
 
     const tourData = await tourModel.findOne({name: tourName})
     const tourId = tourData?._id.toString();
+    const foundTour = await tourModel.findById(tourId)
+
+    if (foundTour.destinations.length === 1) {
+      return res.status(404).json({ message: 'A tour must have at least one destination' });
+    }
     const tour = await tourModel.findByIdAndUpdate(
       tourId,
       { $pull: { destinations: destinationId } },

@@ -33,7 +33,8 @@ The user can also edit the destinations of a tour (a tour must have at least one
 In the destination detail, a image slider will also be used to make experience of user be better
 
 ### Fucntion: Add a destination to a tour 
-![image](https://github.com/dangminh214/Tour-Website-Fullstack/assets/51837721/2304a237-d45b-4d95-a00f-6561300fd374)
+![image](https://github.com/dangminh214/Tour-Website-Fullstack/assets/51837721/f5621e28-9bd9-4f97-9fba-b60bb5afcb83)
+
 
 ### Fucntion: Remove a destination to a tour 
 ![image](https://github.com/dangminh214/Tour-Website-Fullstack/assets/51837721/acaa5e18-813c-4990-bb73-9c3e8cdd9f39)

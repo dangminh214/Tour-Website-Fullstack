@@ -5,10 +5,10 @@ const SingleTour = ({ tour }) => {
       style={{ textDecoration: "none", color: "inherit" }}
     >
       <div key={tour._id} className="detailDiv">
-        <h2 className="tourTitle">{tour.name}</h2>
-        <p className="tourDescription">{tour.description}</p>
+        <h2 className="singleDetailTitle">{tour.name}</h2>
+        <p className="singleDetailDescription">{tour.description}</p>
         <img
-          className="tourImage"
+          className="singleDetailImage"
           src={
             tour.imageCover && tour.imageCover.length > 0
               ? tour.imageCover[0]

@@ -58,7 +58,7 @@ code {
   margin: 100px;
 }
 
-#tourList {
+.titleList {
   text-align: center;
   color: #333;
   margin-top: 50px;
@@ -87,7 +87,7 @@ code {
   align-items: center;
 }
 
-.tourTitle {
+.singleDetailTitle {
   color: #333;
   margin-bottom: 10px;
   text-align: center;
@@ -98,7 +98,7 @@ code {
   transform: scale(1.02);
 }
 
-.tourImage {
+.singleDetailImage {
   display: block;
   width: 250px; 
   height: 200px;
@@ -108,7 +108,7 @@ code {
   text-align: center;
 }
 
-.tourDescription {
+.singleDetailDescription {
   color: #666;
   margin: 10px 0;
   text-align: center;
@@ -136,14 +136,6 @@ a:hover {
 
 #destinationList {
   text-align: center;
-}
-
-.destinationImage {
-  width: 350px; 
-  height: 300px;
-  object-fit: cover;
-  padding: 10px;
-  margin-left: 0;
 }
 
 .searchHeader {
@@ -300,18 +292,9 @@ a:hover {
   background-color: #5cb1b8;
 }
 
-q
-
 .displayedDestination {
   display: flex;
   justify-content: center;
-  align-items: center;
-  width: 100%;
-}
-
-.destinationList {
-  display: flex;
-  flex-direction: column;
   align-items: center;
   width: 100%;
 }

@@ -5,10 +5,10 @@ const SingleDestination = ({ destination }) => {
       style={{ textDecoration: "none", color: "inherit" }}
     >
       <div key={destination._id} className="detailDiv">
-        <h2 className="destinationTitle">{destination.name}</h2>
-        <p className="destinationDescription">{destination.description}</p>
+        <h2 className="singleDetailTitle">{destination.name}</h2>
+        <p className="singleDetailDescription">{destination.description}</p>
         <img
-          className="destinationImage"
+          className="singleDetailImage"
           src={destination.imageCover[0]}
           alt={destination.imageCover}
         />

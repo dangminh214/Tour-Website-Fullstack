@@ -37,7 +37,9 @@ const DestinationList = () => {
   return (
     <>
       <Header />
-      <h1 id="destinationList">Reisenziele Liste</h1>
+      <h1 id="destinationList" className="titleList">
+        Reisenziele Liste
+      </h1>
       {loading ? (
         <p>Loading...</p>
       ) : (

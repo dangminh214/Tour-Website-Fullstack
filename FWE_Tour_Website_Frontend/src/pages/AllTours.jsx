@@ -44,7 +44,9 @@ const AllTours = () => {
   return (
     <>
       <Header setTours={setTours} />
-      <h1 id="tourList">Reisen Liste</h1>
+      <h1 id="tourList" className="titleList">
+        Reisen Liste
+      </h1>
       {loading ? (
         <p>Loading...</p>
       ) : (

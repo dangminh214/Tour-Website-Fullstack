@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import "react-slideshow-image/dist/styles.css";
 import Header from "../components/Header/Header";
 import SlideImage from "../components/DetailContent/SlideImage";

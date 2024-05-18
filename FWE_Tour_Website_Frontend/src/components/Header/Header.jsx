@@ -5,12 +5,11 @@ import SearchTourUsingDestination from "./SearchTourUsingDestination.jsx";
 export default function Header({ setTours }) {
   return (
     <div className="headerComponent">
-      <img
-        src="https://img.freepik.com/free-vector/detailed-travel-logo_23-2148616611.jpg?size=338&ext=jpg&ga=GA1.1.553209589.1714953600&semt=ais"
-        alt="Logo"
+      <a
+        href="http://localhost:3000/tours"
         className="logoHeader"
-        onClick={() => (window.location.href = "http://localhost:3000/tours")}
-      />
+        aria-label="Reisen"
+      ></a>
       <TourHeader />
       <DestinationHeader />
       <SearchTourUsingDestination setTours={setTours} />

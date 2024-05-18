@@ -243,9 +243,13 @@ a:hover {
 }
 
 .logoHeader {
+  display: block;
   width: 100px;
   height: 100px;
-  margin-left: 10px;
+  background-image: url('https://img.freepik.com/free-vector/detailed-travel-logo_23-2148616611.jpg?size=338&ext=jpg&ga=GA1.1.553209589.1714953600&semt=ais');
+  background-size: cover;
+  background-position: center;
+  margin: 10px;
 }
 .error {
   text-align: center;
@@ -461,4 +465,16 @@ button:hover {
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+
+.warning-msg {
+  color: #856404;
+  background-color: #fff3cd; 
+  border-color: #ffeeba;
+  padding: .75rem 1.25rem; 
+  margin-bottom: 1rem;
+  border: 1px solid transparent; 
+  border-radius: .25rem; 
+  font-size: 1em; 
+  text-align: center; 
 }

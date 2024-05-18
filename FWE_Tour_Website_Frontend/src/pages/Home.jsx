@@ -41,7 +41,7 @@ const Home = () => {
       <Header setTours={setTours} />
       <h1 id="tourList">Reisen Liste</h1>
       {loading ? (
-        <p>Loading...</p>
+        <p className="warning-msg">Loading...</p>
       ) : (
         <div className="tourContainer">
           {tours.map((tour) => (

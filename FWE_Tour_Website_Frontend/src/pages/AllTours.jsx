@@ -48,7 +48,7 @@ const AllTours = () => {
         Reisen Liste
       </h1>
       {loading ? (
-        <p>Loading...</p>
+        <p className="warning-msg">Loading...</p>
       ) : (
         <div className="allDetailsContainer">
           {filteredTours.map((tour) => (

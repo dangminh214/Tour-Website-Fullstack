@@ -170,7 +170,7 @@ const TourDetail = () => {
       <Header />
       <div className="detailPage">
         {loading ? (
-          <p>Loading...</p>
+          <p className="warning-msg">Loading...</p>
         ) : (
           <div className="detailContainer">
             <h1 className="nameDetail">{tour.name}</h1>

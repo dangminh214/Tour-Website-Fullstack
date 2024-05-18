@@ -72,7 +72,7 @@ const DestinationDetail = () => {
       <Header />
       <div className="detailPage">
         {loading ? (
-          <p>Loading...</p>
+          <p className="warning-msg">Loading...</p>
         ) : destination ? (
           <div className="detailContainer">
             <h1 className="nameDetail">{destination.name}</h1>

@@ -45,7 +45,7 @@ const CreateDestinationForm = () => {
     <>
       <Header />
       <form className="createNewForm" onSubmit={handleSubmit}>
-        <h3>Neues Reiseziel</h3>
+        <h2>Neues Reiseziel</h2>
         <label>
           Name:
           <input

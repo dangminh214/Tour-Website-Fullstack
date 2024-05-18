@@ -18,11 +18,12 @@ const SingleTour = ({ tour }) => {
         />
         <h4 className="goingPlaces">Reisenziele: </h4>
         {tour.destinations.map((destination) => (
-          <p key={destination._id}>
-            <a href={`http://localhost:3000/destination/${destination.name}`}>
-              {destination.name}
-            </a>
-          </p>
+          <a
+            key={destination._id}
+            href={`http://localhost:3000/destination/${destination.name}`}
+          >
+            {destination.name}
+          </a>
         ))}
       </div>
     </a>

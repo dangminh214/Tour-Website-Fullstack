@@ -20,10 +20,8 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
-
           <Route path="/tours" element={<AllTours />} />
           <Route path="/destination" element={<AllDestinations />} />
-
           <Route path="/tours/newTour/" element={<CreateNewTour />} />
           <Route
             path="/destination/newDestination/"

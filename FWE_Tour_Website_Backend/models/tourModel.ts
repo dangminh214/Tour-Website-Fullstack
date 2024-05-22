@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const destinationSchema = require('./destinationModel')
 const { Schema } = mongoose;
 
 const tourSchema = new mongoose.Schema({
@@ -28,7 +27,7 @@ const tourSchema = new mongoose.Schema({
 
   imageCover: [{
     type: String, 
-  }]
+  }], 
 });
 
 const tourModel = new mongoose.model('tour', tourSchema);

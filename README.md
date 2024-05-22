@@ -3,7 +3,7 @@
 ## More Details about this project can be found in each Frontend and Backend folder
 ## Backend: Port 8000 
 ## Frontend: Port 3000
-### To Access: in this directory run docker, then open the terminal then "cd Tour-Website-Fullstack" and "docker-compose up --build" after that access ![127.0.0.1:3000](127.0.0.1:3000) in your browser for the homepage
+### To Access: in this directory run docker, then open the terminal then "cd Tour-Website-Fullstack" and "docker-compose up --build" after that access ![127.0.0.1:3000](127.0.0.1:3000) in your browser for the homepage and do not forget to add your IP Adress into MongoDB to connect to database
 ### All the tours 
 ![image](https://github.com/dangminh214/Tour-Website-Fullstack/assets/51837721/e886e1f4-5f8d-4980-8c58-dca288a604a2)
 

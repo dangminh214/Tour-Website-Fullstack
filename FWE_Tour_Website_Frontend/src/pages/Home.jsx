@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
-import Header from "../components/Header/Header.jsx";
+import Header from "../components/Header";
 import SingleTour from "../components/SingleTour.jsx";
+import { useLocation } from "react-router-dom";
 
-const Home = () => {
+const AllTours = () => {
   const [tours, setTours] = useState([]);
   const [loading, setLoading] = useState(true);
+  const location = useLocation();
+  const foundTours = location.state?.foundTours;
 
   useEffect(() => {
     const fetchTitle = async () => {
@@ -36,15 +39,19 @@ const Home = () => {
     fetchTours();
   }, []);
 
+  const filteredTours = foundTours || tours;
+
   return (
     <>
       <Header setTours={setTours} />
-      <h1 id="tourList">Reisen Liste</h1>
+      <h1 id="tourList" className="titleList">
+        Reisen Liste
+      </h1>
       {loading ? (
         <p className="warning-msg">Loading...</p>
       ) : (
-        <div className="tourContainer">
-          {tours.map((tour) => (
+        <div className="allDetailsContainer">
+          {filteredTours.map((tour) => (
             <SingleTour key={tour._id} tour={tour} />
           ))}
         </div>
@@ -53,4 +60,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default AllTours;

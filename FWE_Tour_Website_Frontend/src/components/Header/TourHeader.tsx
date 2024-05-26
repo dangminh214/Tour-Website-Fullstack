@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, FormEvent } from "react";
 
-export default function Header({ setTours }) {
-  const [searchQuery, setSearchQuery] = useState("");
+const TourHeader: React.FC = () => {
+  const [searchQuery, setSearchQuery] = useState<string>("");
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
     const findTour = await fetch(`http://localhost:8000/tours/${searchQuery}`);
     if (findTour.status === 404) {
@@ -33,8 +33,9 @@ export default function Header({ setTours }) {
         <button type="submit" className="searchHeader">
           Suchen
         </button>
-        <br />
       </form>
     </div>
   );
-}
+};
+
+export default TourHeader;

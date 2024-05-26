@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Header from "../components/Header/Header";
+import Header from "../components/Header/Header.tsx";
 import SingleDestination from "../components/SingleDestination";
 const DestinationList = () => {
   const [destinations, setDestinations] = useState([]);

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "react-slideshow-image/dist/styles.css";
-import Header from "../components/Header/Header";
+import Header from "../components/Header";
 import SlideImage from "../components/DetailContent/SlideImage";
 
 const TourDetail = () => {

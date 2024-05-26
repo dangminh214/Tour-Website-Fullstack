@@ -1,8 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
 
-const SearchTourUsingDestination = ({ setTours }) => {
-  const [searchQuery, setSearchQuery] = useState("");
+interface SearchTourUsingDestinationProps {
+  setTours: (tours: any[]) => void;
+}
+
+const SearchTourUsingDestination: React.FC<SearchTourUsingDestinationProps> = ({ setTours }) => {
+  const [searchQuery, setSearchQuery] = useState<string>("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -20,7 +24,7 @@ const SearchTourUsingDestination = ({ setTours }) => {
     }
   }, [searchQuery]);
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
     const findTours = await fetch(
       `http://localhost:8000/tours/findTourByDestination/${searchQuery}`
@@ -44,20 +48,19 @@ const SearchTourUsingDestination = ({ setTours }) => {
 
   return (
     <div className="headerSearchDestination">
-      <h3 className="headerTitle">Reise suchen mit Reisenziel</h3>
+      <h3 className="headerTitle">Search for a Tour</h3>
       <form className="formHeader" onSubmit={handleSubmit}>
         <input
           type="text"
-          placeholder="Suchen nach Name"
+          placeholder="Search by destination"
           value={searchQuery}
           onChange={(event) => setSearchQuery(event.target.value)}
           required
           className="searchHeader"
         />
         <button type="submit" className="searchHeader">
-          Suchen
+          Search
         </button>
-        <br />
       </form>
     </div>
   );

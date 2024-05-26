@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Header from "../components/Header/Header";
+import Header from "../components/Header";
 
 const CreateNewTour = () => {
   // State variables to store form data
@@ -125,65 +125,62 @@ const CreateNewTour = () => {
                   onChange={(e) => setDescription(e.target.value)}
                 ></textarea>
               </div>
-              <div>
-                <label htmlFor="destinations">Reiseziele:</label>
-                <select
-                  id="destinations"
-                  value={selectedDestination}
-                  onChange={(e) => setSelectedDestination(e.target.value)}
-                >
-                  <option value="">Wählen ein Reiseziel</option>
-                  {allDestinations.map(
-                    (destination) =>
-                      !destinations.includes(destination._id) && (
-                        <option key={destination.name} value={destination._id}>
-                          {destination.name}
-                        </option>
-                      )
-                  )}
-                </select>
-                <button type="button" onClick={handleAddDestination}>
-                  Reiseziel hinzufügen
-                </button>
-                <ul className="destinationList">
-                  {destinations.map((destinationId, index) => {
-                    const destination = allDestinations.find(
-                      (dest) => dest._id === destinationId
-                    );
-                    return (
-                      <div key={index}>
-                        <p className="displayedDestination">
-                          {destination
-                            ? destination.name
-                            : "Destination not found"}
-                        </p>
-                      </div>
-                    );
-                  })}
-                </ul>
-              </div>
 
-              <div>
-                <label>Bilder URLs:</label>
-                {imageCover.map((url, index) => (
-                  <div key={index}>
-                    <input
-                      type="text"
-                      value={url}
-                      onChange={(event) => handleImageUrlChange(index, event)}
-                    />
-                    <button
-                      type="button"
-                      onClick={() => handleRemoveImageUrl(index)}
-                    >
-                      Entfernen
-                    </button>
-                  </div>
-                ))}
-                <button type="button" onClick={handleAddImageUrl}>
-                  Reise Fotos URL addieren
-                </button>
-              </div>
+              <label htmlFor="destinations">Reiseziele:</label>
+              <select
+                id="destinations"
+                value={selectedDestination}
+                onChange={(e) => setSelectedDestination(e.target.value)}
+              >
+                <option value="">Wählen ein Reiseziel</option>
+                {allDestinations.map(
+                  (destination) =>
+                    !destinations.includes(destination._id) && (
+                      <option key={destination.name} value={destination._id}>
+                        {destination.name}
+                      </option>
+                    )
+                )}
+              </select>
+              <button type="button" onClick={handleAddDestination}>
+                Reiseziel hinzufügen
+              </button>
+              <ul className="destinationList">
+                {destinations.map((destinationId, index) => {
+                  const destination = allDestinations.find(
+                    (dest) => dest._id === destinationId
+                  );
+                  return (
+                    <div key={index}>
+                      <p className="displayedDestination">
+                        {destination
+                          ? destination.name
+                          : "Destination not found"}
+                      </p>
+                    </div>
+                  );
+                })}
+              </ul>
+
+              <label>Bilder URLs:</label>
+              {imageCover.map((url, index) => (
+                <div key={index}>
+                  <input
+                    type="text"
+                    value={url}
+                    onChange={(event) => handleImageUrlChange(index, event)}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => handleRemoveImageUrl(index)}
+                  >
+                    Entfernen
+                  </button>
+                </div>
+              ))}
+              <button type="button" onClick={handleAddImageUrl}>
+                Reise Fotos URL addieren
+              </button>
               {showWarning && (
                 <WarningPopup
                   message="Eine Reise muss mindesten ein Ziel haben"

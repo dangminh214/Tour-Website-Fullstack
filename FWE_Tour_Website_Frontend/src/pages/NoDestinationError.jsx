@@ -1,4 +1,4 @@
-import Header from "../components/Header/Header";
+import Header from "../components/Header";
 import { useEffect } from "react";
 const url = window.location.pathname;
 const parts = url.split("/").filter(Boolean);

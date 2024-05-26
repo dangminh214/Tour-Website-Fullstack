@@ -1,8 +1,13 @@
-import TourHeader from "./TourHeader.jsx";
-import DestinationHeader from "./DestinationHeader.jsx";
-import SearchTourUsingDestination from "./SearchTourUsingDestination.jsx";
+import React from "react";
+import TourHeader from "./TourHeader";
+import DestinationHeader from "./DestinationHeader";
+import SearchTourUsingDestination from "./SearchTourUsingDestination";
 
-export default function Header({ setTours }) {
+interface HeaderProps {
+  setTours: (tours: any[]) => void; 
+}
+
+const Header: React.FC<HeaderProps> = ({ setTours }) => {
   return (
     <div className="headerComponent">
       <a
@@ -50,4 +55,6 @@ export default function Header({ setTours }) {
       </div>
     </div>
   );
-}
+};
+
+export default Header;

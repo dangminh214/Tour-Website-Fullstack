@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Header from "../components/Header/Header.jsx";
+import Header from "../components/Header/Header.tsx";
 import SingleTour from "../components/SingleTour.jsx";
 import { useLocation } from "react-router-dom";
 

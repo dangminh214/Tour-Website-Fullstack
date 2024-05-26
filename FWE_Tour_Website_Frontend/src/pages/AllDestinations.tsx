@@ -1,9 +1,24 @@
 import React, { useState, useEffect } from "react";
-import Header from "../components/Header/Header.tsx";
+import Header from "../components/Header/Header";
 import SingleDestination from "../components/SingleDestination";
-const DestinationList = () => {
-  const [destinations, setDestinations] = useState([]);
+
+interface Tour {
+  _id: string;
+  name: string;
+}
+
+interface Destination {
+  _id: string;
+  name: string;
+  description: string;
+  imageCover: string[];
+  tours: Tour[];
+}
+
+const DestinationList: React.FC = () => {
+  const [destinations, setDestinations] = useState<Destination[]>([]);
   const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     const fetchTitle = async () => {
       const response = await fetch(`http://localhost:8000/destination`);
@@ -26,14 +41,13 @@ const DestinationList = () => {
         }
         setLoading(false);
       } catch (error) {
-        console.error("Error fetching tours:", error);
+        console.error("Error fetching destinations:", error);
         setLoading(false);
       }
     };
-
+  
     fetchDestinations();
   }, []);
-
   return (
     <>
       <Header />
@@ -45,10 +59,7 @@ const DestinationList = () => {
       ) : (
         <div className="allDetailsContainer">
           {destinations.map((destination) => (
-            <SingleDestination
-              key={destination._id}
-              destination={destination}
-            />
+            <SingleDestination key={destination._id} destination={destination} />
           ))}
         </div>
       )}

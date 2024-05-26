@@ -1,4 +1,23 @@
-const SingleDestination = ({ destination }) => {
+import React from 'react';
+
+interface Tour {
+  _id: string;
+  name: string;
+}
+
+interface Destination {
+  _id: string;
+  name: string;
+  description: string;
+  imageCover: string[];
+  tours: Tour[];
+}
+
+interface SingleDestinationProps {
+  destination: Destination;
+}
+
+const SingleDestination: React.FC<SingleDestinationProps> = ({ destination }) => {
   return (
     <a
       href={`http://localhost:3000/destination/${destination.name}`}
@@ -10,7 +29,7 @@ const SingleDestination = ({ destination }) => {
         <img
           className="singleDetailImage"
           src={destination.imageCover[0]}
-          alt={destination.imageCover}
+          alt={`Cover of ${destination.name}`}
         />
         <h4 className="goingPlaces">Tours:</h4>
         {destination.tours.map((tour) => (

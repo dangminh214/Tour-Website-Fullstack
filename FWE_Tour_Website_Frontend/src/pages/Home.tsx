@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import Header from "../components/Header/";
+import Header from "../components/Header";
 import { Link } from "react-router-dom";
 import { SlideImage } from "../components/DetailContent/SlideImage.jsx";
 import { useRef } from "react";
@@ -70,7 +70,7 @@ const AllTours = () => {
 
   return (
     <>
-      <Header setTours={setTours} />
+      <Header />
       <h1 id="tourList" className="titleList">
         Welcome to my tour website! I hope you like it 😁
       </h1>

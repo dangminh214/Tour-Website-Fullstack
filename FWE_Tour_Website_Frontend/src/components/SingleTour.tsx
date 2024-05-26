@@ -1,4 +1,23 @@
-const SingleTour = ({ tour }) => {
+import React from 'react';
+
+interface Destination {
+  _id: string;
+  name: string;
+}
+
+interface Tour {
+  _id: string;
+  name: string;
+  description: string;
+  imageCover: string[];
+  destinations: Destination[];
+}
+
+interface SingleTourProps {
+  tour: Tour;
+}
+
+const SingleTour: React.FC<SingleTourProps> = ({ tour }) => {
   return (
     <a
       href={`http://localhost:3000/tours/${tour.name}`}
@@ -12,9 +31,9 @@ const SingleTour = ({ tour }) => {
           src={
             tour.imageCover && tour.imageCover.length > 0
               ? tour.imageCover[0]
-              : `No image available for ${tour.name}`
+              : 'defaultImageURL' 
           }
-          alt={`Images ${tour.name}`}
+          alt={`Cover of ${tour.name}`}
         />
         <h4 className="goingPlaces">Destinations: </h4>
         {tour.destinations.map((destination) => (
@@ -29,4 +48,5 @@ const SingleTour = ({ tour }) => {
     </a>
   );
 };
+
 export default SingleTour;

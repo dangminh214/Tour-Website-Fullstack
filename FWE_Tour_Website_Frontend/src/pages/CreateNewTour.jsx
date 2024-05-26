@@ -3,7 +3,6 @@ import axios from "axios";
 import Header from "../components/Header";
 
 const CreateNewTour = () => {
-  // State variables to store form data
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [destinations, setDestinations] = useState([]);

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Header from "../components/Header/Header.tsx";
-import SingleTour from "../components/SingleTour.jsx";
+import SingleTour from "../components/SingleTour.tsx";
 import { useLocation } from "react-router-dom";
 
 const AllTours = () => {

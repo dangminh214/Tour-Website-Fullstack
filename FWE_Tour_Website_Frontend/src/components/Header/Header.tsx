@@ -3,11 +3,11 @@ import TourHeader from "./TourHeader";
 import { DestinationHeader } from "./DestinationHeader";
 import SearchTourUsingDestination from "./SearchTourUsingDestination";
 
-interface HeaderProps {
-  setTours: (tours: any[]) => void; 
-}
+const Header: React.FC<{}> = () => {
+  function setTours(tours: any[]): void {
+    throw new Error("Function not implemented.");
+  }
 
-const Header: React.FC<HeaderProps> = ({ setTours }) => {
   return (
     <div className="headerComponent">
       <a

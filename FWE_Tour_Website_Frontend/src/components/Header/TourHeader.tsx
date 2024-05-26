@@ -20,7 +20,7 @@ const TourHeader: React.FC = () => {
 
   return (
     <div className="headerSearchTour">
-      <h3 className="headerTitle">Eine Reise Suchen</h3>
+      <h3 className="headerTitle">Looking for a tour ?</h3>
       <form className="formHeader" onSubmit={handleSubmit}>
         <input
           type="text"
@@ -31,7 +31,7 @@ const TourHeader: React.FC = () => {
           className="searchHeader"
         />
         <button type="submit" className="searchHeader">
-          Suchen
+        Search
         </button>
       </form>
     </div>

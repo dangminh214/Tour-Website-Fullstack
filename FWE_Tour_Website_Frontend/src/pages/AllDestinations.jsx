@@ -38,7 +38,7 @@ const DestinationList = () => {
     <>
       <Header />
       <h1 id="destinationList" className="titleList">
-        Reisenziele Liste
+        Destination List
       </h1>
       {loading ? (
         <p className="warning-msg">Loading...</p>

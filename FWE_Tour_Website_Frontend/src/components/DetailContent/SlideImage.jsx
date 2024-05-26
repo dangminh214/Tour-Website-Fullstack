@@ -10,7 +10,7 @@ const divStyle = {
   height: "400px",
 };
 
-const SlideImage = ({ imagesURLs }) => {
+export const SlideImage = ({ imagesURLs }) => {
   return (
     <div className="slide-container">
       <Slide>

@@ -1,13 +1,20 @@
-import React, { useState, FormEvent } from "react";
+import React, { FormEvent, useState } from "react";
 
-const DestinationHeader: React.FC = () => {
+interface HeaderProps {
+  handleSearch?: (query: string) => void;
+}
+
+export const DestinationHeader: React.FC<HeaderProps> = ({ handleSearch }) => {
   const [searchQuery, setSearchQuery] = useState<string>("");
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
-    const findDestination = await fetch(`http://localhost:8000/destination/${searchQuery}`);
+    const findDestination = await fetch(
+      `http://localhost:8000/destination/${searchQuery}`
+    );
     if (findDestination.status === 404) {
-      window.location.href = "http://localhost:3000/destination/destinationError";
+      window.location.href =
+        "http://localhost:3000/destination/destinationError";
       return null;
     } else {
       const foundDestination = await findDestination.json();
@@ -20,7 +27,7 @@ const DestinationHeader: React.FC = () => {
 
   return (
     <div className="headerSearchDestination">
-      <h3 className="headerTitle">Ein Reiseziel Suchen</h3>
+      <h3 className="headerTitle">Looking for a destination ?</h3>
       <form className="formHeader" onSubmit={handleSubmit}>
         <input
           type="text"
@@ -31,11 +38,9 @@ const DestinationHeader: React.FC = () => {
           className="searchHeader"
         />
         <button type="submit" className="searchHeader">
-          Suchen
+          Search
         </button>
       </form>
     </div>
   );
 };
-
-export default DestinationHeader;

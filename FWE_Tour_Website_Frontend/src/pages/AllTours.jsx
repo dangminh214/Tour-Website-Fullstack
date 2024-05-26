@@ -45,7 +45,7 @@ const AllTours = () => {
     <>
       <Header setTours={setTours} />
       <h1 id="tourList" className="titleList">
-        Reisen Liste
+        Tours List
       </h1>
       {loading ? (
         <p className="warning-msg">Loading...</p>

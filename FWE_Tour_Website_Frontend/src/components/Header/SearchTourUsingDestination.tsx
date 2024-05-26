@@ -39,16 +39,16 @@ const SearchTourUsingDestination: React.FC<SearchTourUsingDestinationProps> = ({
         setTours(foundTours);
       }
       if (foundTours.length > 0) {
-        console.log("Search Tours using destination foundTours: ", foundTours);
-        navigate("/tours", { state: { foundTours } });
-        setTours(foundTours);
+        navigate(`/tours`, {
+          state: { foundTours },
+        });
       }
     }
   };
 
   return (
     <div className="headerSearchDestination">
-      <h3 className="headerTitle">Search for a Tour</h3>
+      <h3 className="headerTitle">Looking for tours have this destination</h3>
       <form className="formHeader" onSubmit={handleSubmit}>
         <input
           type="text"

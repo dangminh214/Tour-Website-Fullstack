@@ -11,7 +11,7 @@ const Header: React.FC<HeaderProps> = ({ setTours }) => {
   return (
     <div className="headerComponent">
       <a
-        href="http://localhost:3000/tours"
+        href="http://localhost:3000"
         className="logoHeader"
         aria-label="Reisen"
       ></a>
@@ -23,7 +23,7 @@ const Header: React.FC<HeaderProps> = ({ setTours }) => {
           className="createNewLink"
           onClick={() => (window.location.href = "http://localhost:3000/tours")}
         >
-          Alle Reisen
+          All Tours
         </button>
         <button
           className="createNewLink"
@@ -31,7 +31,7 @@ const Header: React.FC<HeaderProps> = ({ setTours }) => {
             (window.location.href = "http://localhost:3000/destination")
           }
         >
-          Alle Reiseziele
+          All Destinations
         </button>
       </div>
       <div className="createNewLinkDestination">
@@ -41,7 +41,7 @@ const Header: React.FC<HeaderProps> = ({ setTours }) => {
             (window.location.href = "http://localhost:3000/tours/newTour")
           }
         >
-          Neue Reise
+          New Tour
         </button>
         <button
           className="createNewLink"
@@ -50,7 +50,7 @@ const Header: React.FC<HeaderProps> = ({ setTours }) => {
               "http://localhost:3000/destination/newDestination")
           }
         >
-          Neues Reiseziel
+          New Destination
         </button>
       </div>
     </div>

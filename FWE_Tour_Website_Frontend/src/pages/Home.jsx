@@ -4,15 +4,11 @@ import Header from "../components/Header/";
 import { Link } from "react-router-dom";
 import { SlideImage } from "../components/DetailContent/SlideImage.jsx";
 import { useRef } from "react";
-import { useLocation } from "react-router-dom";
 
 const AllTours = () => {
   const [tours, setTours] = useState([]);
   const [destinations, setDestinations] = useState([]);
   const [loading, setLoading] = useState(true);
-
-  const location = useLocation();
-  const foundTours = location.state?.foundTours;
 
   useEffect(() => {
     const fetchTitle = async () => {

@@ -1,6 +1,6 @@
 import React from "react";
 import TourHeader from "./TourHeader";
-import DestinationHeader from "./DestinationHeader";
+import { DestinationHeader } from "./DestinationHeader";
 import SearchTourUsingDestination from "./SearchTourUsingDestination";
 
 interface HeaderProps {

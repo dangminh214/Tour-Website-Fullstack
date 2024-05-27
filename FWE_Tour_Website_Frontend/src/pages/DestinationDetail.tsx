@@ -3,7 +3,12 @@ import Header from "../components/Header";
 import SlideImage from "../components/DetailContent/SlideImage";
 
 const DestinationDetail = () => {
-  const [destination, setDestination] = useState({});
+  const [destination, setDestination] = useState({
+    _id: null,
+    imageCover: "",
+    description: "", 
+    tours: []
+  });
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState("");
 
@@ -26,7 +31,7 @@ const DestinationDetail = () => {
   }, [lastParam]);
 
   useEffect(() => {
-    const fetchDestinationDetail = async (destinationName) => {
+    const fetchDestinationDetail = async (destinationName: string) => {
       try {
         const response = await fetch(
           `http://localhost:8000/destination/${destinationName}`
@@ -48,8 +53,11 @@ const DestinationDetail = () => {
     fetchDestinationDetail(lastParam);
   }, [lastParam]);
 
+  if (loading) {
+    return <div>Loading...</div>;
+  }
   const deleteDestination = async () => {
-    if (window.confirm("Sind Sie sicher, dieses Reiseziel zu löschen")) {
+    if (window.confirm("Are you sure to delete this destination")) {
       try {
         const deleteResponse = await fetch(
           `http://localhost:8000/destination/deleteADestination/${destination._id}`,
@@ -78,7 +86,7 @@ const DestinationDetail = () => {
           <p className="warning-msg">Loading...</p>
         ) : destination ? (
           <div className="detailContainer">
-            <h1 className="nameDetail">{destination.name}</h1>
+            <h1 className="nameDetail">{(destination as unknown as { name: string }).name}</h1>
 
             {destination.imageCover && destination.imageCover.length > 0 ? (
               <SlideImage imagesURLs={destination.imageCover} />
@@ -89,7 +97,7 @@ const DestinationDetail = () => {
             <h3>Tours with this destination:</h3>
             {destination.tours && destination.tours.length > 0 ? (
               <div className="tourThroughDestination">
-                {destination.tours.map((tour) => (
+                {destination.tours.map((tour: any) => (
                   <p key={tour._id}>
                     <a
                       className="linkTour"

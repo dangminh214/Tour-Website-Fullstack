@@ -4,26 +4,29 @@ import Header from "../components/Header/Header";
 import { useLocation } from "react-router-dom";
 
 const EditDetail = () => {
-  // State variables to store form data
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [destinations, setDestinations] = useState([]);
-  const [selectedDestination, setSelectedDestination] = useState("");
-  const [imageCover, setImageCover] = useState([]);
+  const [destinations, setDestinations] = useState<string[]>([]);
+  const [imageCover, setImageCover] = useState<string[]>([]);
+  const [selectedDestination, setSelectedDestination] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const [allDestinations, setAllDestinations] = useState([]);
+  const [allDestinations, setAllDestinations] = useState<Destination[]>([]);
   const [showWarning, setShowWarning] = useState(false);
   const [isTourCreated, setIsTourCreated] = useState(false);
-  const [warningMessage] = useState("");
-
-  const selectedArray = [];
+  const [warningMessage] = useState("")
+  const [selectedArray, setSelectedArray] = useState<string[]>([]);
   const location = useLocation();
   const takenData = location.state?.tour;
 
+  interface Destination {
+    _id: string;
+    name: string;
+  }
+
   console.log("takenData", takenData);
 
-  const WarningPopup = ({ message, onClose }) => (
+  const WarningPopup = ({ message, onClose }: { message: string, onClose: () => void }) => (
     <div className="warning-popup">
       <p>{message}</p>
       <button onClick={onClose}>Close</button>
@@ -34,32 +37,28 @@ const EditDetail = () => {
     setShowWarning(false);
   };
 
-  const handleImageUrlChange = (index, event) => {
-    const newImageCover = [...imageCover];
+  const handleImageUrlChange = (index: number, event: React.ChangeEvent<HTMLInputElement>) => {
+    const newImageCover: string[] = [...imageCover];
     newImageCover[index] = event.target.value;
     setImageCover(newImageCover);
   };
 
-  // Handler for adding a new image URL input field
   const handleAddImageUrl = () => {
     setImageCover([...imageCover, ""]);
   };
 
-  // Handler for removing an image URL input field
-  const handleRemoveImageUrl = (index) => {
+  const handleRemoveImageUrl = (index: number) => {
     setImageCover(imageCover.filter((_, i) => i !== index));
   };
 
-  // Function to handle adding a destination to the tour
   const handleAddDestination = () => {
     if (selectedDestination && !destinations.includes(selectedDestination)) {
       setDestinations([...destinations, selectedDestination]);
-      selectedArray.push(selectedDestination);
-      setSelectedDestination("");
+      setSelectedArray([...selectedArray, selectedDestination]);
+      setSelectedDestination(null);
     }
   };
-
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
     try {
       const updatedTour = { name, description, destinations, imageCover };
@@ -67,14 +66,13 @@ const EditDetail = () => {
         setShowWarning(true);
         return;
       }
-      console.log("updatedTour before update", updatedTour);
-      console.log(
-        `http://localhost:8000/tours/updateTourByName/${updatedTour.name}`
-      );
+      console.log("updatedTour before update", takenData);
+      console.log("update data", updatedTour)
       const response = await axios.patch(
         `http://localhost:8000/tours/updateTourByName/${takenData.name}`,
         updatedTour
       );
+      console.log("res", response)
       console.log("Tour updated:", response.data);
       if (response.data) {
         setSuccessMessage("The tour has been updated successfully");
@@ -84,13 +82,12 @@ const EditDetail = () => {
       setDescription("");
       setDestinations([]);
       setImageCover([]);
-    } catch (error) {
-      console.error("Error creating new tour:", error);
+    } catch (error: any) {
+      console.error("Error creating new tour:", error.response.data);
       setErrorMessage("The tour can not be updated, please try again!");
     }
   };
 
-  // Fetch all destinations from backend API
   useEffect(() => {
     const fetchDestinations = async () => {
       try {
@@ -117,7 +114,6 @@ const EditDetail = () => {
               <div>
                 <label htmlFor="name">Name:</label>
                 <textarea
-                  type="text"
                   id="name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
@@ -138,18 +134,19 @@ const EditDetail = () => {
               <label htmlFor="destinations">Destinations:</label>
               <select
                 id="destinations"
-                value={selectedDestination}
+                value={selectedDestination ?? ""}
                 onChange={(e) => setSelectedDestination(e.target.value)}
               >
                 <option value="">Choose at least one destination</option>
-                {allDestinations.map(
-                  (destination) =>
-                    !destinations.includes(destination._id) && (
-                      <option key={destination.name} value={destination._id}>
-                        {destination.name}
-                      </option>
-                    )
-                )}
+                {allDestinations.length > 0 &&
+                  allDestinations.map(
+                    (destination) =>
+                      !destinations.includes(destination._id) && (
+                        <option key={destination.name} value={destination._id}>
+                          {destination.name}
+                        </option>
+                      )
+                  )}
               </select>
               <button type="button" onClick={handleAddDestination}>
                 Add Destination

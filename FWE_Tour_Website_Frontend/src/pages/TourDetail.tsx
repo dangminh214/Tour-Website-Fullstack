@@ -97,18 +97,25 @@ const TourDetail = () => {
           const response = await fetch(`http://localhost:8000/tours/deleteATour/${tour._id}`, {
             method: "DELETE",
           });
-
+  
           if (!response.ok) {
             throw new Error("Failed to delete tour");
           }
-
-          const data = await response.json();
-
-          if (data.status === "success") {
-            setMessage("This tour has been successfully deleted");
-          } else {
-            throw new Error(data.message || "Failed to delete tour");
+  
+          if (response.status !== 204) {
+            let data;
+            try {
+              data = await response.json();
+            } catch (error) {
+              console.error("Error parsing JSON:", error);
+              throw new Error("Failed to parse server response");
+            }
+  
+            if (data.status !== "success") {
+              throw new Error(data.message || "Failed to delete tour");
+            }
           }
+          setMessage("This tour has been successfully deleted");
         }
       } catch (error) {
         console.error("Error deleting tour:", error);

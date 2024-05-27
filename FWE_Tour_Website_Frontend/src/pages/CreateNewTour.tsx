@@ -5,9 +5,9 @@ import Header from "../components/Header";
 const CreateNewTour = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [destinations, setDestinations] = useState([]);
-  const [selectedDestination, setSelectedDestination] = useState("");
-  const [imageCover, setImageCover] = useState([]);
+  const [destinations, setDestinations] = useState<string[]>([]);
+  const [selectedDestination, setSelectedDestination] = useState<string>();
+  const [imageCover, setImageCover] = useState<string[]>([]);
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [allDestinations, setAllDestinations] = useState([]);
@@ -17,7 +17,7 @@ const CreateNewTour = () => {
 
   const selectedArray = [];
 
-  const WarningPopup = ({ message, onClose }) => (
+  const WarningPopup = ({ message, onClose }: { message: string, onClose: () => void }) => (
     <div className="warning-popup">
       <p>{message}</p>
       <button onClick={onClose}>Close</button>
@@ -28,7 +28,7 @@ const CreateNewTour = () => {
     setShowWarning(false);
   };
 
-  const handleImageUrlChange = (index, event) => {
+  const handleImageUrlChange = (index: number, event: React.ChangeEvent<HTMLInputElement>) => {
     const newImageCover = [...imageCover];
     newImageCover[index] = event.target.value;
     setImageCover(newImageCover);
@@ -40,20 +40,20 @@ const CreateNewTour = () => {
   };
 
   // Handler for removing an image URL input field
-  const handleRemoveImageUrl = (index) => {
+  const handleRemoveImageUrl = (index: number) => {
     setImageCover(imageCover.filter((_, i) => i !== index));
   };
 
   // Function to handle adding a destination to the tour
   const handleAddDestination = () => {
-    if (selectedDestination && !destinations.includes(selectedDestination)) {
-      setDestinations([...destinations, selectedDestination]);
+    if (selectedDestination && !destinations?.includes(selectedDestination)) {
+      setDestinations((prevDestinations) => [...prevDestinations, selectedDestination]); // Update state update to correctly handle the update
       selectedArray.push(selectedDestination);
       setSelectedDestination("");
     }
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
     try {
       const newTour = { name, description, destinations, imageCover };
@@ -96,6 +96,12 @@ const CreateNewTour = () => {
     fetchDestinations();
   }, []);
 
+  interface Destination {
+    _id: string;
+    name: string;
+    // Add other properties if needed
+  }
+
   return (
     <>
       <Header />
@@ -132,9 +138,9 @@ const CreateNewTour = () => {
               >
                 <option value="">Please choose a destination</option>
                 {allDestinations.map(
-                  (destination) =>
+                  (destination: Destination) =>
                     !destinations.includes(destination._id) && (
-                      <option key={destination.name} value={destination._id}>
+                      <option key={destination._id} value={destination._id}>
                         {destination.name}
                       </option>
                     )
@@ -146,8 +152,8 @@ const CreateNewTour = () => {
               <ul className="destinationList">
                 {destinations.map((destinationId, index) => {
                   const destination = allDestinations.find(
-                    (dest) => dest._id === destinationId
-                  );
+                    (dest: Destination) => dest._id === destinationId
+                  ) as Destination | undefined;
                   return (
                     <div key={index}>
                       <p className="displayedDestination">

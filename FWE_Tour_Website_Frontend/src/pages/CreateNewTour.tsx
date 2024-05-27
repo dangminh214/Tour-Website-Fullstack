@@ -17,6 +17,11 @@ const CreateNewTour = () => {
 
   const selectedArray = [];
 
+  interface Destination {
+    _id: string;
+    name: string;
+  }
+
   const WarningPopup = ({ message, onClose }: { message: string, onClose: () => void }) => (
     <div className="warning-popup">
       <p>{message}</p>
@@ -67,7 +72,7 @@ const CreateNewTour = () => {
       );
       console.log("New tour created:", response.data);
       if (response.data) {
-        setSuccessMessage("Die Reise wurde erfolgreich erstellt");
+        setSuccessMessage("The tour has been sucessfully created");
         setIsTourCreated(true);
       }
       setName("");
@@ -77,7 +82,7 @@ const CreateNewTour = () => {
     } catch (error) {
       console.error("Error creating new tour:", error);
       setErrorMessage(
-        "Die Reise kann nicht erstellt werden. Bitte Versuchen Sie nochmal"
+        "Can not create a new tour, please try again"
       );
     }
   };
@@ -96,12 +101,6 @@ const CreateNewTour = () => {
     fetchDestinations();
   }, []);
 
-  interface Destination {
-    _id: string;
-    name: string;
-    // Add other properties if needed
-  }
-
   return (
     <>
       <Header />
@@ -110,7 +109,7 @@ const CreateNewTour = () => {
           <p>{successMessage}</p>
         ) : (
           <>
-            <h2 className="newFormTitel">Neue Reise</h2>
+            <h2 className="newFormTitel">New Tour</h2>
             <form onSubmit={handleSubmit}>
               <div className="nameInput">
                 <label htmlFor="name">Name:</label>

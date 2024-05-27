@@ -9,8 +9,7 @@ const CreateDestinationForm = () => {
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage] = useState("");
   const [showWarning, setShowWarning] = useState(false);
-
-  const WarningPopup = ({ message, onClose }) => (
+  const WarningPopup = ({ message, onClose }: { message: string, onClose: () => void }) => (
     <div className="warning-popup">
       <p>{message}</p>
       <button onClick={onClose}>Close</button>
@@ -21,7 +20,7 @@ const CreateDestinationForm = () => {
     setShowWarning(false);
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
     try {
       const newDestination = {
@@ -36,13 +35,13 @@ const CreateDestinationForm = () => {
       setName("");
       setDescription("");
       setImageCover([""]);
-      setSuccessMessage("Das Reiseziel wurde erfolgreich erstellt");
+      setSuccessMessage("The destination has been successfully created");
     } catch (error) {
       console.error("Error creating new destination:", error);
     }
   };
 
-  const handleImageCoverChange = (index, event) => {
+  const handleImageCoverChange = (index: number, event: React.ChangeEvent<HTMLInputElement>) => {
     const newImageCover = [...imageCover];
     newImageCover[index] = event.target.value;
     setImageCover(newImageCover);
@@ -52,7 +51,7 @@ const CreateDestinationForm = () => {
     setImageCover([...imageCover, ""]);
   };
 
-  const handleRemoveImageCover = (index) => {
+  const handleRemoveImageCover = (index: number) => {
     setImageCover(imageCover.filter((_, i) => i !== index));
   };
 
@@ -102,7 +101,7 @@ const CreateDestinationForm = () => {
         <button type="submit">Create New Destination</button>
         {showWarning && (
           <WarningPopup
-            message="Eine Reise muss mindesten ein Ziel haben"
+            message="Can not create new destination"
             onClose={closeWarning}
           />
         )}
@@ -114,3 +113,5 @@ const CreateDestinationForm = () => {
 };
 
 export default CreateDestinationForm;
+
+

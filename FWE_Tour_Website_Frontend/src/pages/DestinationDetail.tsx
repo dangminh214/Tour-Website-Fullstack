@@ -67,7 +67,7 @@ const DestinationDetail = () => {
         );
 
         if (deleteResponse.ok) {
-          setMessage("Das Reiseziel wurde erfolgreich gelöscht");
+          setMessage("The destination has been deleted");
         } else {
           alert("Failed to delete destination");
         }

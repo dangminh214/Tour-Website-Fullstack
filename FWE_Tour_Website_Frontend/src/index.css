@@ -502,3 +502,7 @@ button:hover {
 .footerDiv .personalInformation a:hover {
   color: #ddd;
 }
+
+.successMsg {
+  background-color: #007BFF;
+}

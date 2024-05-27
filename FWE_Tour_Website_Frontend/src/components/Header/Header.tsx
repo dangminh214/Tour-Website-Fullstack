@@ -13,7 +13,7 @@ const Header: React.FC<{}> = () => {
       <a
         href="http://localhost:3000"
         className="logoHeader"
-        aria-label="Reisen"
+        aria-label="Tour"
       ></a>
       <TourHeader />
       <DestinationHeader />

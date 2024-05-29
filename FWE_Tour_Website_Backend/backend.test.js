@@ -9,7 +9,7 @@ const DB = process.env.DATABASE.replace(
   '<PASSWORD>',
   process.env.DATABASE_PASSWORD
 );
-/* Connecting to the database before each test. */
+
 beforeAll(async () => {
   mongoose.connect(DB, {
     useNewUrlParser: true

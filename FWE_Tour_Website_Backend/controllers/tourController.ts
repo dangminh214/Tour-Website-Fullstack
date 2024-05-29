@@ -1,5 +1,4 @@
 import { Request, Response, NextFunction  } from 'express';
-const ObjectId = require('mongoose').Types.ObjectId;
 const AppError = require('./../utils/appError');
 const catchAsync = require('./../utils/catchAsync');
 import {tourModel} from '../models/tourModel';
@@ -44,7 +43,6 @@ exports.createTour = catchAsync(async (req: Request, res: Response) => {
     status: 'success',
     tour: newTour
   });
-  console.log("POST a new tour")
 })
 
 exports.getTour = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
@@ -63,8 +61,6 @@ exports.getTour = catchAsync(async (req: Request, res: Response, next: NextFunct
       tour
     }
   });
-
-  console.log("GET a tour using mongodbid")
 });
 
 exports.getTourUsingDestination = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
@@ -101,8 +97,6 @@ exports.getTourUsingDestination = catchAsync(async (req: Request, res: Response,
       tours
     }
   });
-
-  console.log("GET a tour using destination");
 })
 
 exports.getTourUsingName = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
@@ -123,8 +117,6 @@ exports.getTourUsingName = catchAsync(async (req: Request, res: Response, next: 
       },
     }
   );
-
-  console.log("GET a tour using name");
 })
 
 exports.updateTourByName = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
@@ -144,8 +136,6 @@ exports.updateTourByName = catchAsync(async (req: Request, res: Response, next: 
       tour
     }
   });
-
-  console.log("PATCH Update a tour")
 });
 
 exports.deleteTour = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
@@ -162,8 +152,6 @@ exports.deleteTour = catchAsync(async (req: Request, res: Response, next: NextFu
     status: 'success',
     data: "delete successful"
   });
-
-  console.log("Delete a tour using mongodbID successful")
 })
 
 exports.addTour = catchAsync(async (req: Request, res: Response) => {

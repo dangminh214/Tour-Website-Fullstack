@@ -19,7 +19,6 @@ exports.getAllDestination = catchAsync(async (req: Request, res: Response) => {
       destinations
     }
   );
-  console.log("GET all destination")
 })
 
 exports.getDestinationUsingName = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
@@ -39,7 +38,6 @@ exports.getDestinationUsingName = catchAsync(async (req: Request, res: Response,
       destination
     }
   }); 
-  console.log("GET a destination using name");
 }) 
 
 exports.createDestination = catchAsync(async (req: Request, res: Response) => {
@@ -54,7 +52,6 @@ exports.createDestination = catchAsync(async (req: Request, res: Response) => {
     status: 'success',
     destination: newDestination
   });
-  console.log("POST a new Destination")
 })
 
 export const errorNoDestination = catchAsync(async (req: Request, res: Response) => {
@@ -83,6 +80,4 @@ exports.deleteDestination = catchAsync(async (req: Request, res: Response, next:
     status: 'success',
     data: "delete successful"
   });
-
-  console.log("Delete a destination using mongodbID successful")
 })

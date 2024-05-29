@@ -4,24 +4,34 @@
   "description": "FWE Hausaufgaben",
   "main": "server.js",
   "scripts": {
-    "start": "ts-node server.js"
+    "start": "ts-node server.js",
+    "test": "cross-env NODE_ENV=test jest --testTimeout=5000"
   },
   "dependencies": {
     "@types/node": "^20.12.7",
     "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "fn": "^0.2.0",
     "http": "^0.0.1-security",
     "mongodb": "^6.5.0",
     "mongoose": "^8.3.2",
+    "node-fetch": "^3.3.2",
     "path": "^0.12.7",
     "pug": "^3.0.2",
     "ts-node": "^10.9.2"
   },
   "devDependencies": {
+    "@babel/preset-typescript": "^7.24.6",
+    "@jest/globals": "^29.7.0",
     "@types/express": "^4.17.21",
+    "@types/jest": "^29.5.12",
+    "jest": "^29.7.0",
+    "mongodb-memory-server": "^9.2.0",
     "nodemon": "^3.1.0",
+    "supertest": "^7.0.0",
+    "ts-jest": "^29.1.4",
     "typescript": "^5.4.5"
   }
 }

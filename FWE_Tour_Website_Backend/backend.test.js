@@ -49,7 +49,7 @@ describe("GET all destinations: /destination", () => {
 })
 
 describe("GET a destinations: /destination/Darmstadt", () => {
-  it("should return all destinations", async () => {
+  it("should return a destinationdetail", async () => {
     const res = await request(app).get("/destination/Darmstadt");
     expect(res.statusCode).toBe(200);
     console.log(res.body)

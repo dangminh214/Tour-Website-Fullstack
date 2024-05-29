@@ -54,33 +54,66 @@ describe("POST /destination/newDestination", () => {
     expect(res.body.destination.name).toBe(newDestination.name);
     expect(res.body.destination.description).toBe(newDestination.description);
     expect(res.body.destination.imageCover).toEqual(expect.arrayContaining(newDestination.imageCover));
-    destinationId = res.body.destination._id;
-    destinationName = res.body.destination.name
+    testDestinationID = res.body.destination._id;
+    testDestinationName = res.body.destination.name
   });
 })
 
-describe("DELETE /destination/:destinationId", () => {
-  it("should delete the test destination", async () => {
-    const res = await request(app).delete(`/destination/deleteADestination/${destinationId}`);
-    expect(res.statusCode).toBe(204);
-  });
-});
+describe("POST /tours/newTour", () => {
+  it("should create a new tour", async () => {
+    const newTour = {
+      name: "Test Tour",
+      description: "This is a test tour",
+      imageCover: [
+        "https://example.com/image1.jpg",
+        "https://example.com/image2.jpg"
+      ],
+      destination: [`${testDestinationID}`]
+    };
 
-describe("GET a destinations: /destination/${destinationName}", () => {
+    const res = await request(app).post("/tours/newTour").send(newTour);
+
+    expect(res.statusCode).toBe(201);
+    expect(res.body.tour).toBeDefined();
+    expect(res.body.tour.name).toBe(newTour.name);
+    expect(res.body.tour.description).toBe(newTour.description);
+    expect(res.body.tour.imageCover).toEqual(expect.arrayContaining(newTour.imageCover));
+    testTourID = res.body.tour._id
+    testTourName = res.body.tour.name 
+  });
+})
+
+describe("GET a destinations: /destination/${testDestinationName}", () => {
   it("should return a destinationdetail", async () => {
-    const res = await request(app).get(`/destination/${destinationName}`);
+    const res = await request(app).get(`/destination/${testDestinationName}`);
     expect(res.statusCode).toBe(200);
     expect(res.body).toBeDefined();
   });
 })
 
-describe("GET a tour: /tours/Let's go Darmstadt", () => {
+describe("GET a tour: /tours/${testTourName}", () => {
   it("should return detail of a tour", async () => {
-    const res = await request(app).get("/tours/Let's go Darmstadt");
+    const res = await request(app).get(`/tours/${testTourName}`);
     expect(res.statusCode).toBe(200);
     expect(res.body.data).toBeDefined();
   });
 })
+
+describe("DELETE /tours/deleteATour/:testTourID", () => {
+  it("should delete the test destination", async () => {
+    const res = await request(app).delete(`/tours/deleteATour/${testTourID}`);
+    expect(res.statusCode).toBe(204);
+    console.log(`Delete a tour with ID = ${testTourID}`)
+  });
+});
+
+describe("DELETE /destination/:testDestinationID", () => {
+  it("should delete the test destination", async () => {
+    const res = await request(app).delete(`/destination/deleteADestination/${testDestinationID}`);
+    expect(res.statusCode).toBe(204);
+    console.log(`Delete a destination with ID ${testDestinationID}`)
+  });
+});
 
 /* Closing database connection after each test. */
 afterAll(async () => {

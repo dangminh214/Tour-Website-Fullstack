@@ -83,6 +83,52 @@ describe("POST /tours/newTour", () => {
   });
 })
 
+describe("PATCH /tours/:testTourName/addDestination to test add a new destination to a tour", () => {
+  it("should add a destinatiom to a tour", async () => {
+    const newToAddDestination = {
+      name: "Test new Destination to add",
+      description: "This is a test destination",
+      imageCover: [
+        "https://example.com/image1.jpg",
+        "https://example.com/image2.jpg"
+      ]
+    };
+
+    const resNewDestinationToAdd = await request(app).post("/destination/newDestination").send(newToAddDestination);
+
+    const toAddDestination = {
+      destinations: [`${resNewDestinationToAdd.body.destination._id}`]
+    };
+    toAddDestinationID = resNewDestinationToAdd.body.destination._id
+    toAddDestinationName = resNewDestinationToAdd.body.destination.name
+
+    const res = await request(app).patch(`/tours/${testTourName}/addDestination`).send(toAddDestination);
+    
+    expect(res.statusCode).toBe(200);
+
+    await request(app).delete(`/destination/deleteADestination/${toAddDestinationID}`);
+
+    // Here we do not delete that destination 
+    // We keepps that destination to test remove a destination from a tour
+    //await request(app).delete(`/destination/deleteADestination/${resNewDestinationToAdd.body._id}`);
+  });
+})
+
+/* describe("PATCH /tours/:testTourName/removeDestination/:toAddDestinationName to test remove a new destination to a tour", () => {
+  it("should remove a destinatiom to a tour", async () => {
+    const toRemoveDestination = {
+      destinations: [`${toAddDestinationID}`]
+    };
+    console.log("test", toRemoveDestination)
+    console.log("testURL", `/tours/${testTourName}/removeDestination/${toAddDestinationName}`)
+    const res = await request(app).patch(`/tours/${testTourName}/removeDestination/${toAddDestinationName}`).send(toRemoveDestination);
+    
+    expect(res.statusCode).toBe(200);
+
+    await request(app).delete(`/destination/deleteADestination/${resNewDestinationToAdd.body._id}`);
+  });
+}) */
+
 describe("GET a destinations: /destination/${testDestinationName}", () => {
   it("should return a destinationdetail", async () => {
     const res = await request(app).get(`/destination/${testDestinationName}`);
@@ -96,6 +142,16 @@ describe("GET a tour: /tours/${testTourName}", () => {
     const res = await request(app).get(`/tours/${testTourName}`);
     expect(res.statusCode).toBe(200);
     expect(res.body.data).toBeDefined();
+  });
+})
+
+describe("PATCH update a tour using name: /tours/updateTourByName/${testTourName}", () => {
+  it("should return detail of a tour", async () => {
+    const updateTour = {
+      name: "test update tour"
+    }
+    const res = await request(app).patch(`/tours/updateTourByName/${testTourName}`);
+    expect(res.statusCode).toBe(200);
   });
 })
 

@@ -22,7 +22,6 @@ describe("GET all tours: /tours", () => {
     expect(res.statusCode).toBe(200);
     expect(res.body.tours).toBeDefined();
     expect(res.body.tours.length).toBeGreaterThan(0);
-    console.log("Number of tours: ", res.body.tours.length)
   });
 });
 
@@ -32,7 +31,6 @@ describe("GET all destinations: /destination", () => {
     expect(res.statusCode).toBe(200);
     expect(res.body.destinations).toBeDefined();
     expect(res.body.destinations.length).toBeGreaterThan(0);
-    console.log("Number of destinations: ", res.body.destinations.length)
   });
 })
 
@@ -78,13 +76,14 @@ describe("POST /tours/newTour", () => {
     expect(res.body.tour.name).toBe(newTour.name);
     expect(res.body.tour.description).toBe(newTour.description);
     expect(res.body.tour.imageCover).toEqual(expect.arrayContaining(newTour.imageCover));
+    testTour = res.body.tour
     testTourID = res.body.tour._id
     testTourName = res.body.tour.name 
   });
 })
 
 describe("PATCH /tours/:testTourName/addDestination to test add a new destination to a tour", () => {
-  it("should add a destinatiom to a tour", async () => {
+  it("should add a destination to a tour", async () => {
     const newToAddDestination = {
       name: "Test new Destination to add",
       description: "This is a test destination",
@@ -105,29 +104,64 @@ describe("PATCH /tours/:testTourName/addDestination to test add a new destinatio
     const res = await request(app).patch(`/tours/${testTourName}/addDestination`).send(toAddDestination);
     
     expect(res.statusCode).toBe(200);
-
-    await request(app).delete(`/destination/deleteADestination/${toAddDestinationID}`);
-
-    // Here we do not delete that destination 
-    // We keepps that destination to test remove a destination from a tour
-    //await request(app).delete(`/destination/deleteADestination/${resNewDestinationToAdd.body._id}`);
   });
 })
 
-/* describe("PATCH /tours/:testTourName/removeDestination/:toAddDestinationName to test remove a new destination to a tour", () => {
-  it("should remove a destinatiom to a tour", async () => {
-    const toRemoveDestination = {
-      destinations: [`${toAddDestinationID}`]
+describe("GET all Tours through a destination '/findTourByDestination/:destination' ", () => {
+  it("the test tour should be displayed through the test destination", async () => {
+    const newToAddDestination = {
+      name: "new Destination to test get tours",
+      description: "This is a test destination",
+      imageCover: [
+        "https://example.com/image1.jpg",
+        "https://example.com/image2.jpg"
+      ]
     };
-    console.log("test", toRemoveDestination)
-    console.log("testURL", `/tours/${testTourName}/removeDestination/${toAddDestinationName}`)
-    const res = await request(app).patch(`/tours/${testTourName}/removeDestination/${toAddDestinationName}`).send(toRemoveDestination);
+
+    const testNewDest = await request(app).post("/destination/newDestination").send(newToAddDestination);
+
+    const newTestTour = {
+      name: "new tour to test get tours",
+      description: "This is a test tour",
+      destinations:[`${testNewDest.body.destination._id}`]
+    }
+    const restTestTour = await request(app).post(`/tours/newTour`).send(newTestTour);
+    const res = await request(app).get(`/tours/findTourByDestination/${toAddDestinationName}`)
+    expect(res.statusCode).toBe(200)
+    await request(app).delete(`/destination/deleteADestination/${testNewDest.body.destination._id}`) 
+    await request(app).delete(`/tours/deleteATour/${restTestTour.body.tour._id}`) 
+  })
+})
+
+describe("PATCH /tours/:testTourName/removeDestination/:toRemoveDestinationName to test remove a new destination to a tour", () => {
+  it("should remove a destinatiom to a tour", async () => {
+    const newSecondToAddDestination = {
+      name: "Test new second Destination to add",
+      description: "This is a test destination",
+      imageCover: [
+        "https://example.com/image1.jpg",
+        "https://example.com/image2.jpg"
+      ]
+    };
+
+    const resNewSecondDestinationToAdd = await request(app).post("/destination/newDestination").send(newSecondToAddDestination);
+    const toAddSecondDestination = {
+      destinations: [`${resNewSecondDestinationToAdd.body.destination._id}`]
+    };
     
+    const resAddSecondDestination = await request(app).patch(`/tours/${testTourName}/addDestination`).send(toAddSecondDestination)
+    
+    const toRemoveDestination = {
+      destinations: [`${resNewSecondDestinationToAdd.body.destination._id}`]
+    };
+
+    const res = await request(app).patch(`/tours/${testTourName}/removeDestination/${toAddDestinationName}`).send(toRemoveDestination);
     expect(res.statusCode).toBe(200);
 
-    await request(app).delete(`/destination/deleteADestination/${resNewDestinationToAdd.body._id}`);
+    await request(app).delete(`/destination/deleteADestination/${toAddDestinationID}`)
+    await request(app).delete(`/destination/deleteADestination/${resNewSecondDestinationToAdd.body.destination._id}`);
   });
-}) */
+})
 
 describe("GET a destinations: /destination/${testDestinationName}", () => {
   it("should return a destinationdetail", async () => {
@@ -159,7 +193,6 @@ describe("DELETE /tours/deleteATour/:testTourID", () => {
   it("should delete the test destination", async () => {
     const res = await request(app).delete(`/tours/deleteATour/${testTourID}`);
     expect(res.statusCode).toBe(204);
-    console.log(`Delete a tour with ID = ${testTourID}`)
   });
 });
 
@@ -167,7 +200,6 @@ describe("DELETE /destination/:testDestinationID", () => {
   it("should delete the test destination", async () => {
     const res = await request(app).delete(`/destination/deleteADestination/${testDestinationID}`);
     expect(res.statusCode).toBe(204);
-    console.log(`Delete a destination with ID ${testDestinationID}`)
   });
 });
 

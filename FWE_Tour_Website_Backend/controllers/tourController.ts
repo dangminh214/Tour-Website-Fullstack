@@ -120,7 +120,6 @@ exports.getTourUsingName = catchAsync(async (req: Request, res: Response, next: 
 })
 
 exports.updateTourByName = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
-  console.log(req.params)
   const tour = await tourModel.findOneAndUpdate({name: req.params.tourName}, req.body, {
     new: true,
     runValidators: true

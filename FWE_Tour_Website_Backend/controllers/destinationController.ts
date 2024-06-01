@@ -1,6 +1,5 @@
 import { Request, Response, NextFunction  } from 'express';
-const AppError = require('./../utils/appError');
-const catchAsync = require('./../utils/catchAsync')
+import { catchAsync } from './../utils/catchAsync';
 import {destinationModel} from './../models/destinationModel'
 
 exports.getAllDestination = catchAsync(async (req: Request, res: Response) => {

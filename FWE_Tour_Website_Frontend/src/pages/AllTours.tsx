@@ -1,10 +1,23 @@
 import React, { useState, useEffect } from "react";
-import Header from "../components/Header/Header.tsx";
-import SingleTour from "../components/SingleTour.tsx";
+import Header from "../components/Header";
+import SingleTour from "../components/SingleTour";
 import { useLocation } from "react-router-dom";
 
+interface Destination {
+  _id: string;
+  name: string;
+}
+
+interface Tour {
+  _id: string;
+  name: string;
+  description: string;
+  destinations: Destination[];
+  imageCover: string[]; 
+}
+
 const AllTours = () => {
-  const [tours, setTours] = useState([]);
+  const [tours, setTours] = useState<Tour[]>([]);
   const [loading, setLoading] = useState(true);
   const location = useLocation();
   const foundTours = location.state?.foundTours;
@@ -51,7 +64,7 @@ const AllTours = () => {
         <p className="warning-msg">Loading...</p>
       ) : (
         <div className="allDetailsContainer">
-          {filteredTours.map((tour) => (
+          {filteredTours.map((tour: Tour) => (
             <SingleTour key={tour._id} tour={tour} />
           ))}
         </div>

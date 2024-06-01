@@ -1,12 +1,12 @@
-import React, { useState, useEffect, FormEvent } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { Dispatch, SetStateAction, FormEvent, useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-interface SearchTourUsingDestinationProps {
-  setTours: (tours: any[]) => void;
+interface HeaderProps {
+  setTours?: Dispatch<SetStateAction<any[]>>;
 }
 
-const SearchTourUsingDestination: React.FC<SearchTourUsingDestinationProps> = ({ setTours }) => {
-  const [searchQuery, setSearchQuery] = useState<string>("");
+const Header: React.FC<HeaderProps> = ({ setTours }) => {
+  const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -55,8 +55,7 @@ const SearchTourUsingDestination: React.FC<SearchTourUsingDestinationProps> = ({
           placeholder="Search by destination"
           value={searchQuery}
           onChange={(event) => setSearchQuery(event.target.value)}
-          required
-          className="searchHeader"
+          className = "searchHeader"
         />
         <button type="submit" className="searchHeader">
           Search
@@ -66,4 +65,4 @@ const SearchTourUsingDestination: React.FC<SearchTourUsingDestinationProps> = ({
   );
 };
 
-export default SearchTourUsingDestination;
+export default Header;

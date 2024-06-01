@@ -1,13 +1,13 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import TourHeader from "./TourHeader";
 import { DestinationHeader } from "./DestinationHeader";
 import SearchTourUsingDestination from "./SearchTourUsingDestination";
 
-const Header: React.FC<{}> = () => {
-  function setTours(tours: any[]): void {
-    throw new Error("Function not implemented.");
-  }
+interface HeaderProps {
+  setTours?: Dispatch<SetStateAction<any[]>>;
+}
 
+const Header: React.FC<HeaderProps> = ({ setTours }) => {
   return (
     <div className="headerComponent">
       <a
@@ -46,8 +46,7 @@ const Header: React.FC<{}> = () => {
         <button
           className="createNewLink"
           onClick={() =>
-            (window.location.href =
-              "http://localhost:3000/destination/newDestination")
+            (window.location.href = "http://localhost:3000/destination/newDestination")
           }
         >
           New Destination

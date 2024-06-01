@@ -16,6 +16,7 @@ interface Destination {
 }
 
 const DestinationList: React.FC = () => {
+  const [, setTours] = useState<Tour[]>([]);
   const [destinations, setDestinations] = useState<Destination[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -50,7 +51,7 @@ const DestinationList: React.FC = () => {
   }, []);
   return (
     <>
-      <Header />
+      <Header  setTours={setTours}/>
       <h1 id="destinationList" className="titleList">
         Destination List
       </h1>

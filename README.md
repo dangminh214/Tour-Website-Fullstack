@@ -8,14 +8,15 @@ A homework project from module FWE at Darmstadt University of Applied Science. A
 Build status of continus integration: Completed
  
 ## Screenshots
-![Home Page](image.png)
-![All tours](image-1.png)
-![All destinations](image-2.png)
-![Tour Detail](image-3.png)
-![Destination Detail](image-4.png)
-![Create a new tour](image-5.png)
-![Create a new destination](image-6.png)
-![Edit an existed destination](image-7.png)
+![Home Page](![image](https://github.com/dangminh214/Tour-Website-Fullstack/assets/51837721/aaa0da01-97f7-46c5-8e58-702094e3d667)
+![All tours](![image](https://github.com/dangminh214/Tour-Website-Fullstack/assets/51837721/8f5b2db7-e2d2-4086-b7ae-fac888bcd626)
+![All destinations](https://github.com/dangminh214/Tour-Website-Fullstack/assets/51837721/7b0eda57-c174-46d1-83ba-057af69a91db)
+![Tour Detail](https://github.com/dangminh214/Tour-Website-Fullstack/assets/51837721/a97ede59-e1cb-4b1c-9cb9-734f11b68a28)
+![Destination Detail](https://github.com/dangminh214/Tour-Website-Fullstack/assets/51837721/e6a0da2c-5e74-4523-8c9a-bace02e018c7)
+![Create a new tour](https://github.com/dangminh214/Tour-Website-Fullstack/assets/51837721/19a23de4-7def-40c0-925a-f1e79b76ae7f)
+![Create a new destination](https://github.com/dangminh214/Tour-Website-Fullstack/assets/51837721/e0cb6c35-fcc7-40b5-a287-bf5f7cf09725)
+![Edit an existed tour](https://github.com/dangminh214/Tour-Website-Fullstack/assets/51837721/35c240a5-c266-46fc-a455-cd6b40dfe5ac)
+
 
 ## Tech/framework used
 Backend: Node JS, MongoDB

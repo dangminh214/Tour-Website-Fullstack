@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction  } from 'express';
-const AppError = require('./../utils/appError');
-const catchAsync = require('./../utils/catchAsync');
+import AppError from './../utils/appError';
+import { catchAsync } from './../utils/catchAsync';
 import {tourModel} from '../models/tourModel';
 import {destinationModel} from '../models/destinationModel';
 

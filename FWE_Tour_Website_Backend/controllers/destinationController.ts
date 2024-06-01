@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction  } from 'express';
-import { catchAsync } from './../utils/catchAsync';
+import { catchAsync } from '../utils/catchAsync';
 import {destinationModel} from './../models/destinationModel'
 
 exports.getAllDestination = catchAsync(async (req: Request, res: Response) => {

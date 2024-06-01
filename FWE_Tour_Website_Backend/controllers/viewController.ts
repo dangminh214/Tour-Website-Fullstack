@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction  } from 'express';
 import {tourModel} from '../models/tourModel';
-const catchAsync = require('./../utils/catchAsync')
+import { catchAsync } from './../utils/catchAsync';
 
 exports.getOverview = catchAsync(async (req: Request, res: Response) => {   
   let tours = await tourModel.find();
